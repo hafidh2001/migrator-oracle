@@ -1,0 +1,17 @@
+{
+  "name": "migrator",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@types/oracledb": "^6.6.0",
+    "dotenv": "^16.5.0",
+    "oracledb": "^6.8.0"
+  }
+}
