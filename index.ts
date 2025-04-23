@@ -22,8 +22,9 @@ async function showTables(connection: oracledb.Connection) {
   const result = await connection.execute(
     `SELECT owner, table_name 
      FROM all_tables 
-     WHERE owner = 'C##SIAPDEV4'
-     ORDER BY table_name`
+     WHERE owner = :1
+     ORDER BY table_name`,
+    [(dbConfig.user || '').toUpperCase()]
   );
   
   console.log('\nAvailable tables:');
@@ -41,10 +42,10 @@ async function showTableStructure(connection: oracledb.Connection, tableName: st
   const result = await connection.execute(
     `SELECT column_name, data_type, data_length, nullable
      FROM all_tab_columns
-     WHERE owner = 'C##SIAPDEV4'
-     AND table_name = :1
+     WHERE owner = :1
+     AND table_name = :2
      ORDER BY column_id`,
-    [tableName.toUpperCase()]
+    [(dbConfig.user || '').toUpperCase(), tableName.toUpperCase()]
   );
   
   console.log(`\nStructure for table ${tableName}:`);
@@ -73,12 +74,14 @@ async function main() {
     // Create connection
     const connection = await oracledb.getConnection(dbConfig);
 
-    console.log('\n🟢 Database connection successful!');
-    console.log('Connection details:');
+    console.log('\nConnection details:');
     console.log('------------------');
     console.log(`Host: ${dbConfig.connectString}`);
     console.log(`Database: ORCLCDB`);
-    console.log(`User: ${dbConfig.user}`);
+    console.log(`User: ${dbConfig.user || ''}`);
+    
+    console.log('\n🟢 Database connection successful!');
+    
     console.log('\nAvailable commands:');
     console.log('------------------');
     console.log('bun run index.ts --show=tables');

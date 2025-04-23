@@ -10,9 +10,3 @@ export const dbConfig = {
   password: process.env.DB_PASSWORD,
   connectString: process.env.DB_CONNECT_STRING
 };
-
-// Log loaded configuration (without sensitive data)
-console.log('Database Config (excluding password):', {
-  user: dbConfig.user,
-  connectString: dbConfig.connectString
-});
