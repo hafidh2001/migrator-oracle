@@ -40,6 +40,17 @@ bun run index.ts --show=structure --table=TABLE_NAME
 bun i oracledb @types/oracledb dotenv
 ```
 
+## Example Outputs
+
+### Check Connection
+![Check Connection](example-output/check-connection.jpeg)
+
+### Show Tables
+![Show Tables](example-output/show-tables.jpeg)
+
+### Show Table Structure
+![Show Table Structure](example-output/show-structure-table.jpeg)
+
 ## Security Note
 - `.env` file containing your actual database credentials is ignored by git
 - Never commit sensitive credentials to version control
