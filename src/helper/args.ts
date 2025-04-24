@@ -25,4 +25,5 @@ export function showHelp(): void {
   console.log('bun run index.ts --show=structure --table=TABLE_NAME');
   console.log('bun run index.ts --show=relations');
   console.log('bun run index.ts --show=relations --table=TABLE_NAME');
+  console.log('bun run index.ts --show=sequences');
 }

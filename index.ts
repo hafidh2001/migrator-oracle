@@ -3,6 +3,7 @@ import { initializeConnection, closeConnection } from './src/helper/db';
 import { showTables } from './src/helper/showTables';
 import { showTableStructure } from './src/helper/showStructure';
 import { showTableRelations } from './src/helper/showRelations';
+import { showSequences } from './src/helper/showSequences';
 
 async function main() {
   const args = parseArgs();
@@ -21,14 +22,25 @@ async function main() {
       return;
     }
 
-    if (args.show === 'tables') {
-      await showTables(connection);
-    } else if (args.show === 'structure' && args.table) {
-      await showTableStructure(connection, args.table);
-    } else if (args.show === 'relations') {
-      await showTableRelations(connection, args.table);
-    } else {
-      console.log('\nInvalid command. Use --help to see available commands');
+    switch (args.show) {
+      case 'tables':
+        await showTables(connection);
+        break;
+      case 'structure':
+        if (args.table) {
+          await showTableStructure(connection, args.table);
+        } else {
+          console.log('\nMissing table name. Use: --show=structure --table=TABLE_NAME');
+        }
+        break;
+      case 'relations':
+        await showTableRelations(connection, args.table);
+        break;
+      case 'sequences':
+        await showSequences(connection);
+        break;
+      default:
+        console.log('\nInvalid command. Use --help to see available commands');
     }
 
     await closeConnection(connection);
