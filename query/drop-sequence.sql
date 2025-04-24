@@ -13,7 +13,6 @@ BEGIN
   drop_sequence_if_exists('"C##SIAPDEV4"."FAILED_JOBS_ID_SEQ"');
   drop_sequence_if_exists('"C##SIAPDEV4"."GROUPASSETS_ID_SEQ"');
   drop_sequence_if_exists('"C##SIAPDEV4"."GROUPCLASSES_ID_SEQ"');
-  drop_sequence_if_exists('"C##SIAPDEV4"."JOBS_SEQ"');
   drop_sequence_if_exists('"C##SIAPDEV4"."MASTER_ASURANSI_SEQ"');
   drop_sequence_if_exists('"C##SIAPDEV4"."MIGRATIONS_ID_SEQ"');
   drop_sequence_if_exists('"C##SIAPDEV4"."MONITORING_FAILED_SEQ"');
