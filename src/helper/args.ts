@@ -10,7 +10,7 @@ export function parseArgs(): CommandArgs {
       return;
     }
     const [key, value] = arg.replace('--', '').split('=');
-    if (key === 'show' || key === 'table') {
+    if (key === 'show' || key === 'table' || key === 'query') {
       result[key] = value;
     }
   });
@@ -26,4 +26,5 @@ export function showHelp(): void {
   console.log('bun run index.ts --show=relations');
   console.log('bun run index.ts --show=relations --table=TABLE_NAME');
   console.log('bun run index.ts --show=sequences');
+  console.log('bun run index.ts --query=path/to/query.sql');
 }

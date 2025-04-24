@@ -4,6 +4,7 @@ import { showTables } from './src/helper/showTables';
 import { showTableStructure } from './src/helper/showStructure';
 import { showTableRelations } from './src/helper/showRelations';
 import { showSequences } from './src/helper/showSequences';
+import { runQuery } from './src/helper/runQuery';
 
 async function main() {
   const args = parseArgs();
@@ -12,6 +13,12 @@ async function main() {
     
     if (args.help) {
       showHelp();
+      await closeConnection(connection);
+      return;
+    }
+
+    if (args.query) {
+      await runQuery(connection, args.query);
       await closeConnection(connection);
       return;
     }
