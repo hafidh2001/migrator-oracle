@@ -33,6 +33,16 @@ Show table structure:
 bun run index.ts --show=structure --table=TABLE_NAME
 ```
 
+Show all table relationships:
+```bash
+bun run index.ts --show=relations
+```
+
+Show relationships for specific table:
+```bash
+bun run index.ts --show=relations --table=TABLE_NAME
+```
+
 ## Installation
 
 1. Install dependencies:
