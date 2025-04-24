@@ -8,6 +8,7 @@ DECLARE
             DBMS_OUTPUT.PUT_LINE('Error dropping ' || p_table_name || ': ' || SQLERRM);
          END IF;
    END;
+
 BEGIN
    drop_if_exists('ASSETACCOUNTS');
    drop_if_exists('ASSETCLASSES');
@@ -24,6 +25,8 @@ BEGIN
    drop_if_exists('GROUPCLASSES');
    drop_if_exists('INSURANCES');
    drop_if_exists('MASTER_ASURANSI');
+   drop_if_exists('MONITORING_FAILED');
+   drop_if_exists('MONITORING_INTEGRATOR');
    drop_if_exists('NOTIFIKASI');
    drop_if_exists('PBB');
    drop_if_exists('PERIOD');
