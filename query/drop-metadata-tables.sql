@@ -2,9 +2,10 @@
 DECLARE
    CURSOR tables_to_drop IS
       SELECT table_name 
-      FROM all_tables 
-      WHERE owner = 'C##SIAPDEV4' 
-      AND (table_name LIKE 'MD_%' OR table_name LIKE 'MIGR_%' OR table_name = 'MIGRLOG')
+      FROM user_tables 
+      WHERE table_name LIKE 'MD_%' 
+         OR table_name LIKE 'MIGR_%' 
+         OR table_name = 'MIGRLOG'
       ORDER BY table_name DESC;
    v_table_name VARCHAR2(200);
 BEGIN

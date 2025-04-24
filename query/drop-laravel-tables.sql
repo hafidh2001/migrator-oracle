@@ -5,7 +5,7 @@ DECLARE
 BEGIN
    FOR i IN 1..v_tables.COUNT LOOP
       BEGIN
-         EXECUTE IMMEDIATE 'DROP TABLE "' || v_tables(i) || '" CASCADE CONSTRAINTS';
+         EXECUTE IMMEDIATE 'DROP TABLE "C##SIAPDEV4"."' || v_tables(i) || '" CASCADE CONSTRAINTS';
          DBMS_OUTPUT.PUT_LINE('Dropped table: ' || v_tables(i));
       EXCEPTION
          WHEN OTHERS THEN
