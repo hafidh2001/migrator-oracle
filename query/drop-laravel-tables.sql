@@ -1,7 +1,7 @@
 -- Drop default Laravel tables and sequences if they exist
 DECLARE
    TYPE table_list_t IS TABLE OF VARCHAR2(100);
-   v_tables table_list_t := table_list_t('MIGRATIONS', 'FAILED_JOBS', 'PASSWORD_RESETS', 'USERS', 'JOBS');
+   v_tables table_list_t := table_list_t('MIGRATIONS', 'FAILED_JOBS', 'PASSWORD_RESETS', 'JOBS');
    
    PROCEDURE drop_sequence_if_exists(p_sequence_name IN VARCHAR2) IS
    BEGIN
