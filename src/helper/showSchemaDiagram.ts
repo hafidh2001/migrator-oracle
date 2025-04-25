@@ -4,14 +4,6 @@ import * as fs from 'fs';
 import path from 'path';
 
 export async function showSchemaDiagram(connection: Connection, output?: string): Promise<void> {
-  // Display connection info
-  console.log('\nConnection details:');
-  console.log('------------------');
-  console.log(`Host: ${dbConfig.connectString}`);
-  console.log(`Database: ${dbConfig.connectString?.split('/')[1]}`);
-  console.log(`User: ${dbConfig.user}\n`);
-  console.log('🔄 Generating schema diagram...\n');
-
   // First, get all tables and their columns
   const tablesResult = await connection.execute(
     `SELECT t.table_name, c.column_name, c.data_type
