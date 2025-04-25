@@ -6,15 +6,7 @@ BEGIN
     SELECT constraint_name, table_name 
     FROM user_constraints 
     WHERE constraint_type IN ('R', 'U') 
-    AND constraint_name IN (
-      'FK_USERS_ROLES',
-      'FK_ASSETS_GROUPCLASSES',
-      'FK_PICTURES_DETAILASSETS',
-      'FK_ASSETS_ASSETCLASSES',
-      'IDX_ASSETS_NATURAL_KEY',
-      'IDX_BRANCHES_SAP',
-      'IDX_REFERENCES_ENTITY'
-    )
+    AND (constraint_name LIKE '%FK_%' OR constraint_name LIKE 'IDX_%')
   ) LOOP
     v_sql := 'ALTER TABLE "C##SIAPDEV4"."' || r.table_name || '" DROP CONSTRAINT "' || r.constraint_name || '"';
     BEGIN
@@ -28,11 +20,7 @@ BEGIN
   FOR r IN (
     SELECT index_name 
     FROM user_indexes 
-    WHERE index_name IN (
-      'IDX_ASSETS_NATURAL_KEY',
-      'IDX_BRANCHES_SAP',
-      'IDX_REFERENCES_ENTITY'
-    )
+    WHERE index_name LIKE 'IDX_%'
   ) LOOP
     v_sql := 'DROP INDEX "' || r.index_name || '"';
     BEGIN
@@ -42,9 +30,24 @@ BEGIN
     END;
   END LOOP;
 
+  -- Drop any existing UK constraints first
+  FOR r IN (
+    SELECT constraint_name, table_name 
+    FROM user_constraints 
+    WHERE constraint_type = 'U' 
+    AND constraint_name LIKE 'UK_%'
+  ) LOOP
+    v_sql := 'ALTER TABLE "C##SIAPDEV4"."' || r.table_name || '" DROP CONSTRAINT "' || r.constraint_name || '"';
+    BEGIN
+      EXECUTE IMMEDIATE v_sql;
+    EXCEPTION WHEN OTHERS THEN
+      NULL; -- Ignore any errors during drop
+    END;
+  END LOOP;
+
   -- Create unique constraints instead of indexes to support foreign keys
   BEGIN
-    v_sql := 'ALTER TABLE "C##SIAPDEV4"."ASSETS" ADD CONSTRAINT "UK_ASSETS_ASSET_ID" UNIQUE ("NO_ASET", "SUB_ASET")';
+    v_sql := 'ALTER TABLE "C##SIAPDEV4"."ASSETS" ADD CONSTRAINT "UK_ASSETS_ID" UNIQUE ("NO_ASET", "SUB_ASET")';
     EXECUTE IMMEDIATE v_sql;
   EXCEPTION WHEN OTHERS THEN
     IF SQLCODE != -2261 THEN -- Ignore if constraint already exists
@@ -76,6 +79,15 @@ BEGIN
   EXCEPTION WHEN OTHERS THEN
     IF SQLCODE != -2261 THEN -- Ignore if constraint already exists
       DBMS_OUTPUT.PUT_LINE('Error creating UK_REFERENCES_ENTITY: ' || SQLERRM);
+    END IF;
+  END;
+
+  BEGIN
+    v_sql := 'ALTER TABLE "C##SIAPDEV4"."DETAILASSETS" ADD CONSTRAINT "UK_DETAILASSETS_ID" UNIQUE ("NO_ASET", "SUB_ASET", "NO_ITEM")';
+    EXECUTE IMMEDIATE v_sql;
+  EXCEPTION WHEN OTHERS THEN
+    IF SQLCODE != -2261 THEN -- Ignore if constraint already exists
+      DBMS_OUTPUT.PUT_LINE('Error creating UK_DETAILASSETS_ID: ' || SQLERRM);
     END IF;
   END;
 
