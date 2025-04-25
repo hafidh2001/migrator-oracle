@@ -10,7 +10,7 @@ export function parseArgs(): CommandArgs {
       return;
     }
     const [key, value] = arg.replace('--', '').split('=');
-    if (key === 'show' || key === 'table' || key === 'query') {
+    if (key === 'show' || key === 'table' || key === 'query' || key === 'compare' || key === 'path') {
       result[key] = value;
     }
   });
@@ -28,4 +28,5 @@ export function showHelp(): void {
   console.log('bun run index.ts --show=sequences');
   console.log('bun run index.ts --show=pk --table=TABLE_NAME');
   console.log('bun run index.ts --query=path/to/query.sql');
+  console.log('bun run index.ts --compare=csv --path=BACKUP_DIRECTORY');
 }

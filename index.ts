@@ -6,6 +6,7 @@ import { showForeignKeys } from './src/helper/showForeignKeys';
 import { showSequences } from './src/helper/showSequences';
 import { showTablePrimaryKey } from './src/helper/showPrimaryKeys';
 import { runQuery } from './src/helper/runQuery';
+import { compareFilesWithTables } from './src/helper/compareFilesWithTables';
 
 async function main() {
   const args = parseArgs();
@@ -20,6 +21,17 @@ async function main() {
 
     if (args.query) {
       await runQuery(connection, args.query);
+      await closeConnection(connection);
+      return;
+    }
+
+    if (args.compare === 'csv') {
+      if (!args.path) {
+        console.log('\nMissing directory path. Use: --compare=csv --path=BACKUP_DIRECTORY');
+        await closeConnection(connection);
+        return;
+      }
+      await compareFilesWithTables(connection, args.path);
       await closeConnection(connection);
       return;
     }

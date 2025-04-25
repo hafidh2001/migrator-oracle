@@ -9,18 +9,16 @@ A command-line tool to connect to Oracle Database and explore tables.
 cp .env.example .env
 ```
 
-2. Update the `.env` file with your database credentials:
-```env
-DB_USER="your_oracle_username"
-DB_PASSWORD="your_oracle_password"
-DB_CONNECT_STRING="host:port/service_name"
-```
-
 ## Usage
 
 Test connection:
 ```bash
 bun run index.ts
+```
+
+Show Help
+```bash
+bun run index.ts --help
 ```
 
 Show all tables:
@@ -42,6 +40,12 @@ Show relationships for specific table:
 ```bash
 bun run index.ts --show=relations --table=TABLE_NAME
 ```
+
+Compare files with database tables:
+```bash
+bun run index.ts --compare=csv --path=BACKUP_DIRECTORY
+```
+This command checks if each file in the specified directory has a corresponding table in the database. The comparison ignores file extensions and is case-insensitive (e.g., "users.csv", "USERS.json", or "Users.txt" would all match with a "USERS" table).
 
 ## Installation
 

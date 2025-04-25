@@ -3,4 +3,6 @@ export interface CommandArgs {
   table?: string;
   help?: boolean;
   query?: string;
+  compare?: string;
+  path?: string;
 }
