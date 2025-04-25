@@ -31,23 +31,22 @@ export async function showTableRelations(connection: Connection, tableName?: str
   const params = tableName ? [(dbConfig.user || '').toUpperCase(), tableName.toUpperCase(), tableName.toUpperCase()] : [(dbConfig.user || '').toUpperCase()];
   const result = await connection.execute(query, params);
 
-  if (!result.rows || result.rows.length === 0) {
-    console.log('\nNo relationships found.');
-    return;
-  }
-
   console.log('\nTable Relationships:');
   console.log('-'.repeat(100));
   console.log('SOURCE TABLE'.padEnd(20) + 'FOREIGN KEY'.padEnd(20) + 'TARGET TABLE'.padEnd(20) + 'TARGET FIELD'.padEnd(20));
   console.log('-'.repeat(100));
-  
-  result.rows.forEach((row: any) => {
-    console.log(
-      `${row[0]}`.padEnd(20) + 
-      `${row[1]}`.padEnd(20) + 
-      `${row[3]}`.padEnd(20) + 
-      `${row[4]}`.padEnd(20)
-    );
-  });
+
+  if (!result.rows || result.rows.length === 0) {
+    console.log('No relationship found'.padEnd(100));
+  } else {
+    result.rows.forEach((row: any) => {
+      console.log(
+        `${row[0]}`.padEnd(20) + 
+        `${row[1]}`.padEnd(20) + 
+        `${row[3]}`.padEnd(20) + 
+        `${row[4]}`.padEnd(20)
+      );
+    });
+  }
   console.log('-'.repeat(100));
 }
