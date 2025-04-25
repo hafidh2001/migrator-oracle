@@ -116,16 +116,7 @@ export async function showSchemaDiagram(connection: Connection, output?: string)
     mermaidContent += '    %% No relationships found\n';
   }
 
-  if (!output) {
-    // Display in console if no output specified
-    console.log('\nSchema Diagram:');
-    console.log('```mermaid');
-    console.log(mermaidContent);
-    console.log('```');
-    return;
-  }
-
-  // Create output directory if it doesn't exist
+  // Create output directory if doesn't exist
   const outputDir = 'schema-output';
   if (!fs.existsSync(outputDir)) {
     fs.mkdirSync(outputDir);
@@ -136,22 +127,11 @@ export async function showSchemaDiagram(connection: Connection, output?: string)
     const filePath = path.join(outputDir, 'schema.mermaid');
     fs.writeFileSync(filePath, mermaidContent);
     console.log(`Schema saved to ${filePath}`);
-  } else if (output === 'picture') {
-    // Save mermaid content to temporary file
-    const tempFile = path.join(outputDir, 'temp.mermaid');
-    fs.writeFileSync(tempFile, mermaidContent);
-
-    // Use mmdc to convert to PNG
-    const outputFile = path.join(outputDir, 'schema.png');
-    const { execSync } = require('child_process');
-    try {
-      execSync(`./node_modules/.bin/mmdc -i ${tempFile} -o ${outputFile}`);
-      console.log(`Schema image saved to ${outputFile}`);
-      // Clean up temp file
-      fs.unlinkSync(tempFile);
-    } catch (error) {
-      console.error('Error generating image:', error);
-      fs.unlinkSync(tempFile);
-    }
+  } else {
+    // Display in console if no output specified
+    console.log('\nSchema Diagram:');
+    console.log('```mermaid');
+    console.log(mermaidContent);
+    console.log('```');
   }
 }
