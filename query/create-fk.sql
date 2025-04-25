@@ -44,6 +44,15 @@ BEGIN
 
   -- Create unique constraints instead of indexes to support foreign keys
   BEGIN
+    v_sql := 'ALTER TABLE "C##SIAPDEV4"."ASSETS" ADD CONSTRAINT "UK_ASSETS_ASSET_ID" UNIQUE ("NO_ASET", "SUB_ASET")';
+    EXECUTE IMMEDIATE v_sql;
+  EXCEPTION WHEN OTHERS THEN
+    IF SQLCODE != -2261 THEN -- Ignore if constraint already exists
+      DBMS_OUTPUT.PUT_LINE('Error creating UK_ASSETS_ASSET_ID: ' || SQLERRM);
+    END IF;
+  END;
+
+  BEGIN
     v_sql := 'ALTER TABLE "C##SIAPDEV4"."ASSETS" ADD CONSTRAINT "UK_ASSETS_NATURAL_KEY" UNIQUE ("NO_ASET", "SUB_ASET", "PERIODE", "TAHUN")';
     EXECUTE IMMEDIATE v_sql;
   EXCEPTION WHEN OTHERS THEN
