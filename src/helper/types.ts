@@ -5,4 +5,5 @@ export interface CommandArgs {
   query?: string;
   compare?: string;
   path?: string;
+  output?: string;
 }

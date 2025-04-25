@@ -25,6 +25,7 @@
     "typescript": "^5"
   },
   "dependencies": {
+    "@mermaid-js/mermaid-cli": "^11.4.2",
     "@types/oracledb": "^6.6.0",
     "dotenv": "^16.5.0",
     "oracledb": "^6.8.0"

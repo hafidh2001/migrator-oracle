@@ -1,3 +1,6 @@
+# schema-output
+schema-output/
+
 # dependencies (bun install)# Environment variables
 .env
 

@@ -1,9 +1,30 @@
 import type { Connection } from 'oracledb';
 import { dbConfig } from '../config/database';
+import * as fs from 'fs';
+import path from 'path';
 
-export async function showSchemaDiagram(connection: Connection): Promise<void> {
-  // Query to get foreign key relationships
-  const result = await connection.execute(
+export async function showSchemaDiagram(connection: Connection, output?: string): Promise<void> {
+  // Display connection info
+  console.log('\nConnection details:');
+  console.log('------------------');
+  console.log(`Host: ${dbConfig.connectString}`);
+  console.log(`Database: ${dbConfig.connectString?.split('/')[1]}`);
+  console.log(`User: ${dbConfig.user}\n`);
+  console.log('🔄 Generating schema diagram...\n');
+
+  // First, get all tables and their columns
+  const tablesResult = await connection.execute(
+    `SELECT t.table_name, c.column_name, c.data_type
+     FROM all_tables t
+     JOIN all_tab_columns c ON t.table_name = c.table_name 
+     WHERE t.owner = :owner 
+     AND c.owner = :owner
+     ORDER BY t.table_name, c.column_id`,
+    { owner: (dbConfig.user || '').toUpperCase() }
+  );
+
+  // Then get foreign key relationships
+  const relationsResult = await connection.execute(
     `SELECT 
       a.table_name AS child_table,
       c.table_name AS parent_table,
@@ -22,16 +43,61 @@ export async function showSchemaDiagram(connection: Connection): Promise<void> {
     { owner: (dbConfig.user || '').toUpperCase() }
   );
 
-  // Start building Mermaid diagram
-  console.log('\nSchema Diagram:');
-  console.log('```mermaid');
-  console.log('erDiagram');
+  // Generate Mermaid diagram content starting with all tables
+  let mermaidContent = 'erDiagram\n';
+  
+  // Add all tables with their columns
+  if (tablesResult.rows) {
+    let currentTable = '';
+    let tableContent = '';
+    let tableCount = 0;
+    let totalTables = new Set(tablesResult.rows.map((row: any) => row[0])).size;
+    
+    console.log(`Found ${totalTables} tables in the schema\n`);
+    
+    tablesResult.rows.forEach((row: any) => {
+      const tableName = row[0];
+      const columnName = row[1];
+      const dataType = row[2];
+      
+      if (currentTable !== tableName) {
+        // Close previous table if exists
+        if (currentTable !== '') {
+          mermaidContent += `    ${currentTable} {\n${tableContent}    }\n`;
+        }
+        // Start new table
+        currentTable = tableName;
+        tableContent = '';
+        tableCount++;
+        process.stdout.write(`\rProcessing tables... ${tableCount}/${totalTables}`);
+      }
+      
+      // Convert Oracle data types to more readable format and limit length
+      const shortDataType = dataType.replace('VARCHAR2', 'string')
+                                  .replace('NUMBER', 'int')
+                                  .replace('DATE', 'date')
+                                  .replace('TIMESTAMP(6)', 'timestamp')
+                                  .replace('CHAR', 'char')
+                                  .replace('CLOB', 'text')
+                                  .replace('BLOB', 'binary')
+                                  .toLowerCase();
+      
+      tableContent += `        ${shortDataType} ${columnName}\n`;
+    });
+    
+    // Close the last table
+    if (currentTable !== '') {
+      mermaidContent += `    ${currentTable} {\n${tableContent}    }\n`;
+    }
+  }
 
-  if (result.rows && result.rows.length > 0) {
+  // Add relationships between tables
+
+  if (relationsResult.rows && relationsResult.rows.length > 0) {
     // Track processed relationships to avoid duplicates
     const processedRelations = new Set<string>();
 
-    result.rows.forEach((row: any) => {
+    relationsResult.rows.forEach((row: any) => {
       const childTable = row[0];
       const parentTable = row[1];
       const childColumn = row[2];
@@ -42,13 +108,50 @@ export async function showSchemaDiagram(connection: Connection): Promise<void> {
 
       if (!processedRelations.has(relationKey)) {
         // Add relationship to diagram using Mermaid syntax
-        console.log(`    ${parentTable} ||--o{ ${childTable} : "has"`)
+        mermaidContent += `    ${parentTable} ||--o{ ${childTable} : "has"\n`;
         processedRelations.add(relationKey);
       }
     });
   } else {
-    console.log('    %% No relationships found');
+    mermaidContent += '    %% No relationships found\n';
   }
 
-  console.log('```');
+  if (!output) {
+    // Display in console if no output specified
+    console.log('\nSchema Diagram:');
+    console.log('```mermaid');
+    console.log(mermaidContent);
+    console.log('```');
+    return;
+  }
+
+  // Create output directory if it doesn't exist
+  const outputDir = 'schema-output';
+  if (!fs.existsSync(outputDir)) {
+    fs.mkdirSync(outputDir);
+  }
+
+  if (output === 'file') {
+    // Save as mermaid file
+    const filePath = path.join(outputDir, 'schema.mermaid');
+    fs.writeFileSync(filePath, mermaidContent);
+    console.log(`Schema saved to ${filePath}`);
+  } else if (output === 'picture') {
+    // Save mermaid content to temporary file
+    const tempFile = path.join(outputDir, 'temp.mermaid');
+    fs.writeFileSync(tempFile, mermaidContent);
+
+    // Use mmdc to convert to PNG
+    const outputFile = path.join(outputDir, 'schema.png');
+    const { execSync } = require('child_process');
+    try {
+      execSync(`./node_modules/.bin/mmdc -i ${tempFile} -o ${outputFile}`);
+      console.log(`Schema image saved to ${outputFile}`);
+      // Clean up temp file
+      fs.unlinkSync(tempFile);
+    } catch (error) {
+      console.error('Error generating image:', error);
+      fs.unlinkSync(tempFile);
+    }
+  }
 }

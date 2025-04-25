@@ -64,7 +64,7 @@ async function main() {
         await showTablePrimaryKey(connection, args.table);
         break;
       case 'schema':
-        await showSchemaDiagram(connection);
+        await showSchemaDiagram(connection, args.output);
         break;
       default:
         console.log('\nInvalid command. Use --help to see available commands');
