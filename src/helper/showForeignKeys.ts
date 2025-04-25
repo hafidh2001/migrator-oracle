@@ -1,7 +1,7 @@
 import type { Connection } from 'oracledb';
 import { dbConfig } from '../config/database';
 
-export async function showTableRelations(connection: Connection, tableName?: string): Promise<void> {
+export async function showForeignKeys(connection: Connection, tableName?: string): Promise<void> {
   const query = `
     SELECT 
       a.table_name child_table,
@@ -31,22 +31,23 @@ export async function showTableRelations(connection: Connection, tableName?: str
   const params = tableName ? [(dbConfig.user || '').toUpperCase(), tableName.toUpperCase(), tableName.toUpperCase()] : [(dbConfig.user || '').toUpperCase()];
   const result = await connection.execute(query, params);
 
-  console.log('\nTable Relationships:');
-  console.log('-'.repeat(100));
-  console.log('SOURCE TABLE'.padEnd(20) + 'FOREIGN KEY'.padEnd(20) + 'TARGET TABLE'.padEnd(20) + 'TARGET FIELD'.padEnd(20));
-  console.log('-'.repeat(100));
+  console.log('\nForeign Key Relationships:');
+  console.log('-'.repeat(120));
+  console.log('SOURCE TABLE'.padEnd(20) + 'FOREIGN KEY'.padEnd(20) + 'TARGET TABLE'.padEnd(20) + 'TARGET FIELD'.padEnd(20) + 'CONSTRAINT NAME'.padEnd(40));
+  console.log('-'.repeat(120));
 
   if (!result.rows || result.rows.length === 0) {
-    console.log('No relationship found'.padEnd(100));
+    console.log('No foreign keys found'.padEnd(120));
   } else {
     result.rows.forEach((row: any) => {
       console.log(
         `${row[0]}`.padEnd(20) + 
         `${row[1]}`.padEnd(20) + 
         `${row[3]}`.padEnd(20) + 
-        `${row[4]}`.padEnd(20)
+        `${row[4]}`.padEnd(20) +
+        `${row[2]}`.padEnd(40)
       );
     });
   }
-  console.log('-'.repeat(100));
+  console.log('-'.repeat(120));
 }

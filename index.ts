@@ -2,7 +2,7 @@ import { parseArgs, showHelp } from './src/helper/args';
 import { initializeConnection, closeConnection } from './src/helper/db';
 import { showTables } from './src/helper/showTables';
 import { showTableStructure } from './src/helper/showStructure';
-import { showTableRelations } from './src/helper/showRelations';
+import { showForeignKeys } from './src/helper/showForeignKeys';
 import { showSequences } from './src/helper/showSequences';
 import { showTablePrimaryKey } from './src/helper/showPrimaryKeys';
 import { runQuery } from './src/helper/runQuery';
@@ -41,8 +41,8 @@ async function main() {
           console.log('\nMissing table name. Use: --show=structure --table=TABLE_NAME');
         }
         break;
-      case 'relations':
-        await showTableRelations(connection, args.table);
+      case 'fk':
+        await showForeignKeys(connection, args.table);
         break;
       case 'sequences':
         await showSequences(connection);
