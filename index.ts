@@ -5,6 +5,7 @@ import { showTableStructure } from './src/helper/showStructure';
 import { showForeignKeys } from './src/helper/showForeignKeys';
 import { showSequences } from './src/helper/showSequences';
 import { showTablePrimaryKey } from './src/helper/showPrimaryKeys';
+import { showSchemaDiagram } from './src/helper/showSchemaDiagram';
 import { runQuery } from './src/helper/runQuery';
 import { compareFilesWithTables } from './src/helper/compareFilesWithTables';
 
@@ -61,6 +62,9 @@ async function main() {
         break;
       case 'pk':
         await showTablePrimaryKey(connection, args.table);
+        break;
+      case 'schema':
+        await showSchemaDiagram(connection);
         break;
       default:
         console.log('\nInvalid command. Use --help to see available commands');

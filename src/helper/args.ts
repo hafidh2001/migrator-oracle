@@ -27,6 +27,7 @@ export function showHelp(): void {
   console.log('bun run index.ts --show=fk --table=TABLE_NAME');
   console.log('bun run index.ts --show=sequences');
   console.log('bun run index.ts --show=pk --table=TABLE_NAME');
+  console.log('bun run index.ts --show=schema');
   console.log('bun run index.ts --query=path/to/query.sql');
   console.log('bun run index.ts --compare=csv --path=BACKUP_DIRECTORY');
 }

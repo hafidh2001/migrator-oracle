@@ -15,7 +15,8 @@
     "show-tables": "bun run index.ts --show=tables",
     "show-sequences": "bun run index.ts --show=sequences",
     "show-pk": "bun run index.ts --show=pk",
-    "show-fk": "bun run index.ts --show=fk"
+    "show-fk": "bun run index.ts --show=fk",
+    "show-schema": "bun run index.ts --show=schema"
   },
   "devDependencies": {
     "@types/bun": "latest"
