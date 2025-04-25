@@ -1,8 +1,16 @@
 {
   "name": "migrator",
   "module": "index.ts",
+  "author": {
+    "name": "Hafidh Ahmad Fauzan",
+    "email": "hafidhfauzan2@gmail.com"
+  },
   "type": "module",
   "private": true,
+  "scripts": {
+    "drop-db": "bun run index.ts --query=query/drop-sequence.sql && bun run index.ts --query=query/drop-metadata-tables.sql && bun run index.ts --query=query/drop-laravel-tables.sql && bun run index.ts --query=query/drop-tables.sql",
+    "create-db": "bun run index.ts --query=query/create-tables.sql && bun run index.ts --query=query/create-pk.sql"
+  },
   "devDependencies": {
     "@types/bun": "latest"
   },
