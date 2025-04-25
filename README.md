@@ -38,15 +38,26 @@ Show table structure:
 bun run index.ts --show=structure --table=TABLE_NAME
 ```
 
-Show all table relationships:
+Show all sequences:
 ```bash
-bun run index.ts --show=relations
+bun run index.ts --show=sequences
 ```
 
-Show relationships for specific table:
+Show all pk:
 ```bash
-bun run index.ts --show=relations --table=TABLE_NAME
+bun run index.ts --show=pk [--table=TABLE_NAME]
 ```
+
+Show all fk:
+```bash
+bun run index.ts --show=fk [--table=TABLE_NAME]
+```
+
+Show all table relationships:
+```bash
+bun run index.ts --show=relations [--table=TABLE_NAME]
+```
+
 
 Compare files with database tables:
 ```bash
