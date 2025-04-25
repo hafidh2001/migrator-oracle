@@ -21,6 +21,13 @@ Show Help
 bun run index.ts --help
 ```
 
+Show Schema Diagram by Mermaid
+```bash
+bun run index.ts --show=schema [--output=file]
+```
+This command generate a mermaid script. The diagram is viewed if you visit a url such as https://mermaid.live/.
+
+
 Show all tables:
 ```bash
 bun run index.ts --show=tables
