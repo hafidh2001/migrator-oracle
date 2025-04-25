@@ -26,5 +26,6 @@ export function showHelp(): void {
   console.log('bun run index.ts --show=relations');
   console.log('bun run index.ts --show=relations --table=TABLE_NAME');
   console.log('bun run index.ts --show=sequences');
+  console.log('bun run index.ts --show=pk --table=TABLE_NAME');
   console.log('bun run index.ts --query=path/to/query.sql');
 }

@@ -4,6 +4,7 @@ import { showTables } from './src/helper/showTables';
 import { showTableStructure } from './src/helper/showStructure';
 import { showTableRelations } from './src/helper/showRelations';
 import { showSequences } from './src/helper/showSequences';
+import { showTablePrimaryKey } from './src/helper/showPrimaryKeys';
 import { runQuery } from './src/helper/runQuery';
 
 async function main() {
@@ -45,6 +46,9 @@ async function main() {
         break;
       case 'sequences':
         await showSequences(connection);
+        break;
+      case 'pk':
+        await showTablePrimaryKey(connection, args.table);
         break;
       default:
         console.log('\nInvalid command. Use --help to see available commands');
