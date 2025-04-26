@@ -1,2 +1,10 @@
 cannot run sql [old_structure_without_fk] at this project
 run sql at sql dbeaver / navicat / raw sql else
+
+step run ssql:
+1. siapdev-tables.sql
+2. remove-duplicate.sql
+3. modify-datatype-step1.sql
+4. modify-datatype-step2.sql
+
+export new csv
