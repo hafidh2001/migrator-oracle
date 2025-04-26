@@ -6,4 +6,5 @@ export interface CommandArgs {
   compare?: string;
   path?: string;
   output?: string;
+  export?: string;
 }

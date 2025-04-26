@@ -17,7 +17,8 @@
     "show-structure": "bun run index.ts --show=structure",
     "show-pk": "bun run index.ts --show=pk",
     "show-fk": "bun run index.ts --show=fk",
-    "show-schema": "bun run index.ts --show=schema"
+    "show-schema": "bun run index.ts --show=schema",
+    "export-csv": "bun run index.ts --export=csv"
   },
   "devDependencies": {
     "@types/bun": "latest"
@@ -28,7 +29,11 @@
   "dependencies": {
     "@mermaid-js/mermaid-cli": "^11.4.2",
     "@types/oracledb": "^6.6.0",
+    "@types/progress": "^2.0.7",
+    "csv-writer": "^1.6.0",
     "dotenv": "^16.5.0",
-    "oracledb": "^6.8.0"
+    "fast-csv": "^5.0.2",
+    "oracledb": "^6.8.0",
+    "progress": "^2.0.3"
   }
 }
