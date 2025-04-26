@@ -1,0 +1,363 @@
+erDiagram
+    ASSETACCOUNTS {
+        string COA
+        string PENENTUAN_TINDAKAN
+        int DAERAH_PENYUSUTAN
+        string AKUSISI_BIAYA_PRODUKSI
+        string KLIRING_PENG_PENJ_ASET
+        string KEUNTUNGAN_DARI_PENJ_AS
+        string PENDAPATAN_APC
+        string KERUGIAN_PENJUALAN_ASET
+        string KERUGIAN_PENSIUN_ASET
+        date CRAETED_DATE
+        date UPDATE_DATE
+    }
+    ASSETCLASSES {
+        string ASET_KELAS
+        string DIBUAT_OLEH
+        date DIBUAT_TANGGAL
+        string DIEDIT_OLEH
+        date DIEDIT_TGL
+        string DESKRIPSI
+        string KET
+        date CRAETED_DATE
+        date UPDATE_DATE
+        int GROUPASSET_ID
+        int GROUPCLASSES_ID
+        char FLAG
+    }
+    ASSETS {
+        string NO_ASET
+        string SUB_ASET
+        string NAMA_ASET
+        int KELAS_ASET
+        string KODE_CABANG
+        string PUSAT_BIAYA
+        date TGL_KAPITALISASI
+        date TGL_MULAI_PENYUSUTAN
+        int DIMENSI_NILAI
+        char DIMENSI_SATUAN
+        string CREATED_BY
+        timestamp CREATED_ON
+        string MODIFIED_BY
+        timestamp MODIFIED_ON
+        string STATUS
+        int PERIODE
+        int TAHUN
+        int GROUPCLASSES_ID
+        int GROUPASSET_ID
+        int SISA_MANFAAT
+        string PROFIT_CENTER
+    }
+    ASSET_SAP_FAILED {
+        int ID
+        string NO_ASET
+        int PERIODE
+        int TAHUN
+        text EXCEPTION
+        text REQUEST
+        timestamp CREATED_AT
+        string CREATED_BY
+        string NAMA_ASET
+        string KODE_PLANT
+    }
+    BRANCHES {
+        int ID_CABANG
+        string NAMA_CABANG
+        date CRAETED_DATE
+        date UPDATE_DATE
+        string KODE_REGIONAL
+        string KODE_TERMINAL
+        string KODE_SAP
+        string PROFIT_CENTER
+        int FLAG_APPROVE
+    }
+    COSTCENTERS {
+        string KODE_PUSAT_BIAYA
+        string NAMA_PUSAT_BIAYA
+        string FLAG
+        date CRAETED_DATE
+        date UPDATE_DATE
+    }
+    DEPRECIATIONS {
+        string KODE_PENYUSUTAN
+        string NAMA_PENYUSUTAN
+        date CRAETED_DATE
+        date UPDATE_DATE
+    }
+    DEPRECIATION_VALUES {
+        string NO_ASET
+        string SUB_ASET
+        int NILAI_SUSUT
+        int AKUMULASI_PENYUSUTAN
+        int NILAI_PEROLEHAN
+        int NILAI_BUKU
+        int NILAI_RESIDU
+        int PERIODE
+        int TAHUN
+        string CREATED_BY
+        timestamp CREATED_ON
+        int PENURUNAN_AKUMULASI_NILAI
+        int PEMULIHAN_AKUMULASI_NILAI
+        int AKUMULASI_PENYUSUTAN_NEW
+        int PENYUSUTAN_SD_BLN_BERJALAN
+    }
+    DETAILASSETS {
+        string NO_ASET
+        string DETAIL_MEREK
+        string DETAIL_NO_RANGKA
+        string DETAIL_NO_MESIN
+        string DETAIL_NO_PLAT
+        string SUB_ASET
+        string DETAIL_TIPE
+        string KETERANGAN
+        date PENURUNAN_TGL_PEMBUKUAN
+        string PENURUNAN_LEMBAGA
+        string PENURUNAN_NOMOR
+        date PENURUNAN_TGL_LAPORAN
+        date PEMULIHAN_TGL_PEMBUKUAN
+        string PEMULIHAN_LEMBAGA
+        string PEMULIHAN_NOMOR
+        date PEMULIHAN_TGL_LAPORAN
+        int NO_ITEM
+        string LOKASI
+        string KORDINAT
+        string KONDISI_FISIK
+        string STATUS_PEROLEHAN
+        string BUKTI_KEPEMILIKAN
+        string BUKTI_RINCIAN
+        string BUKTI_NO
+        date BUKTI_TGL
+        string BUKTI_KETERANGAN
+        string BUKTI_FISIK_DOKUMEN
+        string CREATED_BY
+        timestamp CREATED_ON
+        string MODIFIED_BY
+        timestamp MODIFIED_ON
+        string STATUS_ITEMINISASI
+        int PERIODE
+        int TAHUN
+        string STATUS_PENGELOLAAN
+        string HUKUM_RINCIAN
+        string HUKUM_NOMOR
+        string HUKUM_KETERANGAN
+        string ASURANSI
+        string KJPP_UMUR
+        int KJPP_NILAI
+        string KJPP_PELAKSANA
+        int KJPP_NO
+        date KJPP_TGL
+        string USULAN_PENGHAPUSAN
+        string STATUS_ASURANSI
+        string TINDAK_LANJUT
+        char TINDAK_LANJUT_DD
+        string KJPP_UMUR_ASURANSI
+        int KJPP_NILAI_ASURANSI
+        string KJPP_PELAKSANA_ASURANSI
+        int KJPP_NO_ASURANSI
+        date KJPP_TGL_ASURANSI
+    }
+    DIMENSI_SATUAN {
+        string NAME
+    }
+    ELIMINATION {
+        string NO_ASET
+        string SUB_ASET
+        int NO_ITEM
+        string PENGHAPUSAN_RINCIAN
+        string PENGHAPUSAN_NOMOR
+        string PENGHAPUSAN_KETERANGAN
+        string CREATED_BY
+        timestamp CREATED_ON
+        string MODIFIED_BY
+        timestamp MODIFIED_ON
+        string STATUS
+        int PERIODE
+        int TAHUN
+        date TANGGAL_USULAN_PENGHAPUSAN
+    }
+    GROUPASSETS {
+        int ID
+        string NAMA_GROUP
+    }
+    GROUPCLASSES {
+        int ID
+        string NAMA_GROUP_KELAS
+        int KODE
+    }
+    INSURANCES {
+        string NO_ASET
+        string SUB_ASET
+        int NO_ITEM
+        string RINCIAN
+        string NO_POLIS
+        date TGL_POLIS
+        int PREMI
+        string KETERANGAN_ASURANSI
+        string ALASAN_ASURANSI
+        string CREATED_BY
+        timestamp CREATED_ON
+        string MODIFIED_BY
+        timestamp MODIFIED_ON
+        string STATUS
+        int PERIODE
+        int TAHUN
+        int NO_ASURANSI
+        string SCAN
+    }
+    MASTER_ASURANSI {
+        int ID
+        string NO_POLIS
+        string NAMA_POLIS
+        date TGL_POLIS
+        int PREMI
+        string JANGKA_WAKTU
+        int ID_REGIONAL
+        string SCAN_POLIS
+        char ACTIVE
+        string CREATED_BY
+        timestamp CREATED_ON
+        string UPDATED_BY
+        timestamp UPDATED_ON
+    }
+    MONITORING_FAILED {
+        int ID
+        string DESCRIPTION
+        int PERIODE
+        int TAHUN
+        string MODEL
+        timestamp CREATED_AT
+        text EXCEPTION
+        text REQUEST
+    }
+    MONITORING_INTEGRATOR {
+        int ID
+        string DESCRIPTION
+        int PERIODE
+        int TAHUN
+        string MODEL
+        timestamp CREATED_AT
+    }
+    NOTIFIKASI {
+        string NO_ASET
+        int PERIODE
+        int TAHUN
+        string HEADER
+        string ISI_NOTIFIKASI
+        string JENIS_NOTIFIKASI
+        string STATUS
+        string CREATED_BY
+        timestamp CREATED_ON
+        string MODIFIED_BY
+        timestamp MODIFIED_ON
+        int ID_NOTIFIKASI
+        string KODE_CABANG
+    }
+    PBB {
+        string NO_ASET
+        string SUB_ASET
+        int NO_ITEM
+        int NJOP
+        int NO_PBB
+        date TGL_PBB
+        string CREATED_BY
+        timestamp CREATED_ON
+        string MODIFIED_BY
+        timestamp MODIFIED_ON
+        int PERIODE
+        int TAHUN
+        string KETERANGAN_PBB
+    }
+    PERIOD {
+        int ID
+        date START_DATE
+        date END_DATE
+        string CREATED_BY
+        timestamp CREATED_ON
+    }
+    PERIOD_REQUEST {
+        int ID
+        date START_DATE
+        date END_DATE
+        char STATUS
+        string CREATED_BY
+        timestamp CREATED_ON
+        string KONFIRM1_BY
+        timestamp KONFIRM1_ON
+        string KONFIRM_BY
+        timestamp KONFIRM_ON
+        string KODE_CABANG
+        int ID_USER
+    }
+    PICTUREASSETS {
+        string NO_ASET
+        string SUB_ASET
+        int NO_ITEM
+        nstring PATH_SURAT
+        string FLAG
+        timestamp CREATED_ON
+        int JENIS_FOTO
+    }
+    REFERENCES {
+        int ID
+        int KATEGORI
+        string ENTITY
+        string NAMA_ENTITY
+        string FLAG
+        string CREATED_BY
+        timestamp CREATED_ON
+        string MODIFIED_BY
+        timestamp MODIFIED_ON
+    }
+    ROLES {
+        int ID
+        string NAME
+        string ID_MENU
+        int STATUS
+        int ID_INTEGRATION
+    }
+    USERS {
+        int ID
+        string NAME
+        string EMAIL
+        timestamp EMAIL_VERIFIED_AT
+        string PASSWORD
+        string REMEMBER_TOKEN
+        timestamp CREATED_AT
+        timestamp UPDATED_AT
+        int ID_CABANG
+        int ID_ROLE
+        string STATUS
+        string API_TOKEN
+        string KODE_REGIONAL
+    }
+    USES {
+        string NO_ASET
+        string SUB_ASET
+        int NO_ITEM
+        string STATUS_PENGELOLAAN_RINCIAN
+        string NAMA_PENYEWA
+        string NO_KONTRAK_SEWA
+        date AWAL_PERJANJIAN
+        date AKHIR_PERJANJIAN
+        string CREATED_BY
+        timestamp CREATED_ON
+        string MODIFIED_BY
+        timestamp MODIFIED_ON
+        string PIHAK_YANG_MENEMPATI
+        int TAHUN
+        int PERIODE
+        char USES_TYPE
+        int NO_USES
+        string SCAN
+    }
+    ASSETCLASSES ||--o{ ASSETS : "has"
+    BRANCHES ||--o{ ASSETS : "has"
+    GROUPCLASSES ||--o{ ASSETS : "has"
+    ASSETS ||--o{ DEPRECIATION_VALUES : "has"
+    ASSETS ||--o{ DETAILASSETS : "has"
+    REFERENCES ||--o{ DETAILASSETS : "has"
+    REFERENCES ||--o{ DETAILASSETS : "has"
+    DETAILASSETS ||--o{ PICTUREASSETS : "has"
+    ROLES ||--o{ USERS : "has"
+    ASSETS ||--o{ USES : "has"
