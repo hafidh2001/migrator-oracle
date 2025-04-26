@@ -28,54 +28,30 @@ ALTER TABLE "USES" ADD ("NO_ITEM2" NUMBER (2, 0));
 -- fill new columns with the values from the old columns
 UPDATE "ASSETCLASSES"
 SET
-    GROUPASSET_ID2 = TO_NUMBER(
-        REGEXP_REPLACE(GROUPASSET_ID, '[^0-9]', '')
-    ),
-    GROUPCLASSES_ID2 = TO_NUMBER(
-        REGEXP_REPLACE(GROUPCLASSES_ID, '[^0-9]', '')
-    );
+    GROUPASSET_ID2 = REGEXP_REPLACE(GROUPASSET_ID, '[^0-9]', ''),
+    GROUPCLASSES_ID2 = REGEXP_REPLACE(GROUPCLASSES_ID, '[^0-9]', '');
 
 UPDATE "ASSETS"
 SET
-    KELAS_ASET2 = TO_NUMBER(
-        REGEXP_REPLACE(KELAS_ASET, '[^0-9]', '')
-    ),
-    GROUPASSET_ID2 = TO_NUMBER(
-        REGEXP_REPLACE(GROUPASSET_ID, '[^0-9]', '')
-    );
+    KELAS_ASET2 = REGEXP_REPLACE(KELAS_ASET, '[^0-9]', ''),
+    GROUPASSET_ID2 = REGEXP_REPLACE(GROUPASSET_ID, '[^0-9]', '');
 
 UPDATE "BRANCHES"
 SET
-    ID_CABANG2 = TO_NUMBER(
-        REGEXP_REPLACE(ID_CABANG, '[^0-9]', '')
-    );
+    ID_CABANG2 = REGEXP_REPLACE(ID_CABANG, '[^0-9]', '');
 
-UPDATE "GROUPASSETS"
-SET
-    ID2 = TO_NUMBER(
-        REGEXP_REPLACE(ID, '[^0-9]', '')
-    );
+UPDATE "GROUPASSETS" SET ID2 = REGEXP_REPLACE(ID, '[^0-9]', '');
 
-UPDATE "ROLES"
-SET
-    ID2 = TO_NUMBER(
-        REGEXP_REPLACE(ID, '[^0-9]', '')
-    );
+UPDATE "ROLES" SET ID2 = REGEXP_REPLACE(ID, '[^0-9]', '');
 
 UPDATE "USERS"
 SET
-    ID_CABANG2 = TO_NUMBER(
-        REGEXP_REPLACE(ID_CABANG, '[^0-9]', '')
-    ),
-    ID_ROLE2 = TO_NUMBER(
-        REGEXP_REPLACE(ID_ROLE, '[^0-9]', '')
-    );
+    ID_CABANG2 = REGEXP_REPLACE(ID_CABANG, '[^0-9]', ''),
+    ID_ROLE2 = REGEXP_REPLACE(ID_ROLE, '[^0-9]', '');
 
 UPDATE "USES"
 SET
-    NO_ITEM2 = TO_NUMBER(
-        REGEXP_REPLACE(NO_ITEM, '[^0-9]', '')
-    );
+    NO_ITEM2 = REGEXP_REPLACE(NO_ITEM, '[^0-9]', '');
 
 -- drop old columns
 ALTER TABLE "ASSETCLASSES"
@@ -95,7 +71,6 @@ ALTER TABLE "ROLES" DROP ("ID");
 ALTER TABLE "USERS" DROP ("ID_CABANG", "ID_ROLE");
 
 ALTER TABLE "USES" DROP ("NO_ITEM");
-
 
 -- add new columns to the tables
 ALTER TABLE "ASSETCLASSES"
@@ -127,58 +102,38 @@ ALTER TABLE "USES" ADD ("NO_ITEM" NUMBER (2, 0));
 -- fill new columns with the values from the old columns
 UPDATE "ASSETCLASSES"
 SET
-    GROUPASSET_ID = TO_NUMBER(
-        REGEXP_REPLACE(GROUPASSET_ID2, '[^0-9]', '')
-    ),
-    GROUPCLASSES_ID = TO_NUMBER(
-        REGEXP_REPLACE(
-            GROUPCLASSES_ID2,
-            '[^0-9]',
-            ''
-        )
+    GROUPASSET_ID = REGEXP_REPLACE(GROUPASSET_ID2, '[^0-9]', ''),
+    GROUPCLASSES_ID = REGEXP_REPLACE(
+        GROUPCLASSES_ID2,
+        '[^0-9]',
+        ''
     );
 
 UPDATE "ASSETS"
 SET
-    KELAS_ASET = TO_NUMBER(
-        REGEXP_REPLACE(KELAS_ASET2, '[^0-9]', '')
-    ),
-    GROUPASSET_ID = TO_NUMBER(
-        REGEXP_REPLACE(GROUPASSET_ID2, '[^0-9]', '')
-    );
+    KELAS_ASET = REGEXP_REPLACE(KELAS_ASET2, '[^0-9]', ''),
+    GROUPASSET_ID = REGEXP_REPLACE(GROUPASSET_ID2, '[^0-9]', '');
 
 UPDATE "BRANCHES"
 SET
-    ID_CABANG = TO_NUMBER(
-        REGEXP_REPLACE(ID_CABANG2, '[^0-9]', '')
-    );
+    ID_CABANG = REGEXP_REPLACE(ID_CABANG2, '[^0-9]', '');
 
 UPDATE "GROUPASSETS"
 SET
-    ID = TO_NUMBER(
-        REGEXP_REPLACE(ID2, '[^0-9]', '')
-    );
+    ID = REGEXP_REPLACE(ID2, '[^0-9]', '');
 
 UPDATE "ROLES"
 SET
-    ID = TO_NUMBER(
-        REGEXP_REPLACE(ID2, '[^0-9]', '')
-    );
+    ID = REGEXP_REPLACE(ID2, '[^0-9]', '');
 
 UPDATE "USERS"
 SET
-    ID_CABANG = TO_NUMBER(
-        REGEXP_REPLACE(ID_CABANG2, '[^0-9]', '')
-    ),
-    ID_ROLE = TO_NUMBER(
-        REGEXP_REPLACE(ID_ROLE2, '[^0-9]', '')
-    );
+    ID_CABANG = REGEXP_REPLACE(ID_CABANG2, '[^0-9]', ''),
+    ID_ROLE = REGEXP_REPLACE(ID_ROLE2, '[^0-9]', '');
 
 UPDATE "USES"
 SET
-    NO_ITEM = TO_NUMBER(
-        REGEXP_REPLACE(NO_ITEM2, '[^0-9]', '')
-    );
+    NO_ITEM = REGEXP_REPLACE(NO_ITEM2, '[^0-9]', '');
 
 -- drop old columns
 ALTER TABLE "ASSETCLASSES"
