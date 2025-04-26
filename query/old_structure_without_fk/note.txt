@@ -1,0 +1,2 @@
+cannot run sql [old_structure_without_fk] at this project
+run sql at sql dbeaver / navicat / raw sql else
