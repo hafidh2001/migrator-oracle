@@ -2,7 +2,7 @@
 --  DDL for Table ASSETACCOUNTS
 --------------------------------------------------------
 
-  CREATE TABLE "C##SIAPDEV3"."ASSETACCOUNTS" 
+  CREATE TABLE "ASSETACCOUNTS" 
    (	"COA" VARCHAR2(4 BYTE), 
 	"PENENTUAN_TINDAKAN" VARCHAR2(8 BYTE), 
 	"DAERAH_PENYUSUTAN" NUMBER(2,0), 
@@ -19,7 +19,7 @@
 --  DDL for Table ASSETCLASSES
 --------------------------------------------------------
 
-  CREATE TABLE "C##SIAPDEV3"."ASSETCLASSES" 
+  CREATE TABLE "ASSETCLASSES" 
    (	"ASET_KELAS" VARCHAR2(8 BYTE), 
 	"DIBUAT_OLEH" VARCHAR2(12 BYTE), 
 	"DIBUAT_TANGGAL" DATE, 
@@ -37,7 +37,7 @@
 --  DDL for Table ASSETS
 --------------------------------------------------------
 
-  CREATE TABLE "C##SIAPDEV3"."ASSETS" 
+  CREATE TABLE "ASSETS" 
    (	"NO_ASET" VARCHAR2(16 BYTE), 
 	"SUB_ASET" VARCHAR2(4 BYTE), 
 	"NAMA_ASET" VARCHAR2(100 BYTE), 
@@ -64,7 +64,7 @@
 --  DDL for Table ASSET_SAP_FAILED
 --------------------------------------------------------
 
-  CREATE TABLE "C##SIAPDEV3"."ASSET_SAP_FAILED" 
+  CREATE TABLE "ASSET_SAP_FAILED" 
    (	"ID" NUMBER, 
 	"NO_ASET" VARCHAR2(16 BYTE), 
 	"PERIODE" NUMBER, 
@@ -80,7 +80,7 @@
 --  DDL for Table BRANCHES
 --------------------------------------------------------
 
-  CREATE TABLE "C##SIAPDEV3"."BRANCHES" 
+  CREATE TABLE "BRANCHES" 
    (	"ID_CABANG" VARCHAR2(4 BYTE), 
 	"NAMA_CABANG" VARCHAR2(50 BYTE), 
 	"CRAETED_DATE" DATE, 
@@ -95,7 +95,7 @@
 --  DDL for Table COSTCENTERS
 --------------------------------------------------------
 
-  CREATE TABLE "C##SIAPDEV3"."COSTCENTERS" 
+  CREATE TABLE "COSTCENTERS" 
    (	"KODE_PUSAT_BIAYA" VARCHAR2(10 BYTE), 
 	"NAMA_PUSAT_BIAYA" VARCHAR2(200 BYTE), 
 	"FLAG" VARCHAR2(1 BYTE), 
@@ -106,7 +106,7 @@
 --  DDL for Table DEPRECIATIONS
 --------------------------------------------------------
 
-  CREATE TABLE "C##SIAPDEV3"."DEPRECIATIONS" 
+  CREATE TABLE "DEPRECIATIONS" 
    (	"KODE_PENYUSUTAN" VARCHAR2(4 BYTE), 
 	"NAMA_PENYUSUTAN" VARCHAR2(35 BYTE), 
 	"CRAETED_DATE" DATE, 
@@ -116,7 +116,7 @@
 --  DDL for Table DEPRECIATION_VALUES
 --------------------------------------------------------
 
-  CREATE TABLE "C##SIAPDEV3"."DEPRECIATION_VALUES" 
+  CREATE TABLE "DEPRECIATION_VALUES" 
    (	"NO_ASET" VARCHAR2(16 BYTE), 
 	"SUB_ASET" VARCHAR2(4 BYTE), 
 	"NILAI_SUSUT" NUMBER(23,2) DEFAULT 0, 
@@ -137,7 +137,7 @@
 --  DDL for Table DETAILASSETS
 --------------------------------------------------------
 
-  CREATE TABLE "C##SIAPDEV3"."DETAILASSETS" 
+  CREATE TABLE "DETAILASSETS" 
    (	"NO_ASET" VARCHAR2(16 BYTE), 
 	"DETAIL_MEREK" VARCHAR2(50 BYTE), 
 	"DETAIL_NO_RANGKA" VARCHAR2(25 BYTE), 
@@ -196,14 +196,14 @@
 --  DDL for Table DIMENSI_SATUAN
 --------------------------------------------------------
 
-  CREATE TABLE "C##SIAPDEV3"."DIMENSI_SATUAN" 
+  CREATE TABLE "DIMENSI_SATUAN" 
    (	"NAME" VARCHAR2(20 BYTE)
    );
 --------------------------------------------------------
 --  DDL for Table ELIMINATION
 --------------------------------------------------------
 
-  CREATE TABLE "C##SIAPDEV3"."ELIMINATION" 
+  CREATE TABLE "ELIMINATION" 
    (	"NO_ASET" VARCHAR2(16 BYTE), 
 	"SUB_ASET" VARCHAR2(4 BYTE), 
 	"NO_ITEM" NUMBER(2,0), 
@@ -223,7 +223,7 @@
 --  DDL for Table FAILED_JOBS
 --------------------------------------------------------
 
-  CREATE TABLE "C##SIAPDEV3"."FAILED_JOBS" 
+  CREATE TABLE "FAILED_JOBS" 
    (	"ID" NUMBER(19,0), 
 	"CONNECTION" CLOB, 
 	"QUEUE" CLOB, 
@@ -235,7 +235,7 @@
 --  DDL for Table GROUPASSETS
 --------------------------------------------------------
 
-  CREATE TABLE "C##SIAPDEV3"."GROUPASSETS" 
+  CREATE TABLE "GROUPASSETS" 
    (	"ID" VARCHAR2(4 BYTE), 
 	"NAMA_GROUP" VARCHAR2(255 BYTE)
    );
@@ -243,7 +243,7 @@
 --  DDL for Table GROUPCLASSES
 --------------------------------------------------------
 
-  CREATE TABLE "C##SIAPDEV3"."GROUPCLASSES" 
+  CREATE TABLE "GROUPCLASSES" 
    (	"ID" NUMBER(*,0), 
 	"NAMA_GROUP_KELAS" VARCHAR2(50 BYTE), 
 	"KODE" NUMBER
@@ -252,7 +252,7 @@
 --  DDL for Table INSURANCES
 --------------------------------------------------------
 
-  CREATE TABLE "C##SIAPDEV3"."INSURANCES" 
+  CREATE TABLE "INSURANCES" 
    (	"NO_ASET" VARCHAR2(16 BYTE), 
 	"SUB_ASET" VARCHAR2(4 BYTE), 
 	"NO_ITEM" NUMBER(2,0), 
@@ -276,7 +276,7 @@
 --  DDL for Table JOBS
 --------------------------------------------------------
 
-  CREATE TABLE "C##SIAPDEV3"."JOBS" 
+  CREATE TABLE "JOBS" 
    (	"ID" NUMBER(19,0), 
 	"QUEUE" VARCHAR2(255 BYTE), 
 	"PAYLOAD" CLOB, 
@@ -289,7 +289,7 @@
 --  DDL for Table MASTER_ASURANSI
 --------------------------------------------------------
 
-  CREATE TABLE "C##SIAPDEV3"."MASTER_ASURANSI" 
+  CREATE TABLE "MASTER_ASURANSI" 
    (	"ID" NUMBER, 
 	"NO_POLIS" VARCHAR2(30 BYTE), 
 	"NAMA_POLIS" VARCHAR2(80 BYTE), 
@@ -308,7 +308,7 @@
 --  DDL for Table MIGRATIONS
 --------------------------------------------------------
 
-  CREATE TABLE "C##SIAPDEV3"."MIGRATIONS" 
+  CREATE TABLE "MIGRATIONS" 
    (	"ID" NUMBER(10,0), 
 	"MIGRATION" VARCHAR2(255 BYTE), 
 	"BATCH" NUMBER(10,0)
@@ -317,7 +317,7 @@
 --  DDL for Table MONITORING_FAILED
 --------------------------------------------------------
 
-  CREATE TABLE "C##SIAPDEV3"."MONITORING_FAILED" 
+  CREATE TABLE "MONITORING_FAILED" 
    (	"ID" NUMBER(9,0), 
 	"DESCRIPTION" VARCHAR2(50 BYTE), 
 	"PERIODE" NUMBER(2,0), 
@@ -331,7 +331,7 @@
 --  DDL for Table MONITORING_INTEGRATOR
 --------------------------------------------------------
 
-  CREATE TABLE "C##SIAPDEV3"."MONITORING_INTEGRATOR" 
+  CREATE TABLE "MONITORING_INTEGRATOR" 
    (	"ID" NUMBER, 
 	"DESCRIPTION" VARCHAR2(50 BYTE), 
 	"PERIODE" NUMBER(2,0), 
@@ -343,7 +343,7 @@
 --  DDL for Table NOTIFIKASI
 --------------------------------------------------------
 
-  CREATE TABLE "C##SIAPDEV3"."NOTIFIKASI" 
+  CREATE TABLE "NOTIFIKASI" 
    (	"NO_ASET" VARCHAR2(12 BYTE), 
 	"PERIODE" NUMBER(2,0), 
 	"TAHUN" NUMBER(4,0), 
@@ -362,7 +362,7 @@
 --  DDL for Table PASSWORD_RESETS
 --------------------------------------------------------
 
-  CREATE TABLE "C##SIAPDEV3"."PASSWORD_RESETS" 
+  CREATE TABLE "PASSWORD_RESETS" 
    (	"EMAIL" VARCHAR2(255 BYTE), 
 	"TOKEN" VARCHAR2(255 BYTE), 
 	"CREATED_AT" TIMESTAMP (6)
@@ -371,7 +371,7 @@
 --  DDL for Table PBB
 --------------------------------------------------------
 
-  CREATE TABLE "C##SIAPDEV3"."PBB" 
+  CREATE TABLE "PBB" 
    (	"NO_ASET" VARCHAR2(16 BYTE), 
 	"SUB_ASET" VARCHAR2(4 BYTE), 
 	"NO_ITEM" NUMBER(2,0), 
@@ -390,7 +390,7 @@
 --  DDL for Table PERIOD
 --------------------------------------------------------
 
-  CREATE TABLE "C##SIAPDEV3"."PERIOD" 
+  CREATE TABLE "PERIOD" 
    (	"ID" NUMBER(19,0), 
 	"START_DATE" DATE, 
 	"END_DATE" DATE, 
@@ -401,7 +401,7 @@
 --  DDL for Table PERIOD_REQUEST
 --------------------------------------------------------
 
-  CREATE TABLE "C##SIAPDEV3"."PERIOD_REQUEST" 
+  CREATE TABLE "PERIOD_REQUEST" 
    (	"ID" NUMBER, 
 	"START_DATE" DATE, 
 	"END_DATE" DATE, 
@@ -419,7 +419,7 @@
 --  DDL for Table PICTUREASSETS
 --------------------------------------------------------
 
-  CREATE TABLE "C##SIAPDEV3"."PICTUREASSETS" 
+  CREATE TABLE "PICTUREASSETS" 
    (	"SUB_ASET" NUMBER(4,0), 
 	"PATH_SURAT" NVARCHAR2(500), 
 	"FLAG" VARCHAR2(1 BYTE), 
@@ -432,7 +432,7 @@
 --  DDL for Table REFERENCES
 --------------------------------------------------------
 
-  CREATE TABLE "C##SIAPDEV3"."REFERENCES" 
+  CREATE TABLE "REFERENCES" 
    (	"ID" NUMBER, 
 	"KATEGORI" NUMBER(2,0), 
 	"ENTITY" VARCHAR2(4 BYTE), 
@@ -447,7 +447,7 @@
 --  DDL for Table ROLES
 --------------------------------------------------------
 
-  CREATE TABLE "C##SIAPDEV3"."ROLES" 
+  CREATE TABLE "ROLES" 
    (	"ID" VARCHAR2(2 BYTE), 
 	"NAME" VARCHAR2(20 BYTE), 
 	"ID_MENU" VARCHAR2(100 BYTE), 
@@ -458,7 +458,7 @@
 --  DDL for Table USERS
 --------------------------------------------------------
 
-  CREATE TABLE "C##SIAPDEV3"."USERS" 
+  CREATE TABLE "USERS" 
    (	"ID" NUMBER(19,0), 
 	"NAME" VARCHAR2(255 BYTE), 
 	"EMAIL" VARCHAR2(255 BYTE), 
@@ -477,7 +477,7 @@
 --  DDL for Table USES
 --------------------------------------------------------
 
-  CREATE TABLE "C##SIAPDEV3"."USES" 
+  CREATE TABLE "USES" 
    (	"NO_ASET" VARCHAR2(16 BYTE), 
 	"SUB_ASET" VARCHAR2(4 BYTE), 
 	"STATUS_PENGELOLAAN_RINCIAN" VARCHAR2(128 BYTE), 
