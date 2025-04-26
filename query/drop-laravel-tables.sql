@@ -5,7 +5,7 @@ DECLARE
    
    PROCEDURE drop_sequence_if_exists(p_sequence_name IN VARCHAR2) IS
    BEGIN
-      EXECUTE IMMEDIATE 'DROP SEQUENCE "C##SIAPDEV4"."' || p_sequence_name || '"';
+      EXECUTE IMMEDIATE 'DROP SEQUENCE "' || p_sequence_name || '"';
    EXCEPTION
       WHEN OTHERS THEN
          IF SQLCODE != -2289 THEN
@@ -22,7 +22,7 @@ BEGIN
    -- Then drop tables
    FOR i IN 1..v_tables.COUNT LOOP
       BEGIN
-         EXECUTE IMMEDIATE 'DROP TABLE "C##SIAPDEV4"."' || v_tables(i) || '" CASCADE CONSTRAINTS';
+         EXECUTE IMMEDIATE 'DROP TABLE "' || v_tables(i) || '" CASCADE CONSTRAINTS';
          DBMS_OUTPUT.PUT_LINE('Dropped table: ' || v_tables(i));
       EXCEPTION
          WHEN OTHERS THEN

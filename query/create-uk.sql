@@ -8,7 +8,7 @@ BEGIN
     WHERE constraint_type = 'U' 
     AND constraint_name LIKE 'UK_%'
   ) LOOP
-    v_sql := 'ALTER TABLE "C##SIAPDEV4"."' || r.table_name || '" DROP CONSTRAINT "' || r.constraint_name || '"';
+    v_sql := 'ALTER TABLE "' || r.table_name || '" DROP CONSTRAINT "' || r.constraint_name || '"';
     BEGIN
       EXECUTE IMMEDIATE v_sql;
     EXCEPTION WHEN OTHERS THEN
@@ -32,7 +32,7 @@ BEGIN
 
   -- Create unique constraints 
   BEGIN
-    v_sql := 'ALTER TABLE "C##SIAPDEV4"."ASSETS" ADD CONSTRAINT "UK_ASSETS_ID" UNIQUE ("NO_ASET")';
+    v_sql := 'ALTER TABLE "ASSETS" ADD CONSTRAINT "UK_ASSETS_ID" UNIQUE ("NO_ASET")';
     EXECUTE IMMEDIATE v_sql;
   EXCEPTION WHEN OTHERS THEN
     IF SQLCODE != -2261 THEN -- Ignore if constraint already exists
@@ -41,7 +41,7 @@ BEGIN
   END;
 
   BEGIN
-    v_sql := 'ALTER TABLE "C##SIAPDEV4"."ASSETS" ADD CONSTRAINT "UK_ASSETS_NATURAL_KEY" UNIQUE ("NO_ASET")';
+    v_sql := 'ALTER TABLE "ASSETS" ADD CONSTRAINT "UK_ASSETS_NATURAL_KEY" UNIQUE ("NO_ASET")';
     EXECUTE IMMEDIATE v_sql;
   EXCEPTION WHEN OTHERS THEN
     IF SQLCODE != -2261 THEN -- Ignore if constraint already exists
@@ -50,7 +50,7 @@ BEGIN
   END;
 
   BEGIN
-    v_sql := 'ALTER TABLE "C##SIAPDEV4"."BRANCHES" ADD CONSTRAINT "UK_BRANCHES_SAP" UNIQUE ("KODE_SAP")';
+    v_sql := 'ALTER TABLE "BRANCHES" ADD CONSTRAINT "UK_BRANCHES_SAP" UNIQUE ("KODE_SAP")';
     EXECUTE IMMEDIATE v_sql;
   EXCEPTION WHEN OTHERS THEN
     IF SQLCODE != -2261 THEN -- Ignore if constraint already exists
@@ -59,7 +59,7 @@ BEGIN
   END;
 
   BEGIN
-    v_sql := 'ALTER TABLE "C##SIAPDEV4"."REFERENCES" ADD CONSTRAINT "UK_REFERENCES_ENTITY" UNIQUE ("ENTITY")';
+    v_sql := 'ALTER TABLE "REFERENCES" ADD CONSTRAINT "UK_REFERENCES_ENTITY" UNIQUE ("ENTITY")';
     EXECUTE IMMEDIATE v_sql;
   EXCEPTION WHEN OTHERS THEN
     IF SQLCODE != -2261 THEN -- Ignore if constraint already exists
@@ -68,7 +68,7 @@ BEGIN
   END;
 
   BEGIN
-    v_sql := 'ALTER TABLE "C##SIAPDEV4"."DETAILASSETS" ADD CONSTRAINT "UK_DETAILASSETS_ID" UNIQUE ("NO_ASET")';
+    v_sql := 'ALTER TABLE "DETAILASSETS" ADD CONSTRAINT "UK_DETAILASSETS_ID" UNIQUE ("NO_ASET")';
     EXECUTE IMMEDIATE v_sql;
   EXCEPTION WHEN OTHERS THEN
     IF SQLCODE != -2261 THEN -- Ignore if constraint already exists

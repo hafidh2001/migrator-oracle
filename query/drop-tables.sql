@@ -1,7 +1,7 @@
 DECLARE
    PROCEDURE drop_if_exists(p_table_name IN VARCHAR2) IS
    BEGIN
-      EXECUTE IMMEDIATE 'DROP TABLE "C##SIAPDEV4"."' || p_table_name || '" CASCADE CONSTRAINTS';
+      EXECUTE IMMEDIATE 'DROP TABLE "' || p_table_name || '" CASCADE CONSTRAINTS';
    EXCEPTION
       WHEN OTHERS THEN
          IF SQLCODE != -942 THEN

@@ -9,18 +9,18 @@ DECLARE
       END IF;
   END;
 BEGIN
-  drop_sequence_if_exists('"C##SIAPDEV4"."ASSET_SAP_FAILED_SEQ"');
-  drop_sequence_if_exists('"C##SIAPDEV4"."FAILED_JOBS_ID_SEQ"');
-  drop_sequence_if_exists('"C##SIAPDEV4"."GROUPASSETS_ID_SEQ"');
-  drop_sequence_if_exists('"C##SIAPDEV4"."GROUPCLASSES_ID_SEQ"');
-  drop_sequence_if_exists('"C##SIAPDEV4"."MASTER_ASURANSI_SEQ"');
-  drop_sequence_if_exists('"C##SIAPDEV4"."MIGRATIONS_ID_SEQ"');
-  drop_sequence_if_exists('"C##SIAPDEV4"."MONITORING_FAILED_SEQ"');
-  drop_sequence_if_exists('"C##SIAPDEV4"."MONITORING_INTEGRATOR_SEQ"');
-  drop_sequence_if_exists('"C##SIAPDEV4"."NOTIFIKASI_SEQ"');
-  drop_sequence_if_exists('"C##SIAPDEV4"."PERIOD_REQUEST_SEQ"');
-  drop_sequence_if_exists('"C##SIAPDEV4"."PERIOD_SEQ"');
-  drop_sequence_if_exists('"C##SIAPDEV4"."REFERENCE_ID_SEQ"');
-  drop_sequence_if_exists('"C##SIAPDEV4"."USERS_ID_SEQ"');
+  drop_sequence_if_exists('"ASSET_SAP_FAILED_SEQ"');
+  drop_sequence_if_exists('"FAILED_JOBS_ID_SEQ"');
+  drop_sequence_if_exists('"GROUPASSETS_ID_SEQ"');
+  drop_sequence_if_exists('"GROUPCLASSES_ID_SEQ"');
+  drop_sequence_if_exists('"MASTER_ASURANSI_SEQ"');
+  drop_sequence_if_exists('"MIGRATIONS_ID_SEQ"');
+  drop_sequence_if_exists('"MONITORING_FAILED_SEQ"');
+  drop_sequence_if_exists('"MONITORING_INTEGRATOR_SEQ"');
+  drop_sequence_if_exists('"NOTIFIKASI_SEQ"');
+  drop_sequence_if_exists('"PERIOD_REQUEST_SEQ"');
+  drop_sequence_if_exists('"PERIOD_SEQ"');
+  drop_sequence_if_exists('"REFERENCE_ID_SEQ"');
+  drop_sequence_if_exists('"USERS_ID_SEQ"');
 END;
 /

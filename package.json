@@ -14,6 +14,7 @@
     "migrate": "bun run drop-db && bun run create-db && bun run create-fk",
     "show-tables": "bun run index.ts --show=tables",
     "show-sequences": "bun run index.ts --show=sequences",
+    "show-structure": "bun run index.ts --show=structure",
     "show-pk": "bun run index.ts --show=pk",
     "show-fk": "bun run index.ts --show=fk",
     "show-schema": "bun run index.ts --show=schema"
