@@ -32,24 +32,6 @@ BEGIN
 
   -- Create unique constraints 
   BEGIN
-    v_sql := 'ALTER TABLE "ASSETS" ADD CONSTRAINT "UK_ASSETS_ID" UNIQUE ("NO_ASET")';
-    EXECUTE IMMEDIATE v_sql;
-  EXCEPTION WHEN OTHERS THEN
-    IF SQLCODE != -2261 THEN -- Ignore if constraint already exists
-      DBMS_OUTPUT.PUT_LINE('Error creating UK_ASSETS_ID: ' || SQLERRM);
-    END IF;
-  END;
-
-  BEGIN
-    v_sql := 'ALTER TABLE "ASSETS" ADD CONSTRAINT "UK_ASSETS_NATURAL_KEY" UNIQUE ("NO_ASET")';
-    EXECUTE IMMEDIATE v_sql;
-  EXCEPTION WHEN OTHERS THEN
-    IF SQLCODE != -2261 THEN -- Ignore if constraint already exists
-      DBMS_OUTPUT.PUT_LINE('Error creating UK_ASSETS_NATURAL_KEY: ' || SQLERRM);
-    END IF;
-  END;
-
-  BEGIN
     v_sql := 'ALTER TABLE "BRANCHES" ADD CONSTRAINT "UK_BRANCHES_SAP" UNIQUE ("KODE_SAP")';
     EXECUTE IMMEDIATE v_sql;
   EXCEPTION WHEN OTHERS THEN
@@ -64,15 +46,6 @@ BEGIN
   EXCEPTION WHEN OTHERS THEN
     IF SQLCODE != -2261 THEN -- Ignore if constraint already exists
       DBMS_OUTPUT.PUT_LINE('Error creating UK_REFERENCES_ENTITY: ' || SQLERRM);
-    END IF;
-  END;
-
-  BEGIN
-    v_sql := 'ALTER TABLE "DETAILASSETS" ADD CONSTRAINT "UK_DETAILASSETS_ID" UNIQUE ("NO_ASET")';
-    EXECUTE IMMEDIATE v_sql;
-  EXCEPTION WHEN OTHERS THEN
-    IF SQLCODE != -2261 THEN -- Ignore if constraint already exists
-      DBMS_OUTPUT.PUT_LINE('Error creating UK_DETAILASSETS_ID: ' || SQLERRM);
     END IF;
   END;
 END;
