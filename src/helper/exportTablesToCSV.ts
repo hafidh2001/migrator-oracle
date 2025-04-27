@@ -1,11 +1,10 @@
 import type { Connection } from "oracledb";
 import { dbConfig } from "../config/database";
-import { existsSync } from "fs";
+import { existsSync, mkdirSync } from "fs";
 import { resolve } from "path";
-import * as csvWriter from "csv-writer"; // CSV writer
-import Progress from "progress"; // Correct import for progress bar
+import * as csvWriter from "csv-writer";
+import Progress from "progress";
 
-// Example: exportTablesToCSV with default outputDir value
 export async function exportTablesToCSV(
   connection: Connection,
   outputDir: string = "export-csv"
@@ -13,8 +12,7 @@ export async function exportTablesToCSV(
   // Ensure the output directory exists
   if (!existsSync(outputDir)) {
     console.log(`Creating directory: ${outputDir}`);
-    // You can use fs.mkdirSync here if you want to create it automatically
-    // fs.mkdirSync(outputDir, { recursive: true });
+    mkdirSync(outputDir, { recursive: true });
   }
 
   try {
@@ -24,53 +22,63 @@ export async function exportTablesToCSV(
       [(dbConfig.user || "").toUpperCase()]
     );
 
-    const tables = (result.rows || []).map((row) => (row as unknown[])[0]);
+    const tables = (result.rows || []).map((row) => (row as unknown[])[0] as string);
 
-    // Loop through tables and export each one to CSV
     for (const table of tables) {
       console.log(`Exporting table: ${table}`);
 
-      // Progress bar initialization
+      const query = `SELECT * FROM ${table}`;
+      const tableData = await connection.execute(query);
+
+      const metaData = tableData.metaData;
+      if (!metaData) {
+        console.log(`No metadata found for table: ${table}`);
+        continue;
+      }
+      const columns = metaData.map((col) => col.name);
+
+      const csvFilePath = resolve(outputDir, `${table}.csv`);
+      const writer = csvWriter.createObjectCsvWriter({
+        path: csvFilePath,
+        header: columns.map((col) => ({
+          id: col,
+          title: col,
+        })),
+        append: false,
+      });
+
+      const rows = tableData.rows || [];
+      const totalRecords = rows.length;
+      let progressCounter = 0;
+
+      // Progress bar
       const bar = new Progress(":bar :current/:total :percent", {
-        total: 100, // We'll update this dynamically below
-        width: 30, // Adjust the width as needed
+        total: totalRecords || 1,
+        width: 30,
         complete: "=",
         incomplete: " ",
       });
 
-      // Replace this with actual data retrieval logic to get data from Oracle table
-      const query = `SELECT * FROM ${table}`;
-      const tableData = await connection.execute(query);
+      if (rows.length > 0) {
+        const records = rows.map((row) => {
+          const rowArray = row as (string | number | null | undefined)[];
+          const obj: Record<string, any> = {};
+          rowArray.forEach((value, index) => {
+            obj[columns[index]] = value ?? "";
+          });
+          return obj;
+        });
 
-      // Check if tableData and tableData.rows are defined
-      if (!tableData || !tableData.rows) {
-        console.log(`No data found for table: ${table}`);
-        continue; // Skip this table if no rows found
-      }
+        await writer.writeRecords(records);
 
-      // Initialize the CSV writer
-      const csvFilePath = resolve(outputDir, `${table}.csv`);
-      const writer = csvWriter.createObjectCsvWriter({
-        path: csvFilePath,
-        header: Object.keys(tableData.metaData || {}).map((column) => ({
-          id: column,
-          title: column,
-        })),
-      });
-
-      // Write the data to CSV file
-      const totalRecords = tableData.rows.length;
-      let progressCounter = 0;
-
-      // Loop through each record and update progress
-      for (const row of tableData.rows) {
-        // Cast row to a proper type (ObjectMap or Record<string, any>)
-        const rowData = row as Record<string, any>;
-
-        // Write the row to CSV
-        await writer.writeRecords([rowData]); // Writing one record at a time
-        progressCounter++;
-        bar.update(progressCounter / totalRecords); // Update the progress bar
+        for (const _ of records) {
+          progressCounter++;
+          bar.update(progressCounter / totalRecords);
+        }
+      } else {
+        // Even no rows: create CSV with headers only
+        await writer.writeRecords([]);
+        bar.update(1);
       }
 
       console.log(`Table ${table} exported successfully to ${csvFilePath}`);
