@@ -15,18 +15,6 @@ BEGIN
       NULL; -- Ignore any errors during drop
     END;
   END LOOP;
-
-  -- Create unique constraints if not exists (required for individual column foreign keys)
-  BEGIN
-    v_sql := 'ALTER TABLE "ASSETS" ADD CONSTRAINT "UK_ASSETS_NO_ASET" UNIQUE ("NO_ASET")';
-    EXECUTE IMMEDIATE v_sql;
-  EXCEPTION WHEN OTHERS THEN NULL; END;
-  
-  BEGIN
-    v_sql := 'ALTER TABLE "DETAILASSETS" ADD CONSTRAINT "UK_DETAILASSETS_NO_ASET" UNIQUE ("NO_ASET")';
-    EXECUTE IMMEDIATE v_sql;
-  EXCEPTION WHEN OTHERS THEN NULL; END;
-  
   
   -- Create foreign key constraints
   BEGIN
