@@ -12,7 +12,7 @@ BEGIN
     BEGIN
       EXECUTE IMMEDIATE v_sql;
     EXCEPTION WHEN OTHERS THEN
-      NULL; -- Ignore errors during drop
+      DBMS_OUTPUT.PUT_LINE('Error dropping ' || r.constraint_name || ' ❌: ' || SQLERRM);
     END;
   END LOOP;
 END;
