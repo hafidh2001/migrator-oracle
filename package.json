@@ -9,9 +9,10 @@
   "private": true,
   "scripts": {
     "drop-db": "bun run index.ts --query=query/drop-sequence.sql && bun run index.ts --query=query/drop-metadata-tables.sql && bun run index.ts --query=query/drop-laravel-tables.sql && bun run index.ts --query=query/drop-tables.sql",
-    "create-db": "bun run index.ts --query=query/create-tables.sql && bun run index.ts --query=query/create-pk.sql",
+    "create-db": "bun run index.ts --query=query/create-tables.sql",
+    "create-pk": "bun run index.ts --query=query/create-pk.sql",
     "create-fk": "bun run index.ts --query=query/create-uk.sql && bun run index.ts --query=query/create-fk.sql",
-    "migrate": "bun run drop-db && bun run create-db && bun run create-fk",
+    "migrate": "bun run drop-db && bun run create-db && bun run create-pk && bun run create-fk",
     "show-tables": "bun run index.ts --show=tables",
     "show-sequences": "bun run index.ts --show=sequences",
     "show-structure": "bun run index.ts --show=structure",
