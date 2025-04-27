@@ -1,0 +1,667 @@
+ASET_KELAS,DIBUAT_OLEH,DIBUAT_TANGGAL,DIEDIT_OLEH,DIEDIT_TGL,DESKRIPSI,KET,CRAETED_DATE,UPDATE_DATE,FLAG,GROUPASSET_ID,GROUPCLASSES_ID
+121008,,,,,Kendaraan Lainnya,KSO -Kendaraan Lainnya,,,1,1210,1210081173
+121009,,,,,Pagar Pelabuhan Permanen,KSO -Pagar Pelabuhan Permanen,,,1,1210,1210091174
+121009,,,,,Pagar Pelabuhan Non Permanen,KSO -Pagar Pelabuhan Non Permanen,,,1,1210,1210091175
+125141,,,,,Mobile Conveyor,KSO -Mobile Conveyor,,,1,1210,1251411176
+121007,,,,,Perlengk. Pmk (Termasuk Mobil,KSO -Perlengk. Pmk (Termasuk Mobil,,,1,1210,1210071050
+120505,,,,,Instalasi Telekomunikasi & Per,AT -Instalasi Telekomunikasi & Per,,,1,1210,1205051032
+120604,,,,,Pengembangan Piranti Lunak,ATB -ATB - Pengembangan Piranti Lunak,,,0,1206,120604120604
+121003,,,,,Motor/Speed Boat,KSO -Motor/Speed Boat,,,1,1210,1210031018
+121006,,,,,Gedung Kantor,KSO -Gedung Kantor,,,1,1210,1210061035
+121007,,,,,Perlengkapan Rumah Dinas,KSO -Perlengkapan Rumah Dinas,,,1,1210,1210071049
+121002,,,,,Sheet File,KSO -Sheet File,,,1,1210,1210021068
+121002,,,,,Reception Facilities,KSO -Reception Facilities,,,1,1210,1210021081
+121004,,,,,Side Loader,KSO -Side Loader,,,1,1210,1210041099
+121004,,,,,Cassette System,KSO -Cassette System,,,1,1210,1210041112
+121005,,,,,Instalasi Telekomunikasi & Per,KSO -Instalasi Telekomunikasi & Per,,,1,1210,1210051032
+120504,,,,,Dump Truck,AT -Dump Truck,,,1,1205,1205041029
+120506,,,,,Rumah Dinas,AT -Rumah Dinas,,,1,1205,1205061042
+120509,,,,,Taman,AT -Taman,,,1,1205,1205091055
+120502,,,,,Proteksi Dolphin,AT -Proteksi Dolphin,,,1,1205,1205021064
+120502,,,,,Kanal,AT -Kanal,,,1,1205,1205021079
+120504,,,,,Harbour Portal Crane,AT -Harbour Portal Crane,,,1,1205,1205041091
+120504,,,,,Overhead Crane,AT -Overhead Crane,,,1,1205,1205041108
+120505,,,,,Jaringan Instalasi Telkom,AT -Jaringan Instalasi Telkom,,,1,1205,1205051141
+120506,,,,,Bangunan Gudang Persediaan Non Permanen,AT -Bangunan Gudang Persediaan Non Permanen,,,1,1205,1205061161
+120402,,,,,Terminal Penumpang,PI -Terminal Penumpang,,,1,1204,1204021013
+120402,,,,,Gudang Penumpukan Permanen,PI -Gudang Penumpukan Permanen,,,1,1204,1204021077
+120501,,,,,Tanah,AT -Tanah,,,1,1205,1205011001
+120509,,,,,,,,,1,1205,1205091007
+120604,,,,,,,,,0,1206,1206041154
+120606,,,,,,,,,0,1206,1206061158
+120507,,,,,,,,,1,1205,1205071033
+120401,,,,,,,,,1,1204,1204011058
+120401,,,,,,,,,1,1204,1204011056
+120401,,,,,,,,,1,1204,1204011008
+120401,,,,,,,,,1,1204,1204011035
+120403,,,,,,,,,1,1204,1204031001
+120502,,,,,,,,,1,1205,1205021056
+120502,,,,,,,,,1,1205,1205021175
+120502,,,,,,,,,1,1205,1205021044
+120502,,,,,,,,,1,1205,1205021035
+120604,,,,,,,,,0,1206,1206041158
+120505,,,,,,,,,1,1205,1205051147
+120506,,,,,,,,,1,1205,1205061174
+120506,,,,,,,,,1,1205,1205061010
+120506,,,,,,,,,1,1205,120506
+120403,,,,,,,,,1,1204,1204031042
+120403,,,,,,,,,1,1204,1204031009
+120403,,,,,,,,,1,1204,1204031008
+120504,,,,,,,,,1,1205,1205041172
+120504,,,,,,,,,1,1205,1205041005
+120507,,,,,,,,,1,1205,1205071173
+120507,,,,,,,,,1,1205,1205071141
+120604,,,,,,,,,0,1206,1206041067
+120604,,,,,,,,,0,1206,1206041046
+120605,,,,,,,,,0,1206,1206051156
+120509,,,,,,,,,1,1205,1205091166
+120601,,,,,,,,,0,1206,1206011149
+120504,,,,,,,,,1,1205,1205041135
+120502,,,,,,,,,1,1205,1205021040
+120502,,,,,,,,,1,1205,1205021036
+120502,,,,,,,,,1,1205,1205021038
+120502,,,,,,,,,1,1205,1205021167
+120502,,,,,,,,,1,1205,1205021096
+120502,,,,,,,,,1,1205,1205021034
+120502,,,,,,,,,1,1205,1205021031
+120502,,,,,,,,,1,1205,1205021053
+120502,,,,,,,,,1,1205,1205021160
+120502,,,,,,,,,1,1205,1205021054
+120502,,,,,,,,,1,1205,1205021136
+120504,,,,,,,,,1,1205,1205041050
+120504,,,,,,,,,1,1205,1205041164
+120504,,,,,,,,,1,1205,1205041083
+120504,,,,,,,,,1,1205,1205041044
+120504,,,,,,,,,1,1205,1205041066
+120504,,,,,,,,,1,1205,1205041046
+120504,,,,,,,,,1,1205,1205041016
+120502,,,,,,,,,1,1205,1205021041
+120504,,,,,,,,,1,1205,1205041140
+120502,,,,,,,,,1,1205,1205021043
+120502,,,,,,,,,1,1205,1205021001
+120504,,,,,,,,,1,1205,1205041165
+120504,,,,,,,,,1,1205,1205041034
+120502,,,,,,,,,1,1205,1205021148
+120502,,,,,,,,,1,1205,1205021137
+120502,,,,,,,,,1,1205,1205021039
+120504,,,,,,,,,1,1205,1205041051
+120503,,,,,,,,,1,1205,1205031013
+120502,,,,,,,,,1,1205,1205021062
+120502,,,,,,,,,1,1205,1205021055
+120502,,,,,,,,,1,1205,1205021164
+120502,,,,,,,,,1,1205,1205021151
+120504,,,,,,,,,1,1205,1205041048
+120502,,,,,,,,,1,1205,1205021030
+120502,,,,,,,,,1,1205,1205021028
+120503,,,,,,,,,1,1205,120503
+120503,,,,,,,,,1,1205,1205031031
+120502,,,,,,,,,1,1205,1205021032
+120504,,,,,,,,,1,1205,1205041030
+120504,,,,,,,,,1,1205,1205041010
+120504,,,,,,,,,1,1205,1205041032
+121006,,,,,,,,,1,1210,1210061009
+120502,,,,,,,,,1,1205,1205021133
+120505,,,,,,,,,1,1205,1205051004
+120505,,,,,,,,,1,1205,1205051009
+120506,,,,,,,,,1,1205,1205061030
+120504,,,,,,,,,1,1205,120504
+120506,,,,,,,,,1,1205,1205061031
+120506,,,,,,,,,1,1205,1205061054
+120506,,,,,,,,,1,1205,1205061053
+120506,,,,,,,,,1,1205,1205061049
+120506,,,,,,,,,1,1205,1205061008
+120505,,,,,,,,,1,1205,1205051042
+120506,,,,,,,,,1,1205,1205061066
+120505,,,,,,,,,1,1205,1205051035
+120506,,,,,,,,,1,1205,1205061013
+120505,,,,,,,,,1,1205,1205051172
+120505,,,,,,,,,1,1205,1205051040
+120506,,,,,,,,,1,1205,1205061011
+120505,,,,,,,,,1,1205,1205051167
+120505,,,,,,,,,1,1205,1205051168
+120505,,,,,,,,,1,1205,1205051164
+120504,,,,,,,,,1,1205,1205041081
+120506,,,,,,,,,1,1205,1205061078
+120506,,,,,,,,,1,1205,1205061055
+120506,,,,,,,,,1,1205,1205061062
+120506,,,,,,,,,1,1205,1205061172
+120506,,,,,,,,,1,1205,1205061133
+120506,,,,,,,,,1,1205,1205061027
+120506,,,,,,,,,1,1205,1205061144
+120506,,,,,,,,,1,1205,1205061135
+120506,,,,,,,,,1,1205,1205061044
+120507,,,,,,,,,1,1205,1205071035
+120507,,,,,,,,,1,1205,1205071031
+120507,,,,,,,,,1,1205,1205071030
+120506,,,,,,,,,1,1205,1205061138
+120506,,,,,,,,,1,1205,1205061137
+120506,,,,,,,,,1,1205,1205061134
+120506,,,,,,,,,1,1205,1205061045
+120509,,,,,,,,,1,1205,1205091043
+120602,,,,,,,,,0,1206,1206021067
+120507,,,,,,,,,1,1205,1205071032
+120509,,,,,,,,,1,1205,1205091030
+120507,,,,,,,,,1,1205,1205071013
+120508,,,,,,,,,1,1205,1205081050
+120509,,,,,,,,,1,1205,1205091041
+120603,,,,,Hak Paten,ATB -ATB - Hak Paten,,,0,1206,120603120603
+120605,,,,,Aset Konsesi,ATB -ATB - Aset Konsesi,,,1,1206,120605120605
+120606,,,,,Aset Tidak Berwujud Lainnya,ATB -ATB - Aset Tidak Berwujud Lainnya,,,0,1206,120606120606
+120651,,,,,Aset Konsesi - Tanah,ATB -Aset Konsesi - Tanah,,,1,1206,120651120651
+120652,,,,,Aset Konsesi - Bangunan Fasilitas,ATB -Aset Konsesi - Bangunan Fasilitas,,,1,1206,120652120652
+120653,,,,,Aset Konsesi - Kapal,ATB -Aset Konsesi - Kapal,,,1,1206,120653120653
+120654,,,,,Aset Konsesi - Alat Fasilitas,ATB -Aset Konsesi - Alat Fasilitas,,,1,1206,120654120654
+120655,,,,,Aset Konsesi - Instalasi Fasilitas,ATB -Aset Konsesi - Instalasi Fasilitas,,,1,1206,120655120655
+120656,,,,,Aset Konsesi - Jalan dan bangunan,ATB -Aset Konsesi - Jalan dan bangunan,,,1,1206,120656120656
+120658,,,,,Aset Konsesi - Kendaraan,ATB -Aset Konsesi - Kendaraan,,,1,1206,120658120658
+120659,,,,,Aset Konsesi - Emplasemen,ATB -Aset Konsesi - Emplasemen,,,1,1206,120659120659
+121001,,,,,Tanah,KSO -Tanah,,,1,1210,1210011001
+121002,,,,,Kolam Pelabuhan,KSO -Kolam Pelabuhan,,,1,1210,1210021002
+121002,,,,,Dam / Penahan Gelombang,KSO -Dam / Penahan Gelombang,,,1,1210,1210021003
+121002,,,,,Dermaga,KSO -Dermaga,,,1,1210,1210021004
+120504,,,,,Forklift > 5 Ton,AT -Forklift > 5 Ton,,,1,1205,1205041118
+121004,,,,,Straddle Carrier,KSO -Straddle Carrier,,,1,1210,1210041119
+120504,,,,,Tug Master,AT -Tug Master,,,1,1205,1205041121
+121004,,,,,Alat Angkat Lainnya,KSO -Alat Angkat Lainnya,,,1,1210,1210041123
+120504,,,,,Alat Angkut Lainnya,AT -Alat Angkut Lainnya,,,1,1205,1205041124
+120657,,,,,Aset Konsesi - Peralatan,ATB -Aset Konsesi - Peralatan,,,1,1206,120657120657
+120502,,,,,Rambu Navigasi,AT -Rambu Navigasi,,,1,1205,1205071048
+120403,,,,,Rumah Dinas Permanen,PI -Rumah Dinas Permanen,,,1,1204,1204031158
+120403,,,,,Gedung Kantor,PI -Gedung Kantor,,,1,1204,1204031035
+120403,,,,,Terminal Penumpang Permanen,PI -Terminal Penumpang Permanen,,,1,1204,1204031154
+121002,,,,,Fender,KSO -Fender,,,1,1210,1210021005
+121002,,,,,Tambatan,KSO -Tambatan,,,1,1210,1210021006
+121002,,,,,Talud,KSO -Talud,,,1,1210,1210021007
+121002,,,,,Gudang Penumpukan,KSO -Gudang Penumpukan,,,1,1210,1210021008
+121002,,,,,Lapangan Penumpukan,KSO -Lapangan Penumpukan,,,1,1210,1210021009
+121002,,,,,Jembatan,KSO -Jembatan,,,1,1210,1210021010
+121002,,,,,Rail Crane,KSO -Rail Crane,,,1,1210,1210021011
+121002,,,,,Ponton/Mooring Buoy,KSO -Ponton/Mooring Buoy,,,1,1210,1210021012
+121002,,,,,Terminal Penumpang,KSO -Terminal Penumpang,,,1,1210,1210021013
+121002,,,,,Galangan Kapal,KSO -Galangan Kapal,,,1,1210,1210021014
+121003,,,,,Kapal Pandu,KSO -Kapal Pandu,,,1,1210,1210031015
+121003,,,,,Kapal Tunda,KSO -Kapal Tunda,,,1,1210,1210031016
+121003,,,,,Kapal Kepil,KSO -Kapal Kepil,,,1,1210,1210031017
+121004,,,,,Kran Darat,KSO -Kran Darat,,,1,1210,1210041019
+121004,,,,,Kran Apung,KSO -Kran Apung,,,1,1210,1210041020
+121004,,,,,Forklift,KSO -Forklift,,,1,1210,1210041021
+121004,,,,,Top Loader,KSO -Top Loader,,,1,1210,1210041022
+121004,,,,,Transtainer,KSO -Transtainer,,,1,1210,1210041023
+121004,,,,,Spreader,KSO -Spreader,,,1,1210,1210041024
+121004,,,,,Head Truck,KSO -Head Truck,,,1,1210,1210041025
+121004,,,,,Chassis,KSO -Chassis,,,1,1210,1210041026
+121004,,,,,Timbangan,KSO -Timbangan,,,1,1210,1210041027
+121004,,,,,Container Crane,KSO -Container Crane,,,1,1210,1210041028
+121004,,,,,Dump Truck,KSO -Dump Truck,,,1,1210,1210041029
+121005,,,,,Instalasi Air dan Peralatannya,KSO -Instalasi Air dan Peralatannya,,,1,1210,1210051030
+121005,,,,,Instalasi Listrik dan Peralata,KSO -Instalasi Listrik dan Peralata,,,1,1210,1210051031
+121005,,,,,Instalasi Jaringan dan Peralat,KSO -Instalasi Jaringan dan Peralat,,,1,1210,1210051033
+121006,,,,,Jalan dan Jembatan,KSO -Jalan dan Jembatan,,,1,1210,1210061034
+121006,,,,,Gedung Pertemuan / Sarana Olah,KSO -Gedung Pertemuan / Sarana Olah,,,1,1210,1210061036
+121006,,,,,Gedung Pendidikan dan Latihan,KSO -Gedung Pendidikan dan Latihan,,,1,1210,1210061037
+121006,,,,,Gedung Rumah Sakit,KSO -Gedung Rumah Sakit,,,1,1210,1210061038
+121006,,,,,Gudang Persediaan,KSO -Gudang Persediaan,,,1,1210,1210061039
+121006,,,,,Bengkel dan Garasi,KSO -Bengkel dan Garasi,,,1,1210,1210061040
+121006,,,,,Pos Jaga,KSO -Pos Jaga,,,1,1210,1210061041
+121006,,,,,Rumah Dinas,KSO -Rumah Dinas,,,1,1210,1210061042
+121009,,,,,Pagar Pelabuhan,KSO -Pagar Pelabuhan,,,1,1210,1210091043
+121007,,,,,Alat Kerja Teknik,KSO -Alat Kerja Teknik,,,1,1210,1210071044
+121007,,,,,Alat Perkantoran,KSO -Alat Perkantoran,,,1,1210,1210071045
+121007,,,,,Komputer dan Peralatannya,KSO -Komputer dan Peralatannya,,,1,1210,1210071046
+121007,,,,,Alat Pendidikan dan Latihan,KSO -Alat Pendidikan dan Latihan,,,1,1210,1210071047
+121007,,,,,Alat Perlengkapan Kapal,KSO -Alat Perlengkapan Kapal,,,1,1210,1210071048
+121008,,,,,Mobil,KSO -Mobil,,,1,1210,1210081051
+121008,,,,,Sepeda Motor,KSO -Sepeda Motor,,,1,1210,1210081052
+121009,,,,,Lapangan Parkir,KSO -Lapangan Parkir,,,1,1210,1210091053
+121009,,,,,Riol / Selokan,KSO -Riol / Selokan,,,1,1210,1210091054
+121009,,,,,Taman,KSO -Taman,,,1,1210,1210091055
+121006,,,,,Bangunan Gudang,KSO -Bangunan Gudang,,,1,1210,1210061056
+121006,,,,,Bangunan Tempat Beribadah,KSO -Bangunan Tempat Beribadah,,,1,1210,1210061057
+121006,,,,,Bangunan Kantin,KSO -Bangunan Kantin,,,1,1210,1210061058
+121002,,,,,Pengerukan Kolam,KSO -Pengerukan Kolam,,,1,1210,1210021059
+120654,,,,,Docking Station,KSO -Docking Station,,,1,1210,1206541061
+120654,,,,,Jembatan Timbang,KSO -Jembatan Timbang,,,1,1210,1206541062
+121004,,,,,Conveyor,KSO -Conveyor,,,1,1210,1210041084
+120652,,,,,Proteksi Dolphin,KSO -Proteksi Dolphin,,,1,1210,1206521064
+121005,,,,,Battery Charger,KSO -Battery Charger,,,1,1210,1210051065
+121005,,,,,Genzet,KSO -Genzet,,,1,1210,1210051066
+121005,,,,,System,KSO -System,,,1,1210,1210051067
+121002,,,,,Dermaga Beton,KSO -Dermaga Beton,,,1,1210,1210021069
+121002,,,,,Dermaga Kayu,KSO -Dermaga Kayu,,,1,1210,1210021071
+121002,,,,,Dermaga Ponton,KSO -Dermaga Ponton,,,1,1210,1210021072
+121002,,,,,Dolphin,KSO -Dolphin,,,1,1210,1210021073
+121002,,,,,Jembatan Roro,KSO -Jembatan Roro,,,1,1210,1210021074
+121002,,,,,Trestle/Causeway,KSO -Trestle/Causeway,,,1,1210,1210021075
+121002,,,,,Catwalk,KSO -Catwalk,,,1,1210,1210021076
+121002,,,,,Gudang Penumpukan Permanen,KSO -Gudang Penumpukan Permanen,,,1,1210,1210021077
+121002,,,,,Gudang Penumpukan Semi Permanen,KSO -Gudang Penumpukan Semi Permanen,,,1,1210,1210021078
+121002,,,,,Kanal,KSO -Kanal,,,1,1210,1210021079
+121002,,,,,Ponton/Mooring Buoy/Pelampung,KSO -Ponton/Mooring Buoy/Pelampung,,,1,1210,1210021080
+121002,,,,,Sarana Bantuan Navigasi,KSO -Sarana Bantuan Navigasi,,,1,1210,1210021082
+120502,,,,,Kolam Pelabuhan,AT -Kolam Pelabuhan,,,1,1205,1205021002
+120502,,,,,Dam / Penahan Gelombang,AT -Dam / Penahan Gelombang,,,1,1205,1205021003
+120502,,,,,Dermaga,AT -Dermaga,,,1,1205,1205021004
+120502,,,,,Fender,AT -Fender,,,1,1205,1205021005
+120502,,,,,Tambatan,AT -Tambatan,,,1,1205,1205021006
+120502,,,,,Talud,AT -Talud,,,1,1205,1205021007
+120502,,,,,Gudang Penumpukan,AT -Gudang Penumpukan,,,1,1205,1205021008
+120502,,,,,Lapangan Penumpukan,AT -Lapangan Penumpukan,,,1,1205,1205021009
+120502,,,,,Jembatan,AT -Jembatan,,,1,1205,1205021010
+120502,,,,,Rail Crane,AT -Rail Crane,,,1,1205,1205021011
+120502,,,,,Ponton/Mooring Buoy,AT -Ponton/Mooring Buoy,,,1,1205,1205021012
+120502,,,,,Terminal Penumpang,AT -Terminal Penumpang,,,1,1205,1205021013
+120502,,,,,Galangan Kapal,AT -Galangan Kapal,,,1,1205,1205021014
+120503,,,,,Kapal Pandu,AT -Kapal Pandu,,,1,1205,1205031015
+120503,,,,,Kapal Tunda,AT -Kapal Tunda,,,1,1205,1205031016
+120503,,,,,Kapal Kepil,AT -Kapal Kepil,,,1,1205,1205031017
+120503,,,,,Motor/Speed Boat,AT -Motor/Speed Boat,,,1,1205,1205031018
+120504,,,,,Kran Darat,AT -Kran Darat,,,1,1205,1205041019
+120504,,,,,Kran Apung,AT -Kran Apung,,,1,1205,1205041020
+120504,,,,,Forklift,AT -Forklift,,,1,1205,1205041021
+120504,,,,,Top Loader,AT -Top Loader,,,1,1205,1205041022
+120504,,,,,Transtainer,AT -Transtainer,,,1,1205,1205041023
+120504,,,,,Spreader,AT -Spreader,,,1,1205,1205041024
+120504,,,,,Head Truck,AT -Head Truck,,,1,1205,1205041025
+120504,,,,,Chassis,AT -Chassis,,,1,1205,1205041026
+120504,,,,,Timbangan,AT -Timbangan,,,1,1205,1205041027
+120504,,,,,Container Crane,AT -Container Crane,,,1,1205,1205041028
+120505,,,,,Instalasi Air dan Peralatannya,AT -Instalasi Air dan Peralatannya,,,1,1205,1205051030
+120505,,,,,Instalasi Listrik dan Peralatan,AT -Instalasi Listrik dan Peralatan,,,1,1205,1205051031
+120505,,,,,Instalasi Jaringan dan Peralatan,AT -Instalasi Jaringan dan Peralatan,,,1,1205,1205051033
+120506,,,,,Jalan dan Jembatan,AT -Jalan dan Jembatan,,,1,1205,1205061034
+120506,,,,,Gedung Kantor,AT -Gedung Kantor,,,1,1205,1205061035
+120506,,,,,Gedung Pertemuan / Sarana Olah,AT -Gedung Pertemuan / Sarana Olah,,,1,1205,1205061036
+120506,,,,,Gedung Pendidikan dan Latihan,AT -Gedung Pendidikan dan Latihan,,,1,1205,1205061037
+120506,,,,,Gedung Rumah Sakit,AT -Gedung Rumah Sakit,,,1,1205,1205061038
+120506,,,,,Gudang Persediaan,AT -Gudang Persediaan,,,1,1205,1205061039
+120506,,,,,Bengkel dan Garasi,AT -Bengkel dan Garasi,,,1,1205,1205061040
+120506,,,,,Pos Jaga,AT -Pos Jaga,,,1,1205,1205061041
+120506,,,,,Pagar Pelabuhan,AT -Pagar Pelabuhan,,,1,1205,1205061043
+120507,,,,,Alat Kerja Teknik,AT -Alat Kerja Teknik,,,1,1205,1205071044
+120507,,,,,Alat Perkantoran,AT -Alat Perkantoran,,,1,1205,1205071045
+120507,,,,,Komputer dan Peralatannya,AT -Komputer dan Peralatannya,,,1,1205,1205071046
+120507,,,,,Alat Pendidikan dan Latihan,AT -Alat Pendidikan dan Latihan,,,1,1205,1205071047
+120507,,,,,Perlengkapan Rumah Dinas,AT -Perlengkapan Rumah Dinas,,,1,1205,1205071049
+120507,,,,,Perlengk. Pmk (Termasuk Mobil),AT -Perlengk. Pmk (Termasuk Mobil),,,1,1205,1205071050
+120508,,,,,Mobil,AT -Mobil,,,1,1205,1205081051
+120508,,,,,Sepeda Motor,AT -Sepeda Motor,,,1,1205,1205081052
+120509,,,,,Lapangan Parkir,AT -Lapangan Parkir,,,1,1205,1205091053
+120509,,,,,Riol / Selokan,AT -Riol / Selokan,,,1,1205,1205091054
+120506,,,,,Bangunan Gudang,AT -Bangunan Gudang,,,1,1205,1205061056
+120506,,,,,Bangunan Tempat Beribadah,AT -Bangunan Tempat Beribadah,,,1,1205,1205061057
+120506,,,,,Bangunan Kantin,AT -Bangunan Kantin,,,1,1205,1205061058
+120502,,,,,Pengerukan Kolam,AT -Pengerukan Kolam,,,1,1205,1205021059
+120504,,,,,Combined Terminal Tractor,AT -Combined Terminal Tractor,,,1,1205,1205041060
+120504,,,,,Docking Station,AT -Docking Station,,,1,1205,1205041061
+120504,,,,,Jembatan Timbang,AT -Jembatan Timbang,,,1,1205,1205041062
+120504,,,,,Conveyor,AT -Conveyor,,,1,1205,1205041063
+120505,,,,,Battery Charger,AT -Battery Charger,,,1,1205,1205051065
+120505,,,,,Genzet,AT -Genzet,,,1,1205,1205051066
+120505,,,,,System,AT -System,,,1,1205,1205051067
+120502,,,,,Sheet File,AT -Sheet File,,,1,1205,1205021068
+120502,,,,,Dermaga Beton,AT -Dermaga Beton,,,1,1205,1205021069
+120502,,,,,Dermaga Baja,AT -Dermaga Baja,,,1,1205,1205021070
+120502,,,,,Dermaga Kayu,AT -Dermaga Kayu,,,1,1205,1205021071
+120502,,,,,Dermaga Ponton,AT -Dermaga Ponton,,,1,1205,1205021072
+120502,,,,,Dolphin,AT -Dolphin,,,1,1205,1205021073
+120502,,,,,Jembatan Roro,AT -Jembatan Roro,,,1,1205,1205021074
+120502,,,,,Trestle/Causeway,AT -Trestle/Causeway,,,1,1205,1205021075
+120502,,,,,Catwalk,AT -Catwalk,,,1,1205,1205021076
+120502,,,,,Gudang Penumpukan Permanen,AT -Gudang Penumpukan Permanen,,,1,1205,1205021077
+120502,,,,,Gudang Penumpukan Semi Permanen,AT -Gudang Penumpukan Semi Permanen,,,1,1205,1205021078
+120502,,,,,Ponton/Mooring Buoy/Pelampung,AT -Ponton/Mooring Buoy/Pelampung,,,1,1205,1205021080
+120502,,,,,Reception Facilities,AT -Reception Facilities,,,1,1205,1205021081
+120502,,,,,Sarana Bantuan Navigasi,AT -Sarana Bantuan Navigasi,,,1,1205,1205021082
+120503,,,,,Kapal Lain - Lain,AT -Kapal Lain - Lain,,,1,1205,1205031083
+120504,,,,,Floating Crane,AT -Floating Crane,,,1,1205,1205041086
+120504,,,,,Gantry Jib Crane,AT -Gantry Jib Crane,,,1,1205,1205041087
+120504,,,,,Gantry Luffing Crane,AT -Gantry Luffing Crane,,,1,1205,1205041088
+120504,,,,,Grab Ship Unloader,AT -Grab Ship Unloader,,,1,1205,1205041089
+120504,,,,,Harbour Mobile Crane,AT -Harbour Mobile Crane,,,1,1205,1205041090
+120504,,,,,Quay Container Crane,AT -Quay Container Crane,,,1,1205,1205041093
+120504,,,,,Automatic Rubber Tired Gantry Crane,AT -Automatic Rubber Tired Gantry Crane,,,1,1205,1205041094
+120504,,,,,Automatic Stacking Crane,AT -Automatic Stacking Crane,,,1,1205,1205041095
+120504,,,,,Rail Mounted Gantry Crane,AT -Rail Mounted Gantry Crane,,,1,1205,1205041096
+120504,,,,,Reach Stacker,AT -Reach Stacker,,,1,1205,1205041097
+120504,,,,,Side Loader,AT -Side Loader,,,1,1205,1205041099
+120504,,,,,Excavator,AT -Excavator,,,1,1205,1205041100
+120504,,,,,Dolly System,AT -Dolly System,,,1,1205,1205041113
+120504,,,,,Tronton,AT -Tronton,,,1,1205,1205041114
+120504,,,,,Terminal Tractor,AT -Terminal Tractor,,,1,1205,1205041115
+120504,,,,,Bulldozer,AT -Bulldozer,,,1,1205,1205041116
+120504,,,,,Forklift Sd 5 Ton,AT -Forklift Sd 5 Ton,,,1,1205,1205041117
+120504,,,,,Straddle Carrier,AT -Straddle Carrier,,,1,1205,1205041119
+120504,,,,,Weight Bridge,AT -Weight Bridge,,,1,1205,1205041120
+120504,,,,,Skid Steer Loader,AT -Skid Steer Loader,,,1,1205,1205041122
+120504,,,,,Alat Angkat Lainnya,AT -Alat Angkat Lainnya,,,1,1205,1205041123
+120504,,,,,Towing Tructor,AT -Towing Tructor,,,1,1205,1205041125
+120504,,,,,Container Scanner,AT -Container Scanner,,,1,1205,1205041126
+120504,,,,,Road Sweeper,AT -Road Sweeper,,,1,1205,1205041127
+120504,,,,,Mobil Pemadam Kebakaran,AT -Mobil Pemadam Kebakaran,,,1,1205,1205041128
+120504,,,,,Alat Reception Fasilities,AT -Alat Reception Fasilities,,,1,1205,1205041129
+120504,,,,,Truck Tangki Air,AT -Truck Tangki Air,,,1,1205,1205041130
+120504,,,,,Mobil Lift,AT -Mobil Lift,,,1,1205,1205041131
+120504,,,,,Mesin Car Wash,AT -Mesin Car Wash,,,1,1205,1205041132
+120504,,,,,Alat Penunjang Lainnya,AT -Alat Penunjang Lainnya,,,1,1205,1205041133
+120505,,,,,Jaringan Instalasi Air,AT -Jaringan Instalasi Air,,,1,1205,1205051134
+120505,,,,,Motor Pompa,AT -Motor Pompa,,,1,1205,1205051135
+120505,,,,,Bak Reservoir,AT -Bak Reservoir,,,1,1205,1205051136
+120505,,,,,Gardu Listrik,AT -Gardu Listrik,,,1,1205,1205051137
+120505,,,,,Genset,AT -Genset,,,1,1205,1205051138
+120505,,,,,Gardu Set,AT -Gardu Set,,,1,1205,1205051139
+120505,,,,,Lampu Penerangan,AT -Lampu Penerangan,,,1,1205,1205051140
+120505,,,,,Sentral Telepon/Pabx,AT -Sentral Telepon/Pabx,,,1,1205,1205051142
+120505,,,,,Rumah Genset,AT -Rumah Genset,,,1,1205,1205051143
+120505,,,,,Instalasi Cctv dan Peralatan,AT -Instalasi Cctv dan Peralatan,,,1,1205,1205051144
+120505,,,,,Instalasi Car Call dan Peralatan,AT -Instalasi Car Call dan Peralatan,,,1,1205,1205051145
+120505,,,,,Instalasi Penangkal Petir dan Peralatan,AT -Instalasi Penangkal Petir dan Peralatan,,,1,1205,1205051146
+120506,,,,,"Instalasi Fire Alarm, Fighting dan Peralatan","AT -Instalasi Fire Alarm, Fighting dan Peralatan",,,1,1205,1205061147
+120506,,,,,Jalan,AT -Jalan,,,1,1205,1205061148
+120506,,,,,Gedung Pertemuan / Sarana Olah Raga,AT -Gedung Pertemuan / Sarana Olah Raga,,,1,1205,1205061149
+120506,,,,,Gudang Persediaan Permanen,AT -Gudang Persediaan Permanen,,,1,1205,1205061150
+120506,,,,,Gudang Persediaan Non Permanen,AT -Gudang Persediaan Non Permanen,,,1,1205,1205061151
+120506,,,,,Bengkel dan Garasi Permanen,AT -Bengkel dan Garasi Permanen,,,1,1205,1205061152
+120506,,,,,Bengkel dan Garasi Non Permanen,AT -Bengkel dan Garasi Non Permanen,,,1,1205,1205061153
+120506,,,,,Terminal Penumpang Permanen,AT -Terminal Penumpang Permanen,,,1,1205,1205061154
+120506,,,,,Terminal Penumpang Non Permanen,AT -Terminal Penumpang Non Permanen,,,1,1205,1205061155
+120506,,,,,Pos Jaga Permanen,AT -Pos Jaga Permanen,,,1,1205,1205061156
+120506,,,,,Pos Jaga Non Permanen,AT -Pos Jaga Non Permanen,,,1,1205,1205061157
+120506,,,,,Rumah Dinas Permanen,AT -Rumah Dinas Permanen,,,1,1205,1205061158
+120506,,,,,Rumah Dinas Non Permanen,AT -Rumah Dinas Non Permanen,,,1,1205,1205061159
+120506,,,,,Bangunan Gudang Persediaan Permanen,AT -Bangunan Gudang Persediaan Permanen,,,1,1205,1205061160
+120506,,,,,Bangunan Tempat Beribadah Permanen,AT -Bangunan Tempat Beribadah Permanen,,,1,1205,1205061162
+120506,,,,,Bangunan Tempat Beribadah Non Permanen,AT -Bangunan Tempat Beribadah Non Permanen,,,1,1205,1205061163
+120506,,,,,Reception Facilities Permanen,AT -Reception Facilities Permanen,,,1,1205,1205061164
+120506,,,,,Reception Facilities Semi Permanen,AT -Reception Facilities Semi Permanen,,,1,1205,1205061165
+120506,,,,,Gate,AT -Gate,,,1,1205,1205061166
+120506,,,,,Bangunan Permanen Lain-Lain,AT -Bangunan Permanen Lain-Lain,,,1,1205,1205061167
+120506,,,,,Bangunan Semi Permanen Lain-Lain,AT -Bangunan Semi Permanen Lain-Lain,,,1,1205,1205061168
+120507,,,,,Alat Medis dan Perlengkapan RS,AT -Alat Medis dan Perlengkapan RS,,,1,1205,1205071169
+120507,,,,,Perlengk. Pmk,AT -Perlengk. Pmk,,,1,1205,1205071170
+120507,,,,,Alat Olahraga dan Kesenian,AT -Alat Olahraga dan Kesenian,,,1,1205,1205071171
+120507,,,,,Peralatan Lain - Lain,AT -Peralatan Lain - Lain,,,1,1205,1205071172
+120508,,,,,Kendaraan Lainnya,AT -Kendaraan Lainnya,,,1,1205,1205081173
+120509,,,,,Pagar Pelabuhan Permanen,AT -Pagar Pelabuhan Permanen,,,1,1205,1205091174
+120509,,,,,Pagar Pelabuhan Non Permanen,AT -Pagar Pelabuhan Non Permanen,,,1,1205,1205091175
+120504,,,,,Mobile Conveyor,AT -Mobile Conveyor,,,1,1205,1205041176
+120401,,,,,Tanah,PI -Tanah,,,1,1204,1204011001
+120402,,,,,Kolam Pelabuhan,PI -Kolam Pelabuhan,,,1,1204,1204021002
+120402,,,,,Dam / Penahan Gelombang,PI -Dam / Penahan Gelombang,,,1,1204,1204021003
+120402,,,,,Dermaga,PI -Dermaga,,,1,1204,1204021004
+120402,,,,,Fender,PI -Fender,,,1,1204,1204021005
+120402,,,,,Tambatan,PI -Tambatan,,,1,1204,1204021006
+120402,,,,,Talud,PI -Talud,,,1,1204,1204021007
+120402,,,,,Gudang Penumpukan,PI -Gudang Penumpukan,,,1,1204,1204021008
+120402,,,,,Lapangan Penumpukan,PI -Lapangan Penumpukan,,,1,1204,1204021009
+120403,,,,,Jembatan,PI -Jembatan,,,1,1204,1204031010
+120402,,,,,Rail Crane,PI -Rail Crane,,,1,1204,1204021011
+120402,,,,,Ponton/Mooring Buoy,PI -Ponton/Mooring Buoy,,,1,1204,1204021012
+120402,,,,,Galangan Kapal,PI -Galangan Kapal,,,1,1204,1204021014
+120403,,,,,Pagar Pelabuhan,PI -Pagar Pelabuhan,,,1,1204,1204031043
+120404,,,,,Lapangan Parkir,PI -Lapangan Parkir,,,1,1204,1204041053
+120404,,,,,Taman,PI -Taman,,,1,1204,1204041055
+120402,,,,,Pengerukan Kolam,PI -Pengerukan Kolam,,,1,1204,1204021059
+120402,,,,,Proteksi Dolphin,PI -Proteksi Dolphin,,,1,1204,1204021064
+120402,,,,,Sheet File,PI -Sheet File,,,1,1204,1204021068
+120402,,,,,Dermaga Beton,PI -Dermaga Beton,,,1,1204,1204021069
+120402,,,,,Dermaga Kayu,PI -Dermaga Kayu,,,1,1204,1204021071
+120402,,,,,Dermaga Ponton,PI -Dermaga Ponton,,,1,1204,1204021072
+120402,,,,,Dolphin,PI -Dolphin,,,1,1204,1204021073
+120402,,,,,Jembatan Roro,PI -Jembatan Roro,,,1,1204,1204021074
+120402,,,,,Trestle/Causeway,PI -Trestle/Causeway,,,1,1204,1204021075
+120402,,,,,Gudang Penumpukan Semi Permanen,PI -Gudang Penumpukan Semi Permanen,,,1,1204,1204021078
+120402,,,,,Kanal,PI -Kanal,,,1,1204,1204021079
+120402,,,,,Ponton/Mooring Buoy/Pelampung,PI -Ponton/Mooring Buoy/Pelampung,,,1,1204,1204021080
+120402,,,,,Reception Facilities,PI -Reception Facilities,,,1,1204,1204021081
+120404,,,,,Pagar Pelabuhan Non Permanen,PI -Pagar Pelabuhan Non Permanen,,,1,1204,1204041175
+120601,,,,,Goodwill,ATB -ATB - Goodwill,,,0,1206,120601120601
+120602,,,,,Lisensi,ATB -ATB - Lisensi,,,0,1206,120602120602
+121003,,,,,Kapal Lain - Lain,KSO -Kapal Lain - Lain,,,1,1210,1210031083
+121004,,,,,Fix Jib Crane,KSO -Fix Jib Crane,,,1,1210,1210041085
+121004,,,,,Floating Crane,KSO -Floating Crane,,,1,1210,1210041086
+121004,,,,,Gantry Jib Crane,KSO -Gantry Jib Crane,,,1,1210,1210041087
+121004,,,,,Gantry Luffing Crane,KSO -Gantry Luffing Crane,,,1,1210,1210041088
+121004,,,,,Grab Ship Unloader,KSO -Grab Ship Unloader,,,1,1210,1210041089
+121004,,,,,Harbour Mobile Crane,KSO -Harbour Mobile Crane,,,1,1210,1210041090
+121004,,,,,Harbour Portal Crane,KSO -Harbour Portal Crane,,,1,1210,1210041091
+121004,,,,,Mobile Crane,KSO -Mobile Crane,,,1,1210,1210041092
+121004,,,,,Quay Container Crane,KSO -Quay Container Crane,,,1,1210,1210041093
+121004,,,,,Automatic Rubber Tired Gantry Crane,KSO -Automatic Rubber Tired Gantry Crane,,,1,1210,1210041094
+121004,,,,,Automatic Stacking Crane,KSO -Automatic Stacking Crane,,,1,1210,1210041095
+121004,,,,,Rail Mounted Gantry Crane,KSO -Rail Mounted Gantry Crane,,,1,1210,1210041096
+121004,,,,,Reach Stacker,KSO -Reach Stacker,,,1,1210,1210041097
+121004,,,,,Rubber Tyred Gantry Crane,KSO -Rubber Tyred Gantry Crane,,,1,1210,1210041098
+121004,,,,,Excavator,KSO -Excavator,,,1,1210,1210041100
+121004,,,,,Wheel Loader,KSO -Wheel Loader,,,1,1210,1210041101
+121004,,,,,Transteiner,KSO -Transteiner,,,1,1210,1210041102
+121004,,,,,Bucket,KSO -Bucket,,,1,1210,1210041103
+121004,,,,,Grab,KSO -Grab,,,1,1210,1210041104
+121004,,,,,Hopper,KSO -Hopper,,,1,1210,1210041105
+121004,,,,,Ramp Door,KSO -Ramp Door,,,1,1210,1210041106
+121004,,,,,Mobile Elevator,KSO -Mobile Elevator,,,1,1210,1210041107
+121004,,,,,Overhead Crane,KSO -Overhead Crane,,,1,1210,1210041108
+121004,,,,,Pallet Mover,KSO -Pallet Mover,,,1,1210,1210041109
+121004,,,,,Reach Truck,KSO -Reach Truck,,,1,1210,1210041110
+121004,,,,,Translifter,KSO -Translifter,,,1,1210,1210041111
+121004,,,,,Dolly System,KSO -Dolly System,,,1,1210,1210041113
+121004,,,,,Tronton,KSO -Tronton,,,1,1210,1210041114
+121004,,,,,Terminal Tractor,KSO -Terminal Tractor,,,1,1210,1210041115
+121004,,,,,Bulldozer,KSO -Bulldozer,,,1,1210,1210041116
+121004,,,,,Forklift Sd 5 Ton,KSO -Forklift Sd 5 Ton,,,1,1210,1210041117
+121004,,,,,Forklift > 5 Ton,KSO -Forklift > 5 Ton,,,1,1210,1210041118
+121004,,,,,Weight Bridge,KSO -Weight Bridge,,,1,1210,1210041120
+121004,,,,,Tug Master,KSO -Tug Master,,,1,1210,1210041121
+121004,,,,,Skid Steer Loader,KSO -Skid Steer Loader,,,1,1210,1210041122
+121004,,,,,Alat Angkut Lainnya,KSO -Alat Angkut Lainnya,,,1,1210,1210041124
+121004,,,,,Towing Tructor,KSO -Towing Tructor,,,1,1210,1210041125
+121004,,,,,Container Scanner,KSO -Container Scanner,,,1,1210,1210041126
+121004,,,,,Road Sweeper,KSO -Road Sweeper,,,1,1210,1210041127
+121004,,,,,Mobil Pemadam Kebakaran,KSO -Mobil Pemadam Kebakaran,,,1,1210,1210041128
+121004,,,,,Alat Reception Fasilities,KSO -Alat Reception Fasilities,,,1,1210,1210041129
+121004,,,,,Truck Tangki Air,KSO -Truck Tangki Air,,,1,1210,1210041130
+121004,,,,,Mobil Lift,KSO -Mobil Lift,,,1,1210,1210041131
+121004,,,,,Mesin Car Wash,KSO -Mesin Car Wash,,,1,1210,1210041132
+121004,,,,,Alat Penunjang Lainnya,KSO -Alat Penunjang Lainnya,,,1,1210,1210041133
+121005,,,,,Jaringan Instalasi Air,KSO -Jaringan Instalasi Air,,,1,1210,1210051134
+121005,,,,,Motor Pompa,KSO -Motor Pompa,,,1,1210,1210051135
+121005,,,,,Bak Reservoir,KSO -Bak Reservoir,,,1,1210,1210051136
+121005,,,,,Gardu Listrik,KSO -Gardu Listrik,,,1,1210,1210051137
+121005,,,,,Genset,KSO -Genset,,,1,1210,1210051138
+121005,,,,,Gardu Set,KSO -Gardu Set,,,1,1210,1210051139
+121005,,,,,Lampu Penerangan,KSO -Lampu Penerangan,,,1,1210,1210051140
+121005,,,,,Jaringan Instalasi Telkom,KSO -Jaringan Instalasi Telkom,,,1,1210,1210051141
+121005,,,,,Sentral Telepon/Pabx,KSO -Sentral Telepon/Pabx,,,1,1210,1210051142
+121005,,,,,Rumah Genset,KSO -Rumah Genset,,,1,1210,1210051143
+121005,,,,,Instalasi Cctv dan Peralatan,KSO -Instalasi Cctv dan Peralatan,,,1,1210,1210051144
+121005,,,,,Instalasi Car Call dan Peralatan,KSO -Instalasi Car Call dan Peralatan,,,1,1210,1210051145
+121005,,,,,Instalasi Penangkal Petir dan Peralatan,KSO -Instalasi Penangkal Petir dan Peralatan,,,1,1210,1210051146
+121005,,,,,"Instalasi Fire Alarm, Fighting dan Peralatan","KSO -Instalasi Fire Alarm, Fighting dan Peralatan",,,1,1210,1210051147
+121006,,,,,Jalan,KSO -Jalan,,,1,1210,1210061148
+121006,,,,,Gedung Pertemuan / Sarana Olah Raga,KSO -Gedung Pertemuan / Sarana Olah Raga,,,1,1210,1210061149
+121006,,,,,Gudang Persediaan Permanen,KSO -Gudang Persediaan Permanen,,,1,1210,1210061150
+121006,,,,,Gudang Persediaan Non Permanen,KSO -Gudang Persediaan Non Permanen,,,1,1210,1210061151
+121006,,,,,Bengkel dan Garasi Permanen,KSO -Bengkel dan Garasi Permanen,,,1,1210,1210061152
+121006,,,,,Bengkel dan Garasi Non Permanen,KSO -Bengkel dan Garasi Non Permanen,,,1,1210,1210061153
+121006,,,,,Terminal Penumpang Permanen,KSO -Terminal Penumpang Permanen,,,1,1210,1210061154
+121006,,,,,Terminal Penumpang Non Permanen,KSO -Terminal Penumpang Non Permanen,,,1,1210,1210061155
+121006,,,,,Pos Jaga Permanen,KSO -Pos Jaga Permanen,,,1,1210,1210061156
+121006,,,,,Pos Jaga Non Permanen,KSO -Pos Jaga Non Permanen,,,1,1210,1210061157
+121006,,,,,Rumah Dinas Permanen,KSO -Rumah Dinas Permanen,,,1,1210,1210061158
+121006,,,,,Rumah Dinas Non Permanen,KSO -Rumah Dinas Non Permanen,,,1,1210,1210061159
+121006,,,,,Bangunan Gudang Persediaan Permanen,KSO -Bangunan Gudang Persediaan Permanen,,,1,1210,1210061160
+121006,,,,,Bangunan Gudang Persediaan Non Permanen,KSO -Bangunan Gudang Persediaan Non Permanen,,,1,1210,1210061161
+121006,,,,,Bangunan Tempat Beribadah Permanen,KSO -Bangunan Tempat Beribadah Permanen,,,1,1210,1210061162
+121006,,,,,Bangunan Tempat Beribadah Non Permanen,KSO -Bangunan Tempat Beribadah Non Permanen,,,1,1210,1210061163
+121006,,,,,Reception Facilities Permanen,KSO -Reception Facilities Permanen,,,1,1210,1210061164
+121006,,,,,Gate,KSO -Gate,,,1,1210,1210061166
+121006,,,,,Bangunan Permanen Lain-Lain,KSO -Bangunan Permanen Lain-Lain,,,1,1210,1210061167
+121006,,,,,Bangunan Semi Permanen Lain-Lain,KSO -Bangunan Semi Permanen Lain-Lain,,,1,1210,1210061168
+121007,,,,,Alat Medis dan Perlengkapan RS,KSO -Alat Medis dan Perlengkapan RS,,,1,1210,1210071169
+121007,,,,,Perlengk. Pmk,KSO -Perlengk. Pmk,,,1,1210,1210071170
+121007,,,,,Alat Olahraga dan Kesenian,KSO -Alat Olahraga dan Kesenian,,,1,1210,1210071171
+121007,,,,,Peralatan Lain - Lain,KSO -Peralatan Lain - Lain,,,1,1210,1210071172
+120504,,,,,Wheel Loader,AT -Wheel Loader,,,1,1205,1205041101
+120504,,,,,Transteiner,AT -Transteiner,,,1,1205,1205041102
+120504,,,,,Bucket,AT -Bucket,,,1,1205,1205041103
+120504,,,,,Grab,AT -Grab,,,1,1205,1205041104
+120504,,,,,Hopper,AT -Hopper,,,1,1205,1205041105
+120504,,,,,Ramp Door,AT -Ramp Door,,,1,1205,1205041106
+120504,,,,,Mobile Elevator,AT -Mobile Elevator,,,1,1205,1205041107
+120504,,,,,Pallet Mover,AT -Pallet Mover,,,1,1205,1205041109
+120504,,,,,Reach Truck,AT -Reach Truck,,,1,1205,1205041110
+120504,,,,,Translifter,AT -Translifter,,,1,1205,1205041111
+120504,,,,,Cassette System,AT -Cassette System,,,1,1205,1205041112
+120509,,,,,,,,,1,1205,1205091042
+120509,,,,,,,,,1,1205,1205091040
+120509,,,,,,,,,1,1205,1205091037
+120507,,,,,,,,,1,1205,1205071005
+120509,,,,,,,,,1,1205,1205091009
+120507,,,,,,,,,1,1205,1205071144
+120507,,,,,,,,,1,1205,1205071166
+120507,,,,,,,,,1,1205,1205071067
+120509,,,,,,,,,1,1205,1205091004
+120509,,,,,,,,,1,1205,1205091168
+120507,,,,,,,,,1,1205,1205071158
+120507,,,,,,,,,1,1205,1205071065
+120508,,,,,,,,,1,1205,1205081029
+120507,,,,,,,,,1,1205,1205071024
+120507,,,,,,,,,1,1205,1205071066
+120507,,,,,,,,,1,1205,1205071142
+120509,,,,,,,,,1,1205,1205091035
+120507,,,,,,,,,1,1205,1205071041
+120507,,,,,,,,,1,1205,1205071133
+120507,,,,,,,,,1,1205,120507
+120507,,,,,,,,,1,1205,1205071123
+120602,,,,,,,,,0,1206,1206021150
+120603,,,,,,,,,0,1206,1206031150
+120602,,,,,,,,,0,1206,1206021046
+120604,,,,,,,,,0,1206,1206041033
+120604,,,,,,,,,0,1206,1206041150
+120605,,,,,,,,,0,1206,1206051009
+120605,,,,,,,,,0,1206,1206051007
+120605,,,,,,,,,0,1206,1206051006
+120605,,,,,,,,,0,1206,1206051053
+120605,,,,,,,,,0,1206,1206051034
+120605,,,,,,,,,0,1206,1206051011
+120605,,,,,,,,,0,1206,1206051054
+120605,,,,,,,,,0,1206,1206051055
+120605,,,,,,,,,0,1206,1206051001
+120605,,,,,,,,,0,1206,1206051059
+120605,,,,,,,,,0,1206,1206051004
+120605,,,,,,,,,0,1206,1206051164
+120654,,,,,,,,,0,1206,1206541156
+120605,,,,,,,,,0,1206,1206051069
+120605,,,,,,,,,0,1206,1206051101
+120605,,,,,,,,,0,1206,1206051174
+120651,,,,,,,,,0,1206,1206511001
+120651,,,,,,,,,0,1206,1206511010
+120605,,,,,,,,,0,1206,1206051176
+120605,,,,,,,,,0,1206,1206051162
+120605,,,,,,,,,0,1206,1206051134
+120605,,,,,,,,,0,1206,1206051079
+120652,,,,,,,,,0,1206,1206521008
+120652,,,,,,,,,0,1206,120652
+120651,,,,,,,,,0,1206,1206511156
+120605,,,,,,,,,0,1206,1206051077
+120652,,,,,,,,,0,1206,1206521009
+120652,,,,,,,,,0,1206,1206521156
+120605,,,,,,,,,0,1206,1206051096
+120652,,,,,,,,,0,1206,1206521004
+120652,,,,,,,,,0,1206,1206521005
+120652,,,,,,,,,0,1206,1206521006
+120652,,,,,,,,,0,1206,1206521011
+120605,,,,,,,,,0,1206,1206051137
+120652,,,,,,,,,0,1206,1206521075
+120652,,,,,,,,,0,1206,1206521069
+120652,,,,,,,,,0,1206,1206521002
+120605,,,,,,,,,0,1206,1206051075
+120605,,,,,,,,,0,1206,1206051035
+120605,,,,,,,,,0,1206,1206051040
+120605,,,,,,,,,0,1206,1206051167
+120605,,,,,,,,,0,1206,1206051002
+120605,,,,,,,,,0,1206,1206051031
+120605,,,,,,,,,0,1206,1206051041
+120605,,,,,,,,,0,1206,1206051152
+120605,,,,,,,,,0,1206,1206051058
+120605,,,,,,,,,0,1206,1206051135
+120605,,,,,,,,,0,1206,1206051057
+120605,,,,,,,,,0,1206,1206051010
+120605,,,,,,,,,0,1206,1206051063
+120605,,,,,,,,,0,1206,1206051154
+120605,,,,,,,,,0,1206,1206051045
+120605,,,,,,,,,0,1206,1206051003
+120605,,,,,,,,,0,1206,1206051147
+120605,,,,,,,,,0,1206,1206051170
+120605,,,,,,,,,0,1206,1206051148
+120605,,,,,,,,,0,1206,1206051078
+120654,,,,,,,,,0,1206,1206541028
+120654,,,,,,,,,0,1206,1206541098
+120654,,,,,,,,,0,1206,1206541097
+120654,,,,,,,,,0,1206,1206541118
+120654,,,,,,,,,0,1206,1206541025
+120654,,,,,,,,,0,1206,1206541133
+120654,,,,,,,,,0,1206,1206541026
+120656,,,,,,,,,0,1206,1206561167
+120656,,,,,,,,,0,1206,1206561035
+120657,,,,,,,,,0,1206,1206571156
+120658,,,,,,,,,0,1206,1206581156
+120654,,,,,,,,,0,1206,1206541128
+120654,,,,,,,,,0,1206,1206541021
+120658,,,,,,,,,0,1206,1206581051
+120654,,,,,,,,,0,1206,1206541027
+120655,,,,,,,,,0,1206,1206551031
+120659,,,,,,,,,0,1206,1206591156
+120656,,,,,,,,,0,1206,1206561009
+120659,,,,,,,,,0,1206,1206591054
+120654,,,,,,,,,0,1206,1206541022
+120659,,,,,,,,,0,1206,1206591175
+120659,,,,,,,,,0,1206,1206591053
+120655,,,,,,,,,0,1206,1206551133
+120655,,,,,,,,,0,1206,1206551143
+120655,,,,,,,,,0,1206,1206551138
+120655,,,,,,,,,0,1206,1206551030
+120655,,,,,,,,,0,1206,1206551136
+120656,,,,,,,,,0,1206,1206561156
+120656,,,,,,,,,0,1206,1206561148
+120656,,,,,,,,,0,1206,1206561162
+120655,,,,,,,,,0,1206,1206551041
+120655,,,,,,,,,0,1206,1206551139
+120655,,,,,,,,,0,1206,1206551137
+120656,,,,,,,,,0,1206,1206561041
+120656,,,,,,,,,0,1206,1206561040
+120657,,,,,,,,,0,1206,120657
+120504,,,,,,,,,1,1205,1205041167
+120504,,,,,,,,,1,1205,1205041031
+120502,,,,,,,,,1,1205,1205021063
+120502,,,,,,,,,1,1205,1205021024
+120503,,,,,,,,,1,1205,1205031048
+120502,,,,,,,,,1,1205,1205021166
+120504,,,,,,,,,1,1205,1205041004
+120502,,,,,,,,,1,1205,1205021048
+120402,,,,,,,,,1,1204,1204021035
+120504,,,,,,,,,1,1205,1205041033
+120504,,,,,,,,,1,1205,1205041065
+120505,,,,,,,,,1,1205,1205051045
+120505,,,,,,,,,1,1205,1205051130
+120505,,,,,,,,,1,1205,1205051166
+120506,,,,,,,,,1,1205,1205061009
+120505,,,,,,,,,1,1205,1205051063
+120506,,,,,,,,,1,1205,1205061033
+120505,,,,,,,,,1,1205,1205051050
+120505,,,,,,,,,1,1205,1205051169
+120506,,,,,,,,,1,1205,1205061143
+120506,,,,,,,,,1,1205,1205061136
+120506,,,,,,,,,1,1205,1205061175
+120506,,,,,,,,,1,1205,1205061007
+120507,,,,,,,,,1,1205,1205071043
+120506,,,,,,,,,1,1205,1205061081
+120654,,,,,Combined Terminal Tractor,KSO -Combined Terminal Tractor,,,1,1210,1206541060
+121002,,,,,Dermaga Baja,KSO -Dermaga Baja,,,1,1210,1210021070
+120504,,,,,Fix Jib Crane,AT -Fix Jib Crane,,,1,1205,1205041085
+120504,,,,,Mobile Crane,AT -Mobile Crane,,,1,1205,1205041092
+120504,,,,,Rubber Tyred Gantry Crane,AT -Rubber Tyred Gantry Crane,,,1,1205,1205041098
+120404,,,,,Riol / Selokan,PI -Riol / Selokan,,,1,1204,1204041054
+120402,,,,,Dermaga Baja,PI -Dermaga Baja,,,1,1204,1204021070
+120402,,,,,Catwalk,PI -Catwalk,,,1,1204,1204021076
+120402,,,,,Sarana Bantuan Navigasi,PI -Sarana Bantuan Navigasi,,,1,1204,1204021082
+121006,,,,,Reception Facilities Semi Permanen,KSO -Reception Facilities Semi Permanen,,,1,1210,1210061165
