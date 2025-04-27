@@ -29,11 +29,12 @@ export function parseArgs(): CommandArgs {
 export function showHelp(): void {
   console.log("\nAvailable commands:");
   console.log("------------------");
+  console.log("bun run index.ts --show=sequences");
   console.log("bun run index.ts --show=tables");
   console.log("bun run index.ts --show=structure --table=TABLE_NAME");
-  console.log("bun run index.ts --show=fk [--table=TABLE_NAME]");
-  console.log("bun run index.ts --show=sequences");
   console.log("bun run index.ts --show=pk [--table=TABLE_NAME]");
+  console.log("bun run index.ts --show=uk [--table=TABLE_NAME]");
+  console.log("bun run index.ts --show=fk [--table=TABLE_NAME]");
   console.log("bun run index.ts --show=schema [--output=file]");
   console.log("bun run index.ts --query=path/to/query.sql");
   console.log("bun run index.ts --compare=csv --path=BACKUP_DIRECTORY");

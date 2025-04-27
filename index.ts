@@ -9,6 +9,7 @@ import { showSchemaDiagram } from "./src/helper/showSchemaDiagram";
 import { runQuery } from "./src/helper/runQuery";
 import { compareFilesWithTables } from "./src/helper/compareFilesWithTables";
 import { exportTablesToCSV } from "./src/helper/exportTablesToCSV";
+import { showTableUniqueKey } from "./src/helper/showUniqueKeys";
 
 async function main() {
   const args = parseArgs();
@@ -56,6 +57,9 @@ async function main() {
     }
 
     switch (args.show) {
+      case "sequences":
+        await showSequences(connection);
+        break;
       case "tables":
         await showTables(connection);
         break;
@@ -68,14 +72,14 @@ async function main() {
           );
         }
         break;
-      case "fk":
-        await showForeignKeys(connection, args.table);
-        break;
-      case "sequences":
-        await showSequences(connection);
-        break;
       case "pk":
         await showTablePrimaryKey(connection, args.table);
+        break;
+      case "uk":
+        await showTableUniqueKey(connection, args.table);
+        break;
+      case "fk":
+        await showForeignKeys(connection, args.table);
         break;
       case "schema":
         await showSchemaDiagram(connection, args.output);

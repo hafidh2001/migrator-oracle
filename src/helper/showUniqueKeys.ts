@@ -1,12 +1,12 @@
 import type { Connection } from "oracledb";
 import { dbConfig } from "../config/database";
 
-export async function showTablePrimaryKey(
+export async function showTableUniqueKey(
   connection: Connection,
   tableName?: string
 ): Promise<void> {
   if (tableName) {
-    // Show primary key for specific table
+    // Show unique key for a specific table
     const result = await connection.execute(
       `SELECT cols.column_name
        FROM all_constraints cons
@@ -16,13 +16,13 @@ export async function showTablePrimaryKey(
        AND t.owner = cons.owner
        WHERE cons.owner = :1
        AND cons.table_name = :2
-       AND cons.constraint_type = 'P'
+       AND cons.constraint_type = 'U'
        AND cons.table_name NOT LIKE 'BIN$%'
        ORDER BY cols.position`,
       [(dbConfig.user || "").toUpperCase(), tableName.toUpperCase()]
     );
 
-    console.log(`\nPrimary Key for table ${tableName}:`);
+    console.log(`\nUnique Key for table ${tableName}:`);
     console.log("-".repeat(50));
     console.log("COLUMN NAME".padEnd(30));
     console.log("-".repeat(50));
@@ -32,11 +32,11 @@ export async function showTablePrimaryKey(
         console.log(`${row[0]}`.padEnd(30));
       });
     } else {
-      console.log("No primary key found".padEnd(50));
+      console.log("No unique key found".padEnd(50));
     }
     console.log("-".repeat(50));
   } else {
-    // Show primary keys for all tables
+    // Show unique keys for all tables
     const result = await connection.execute(
       `SELECT cons.table_name, cols.column_name
        FROM all_constraints cons
@@ -45,21 +45,21 @@ export async function showTablePrimaryKey(
        JOIN all_tables t ON t.table_name = cons.table_name 
        AND t.owner = cons.owner
        WHERE cons.owner = :1
-       AND cons.constraint_type = 'P'
+       AND cons.constraint_type = 'U'  -- Changed from 'P' to 'U' for unique keys
        AND cons.table_name NOT LIKE 'BIN$%'
        ORDER BY cons.table_name, cols.position`,
       [(dbConfig.user || "").toUpperCase()]
     );
 
-    console.log("\nPrimary Keys for all tables:");
+    console.log("\nUnique Keys for all tables:");
     console.log("-".repeat(80));
-    console.log("TABLE NAME".padEnd(40) + "PRIMARY KEY COLUMNS".padEnd(40));
+    console.log("TABLE NAME".padEnd(40) + "UNIQUE KEY COLUMNS".padEnd(40));
     console.log("-".repeat(80));
 
     const rows = result.rows || [];
     if (rows.length > 0) {
       let currentTable = "";
-      let pkColumns: string[] = [];
+      let uniqueKeyColumns: string[] = [];
 
       rows.forEach((row: any, index: number) => {
         const [tableName, columnName] = row;
@@ -67,24 +67,24 @@ export async function showTablePrimaryKey(
         if (currentTable !== tableName) {
           if (currentTable !== "") {
             console.log(
-              currentTable.padEnd(40) + pkColumns.join(", ").padEnd(40)
+              currentTable.padEnd(40) + uniqueKeyColumns.join(", ").padEnd(40)
             );
           }
           currentTable = tableName;
-          pkColumns = [columnName];
+          uniqueKeyColumns = [columnName];
         } else {
-          pkColumns.push(columnName);
+          uniqueKeyColumns.push(columnName);
         }
 
         // Print the last table
         if (index === rows.length - 1) {
           console.log(
-            currentTable.padEnd(40) + pkColumns.join(", ").padEnd(40)
+            currentTable.padEnd(40) + uniqueKeyColumns.join(", ").padEnd(40)
           );
         }
       });
     } else {
-      console.log("No primary keys found".padEnd(80));
+      console.log("No unique keys found".padEnd(80));
     }
     console.log("-".repeat(80));
   }
