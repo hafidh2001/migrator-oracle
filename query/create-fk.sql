@@ -1,109 +1,52 @@
 DECLARE
   v_sql VARCHAR2(4000);
+
+  -- Define the table names and their primary key columns
+  TYPE fk_def IS RECORD (
+    table_name       VARCHAR2(100),
+    column_name      VARCHAR2(100),
+    ref_table_name   VARCHAR2(100),
+    ref_column_name  VARCHAR2(100)
+  );
+  TYPE fk_def_list IS TABLE OF fk_def;
+
+  -- Define the tables and their unique key columns here
+  l_tables fk_def_list := fk_def_list(
+    fk_def('ASSETS', 'GROUPCLASSES_ID', 'ASSETCLASSES', 'GROUPCLASSES_ID'),
+    fk_def('ASSETS', 'KELAS_ASET', 'GROUPCLASSES', 'ID'),
+    fk_def('ASSETS', 'KODE_CABANG', 'BRANCHES', 'KODE_SAP'),
+    fk_def('DEPRECIATION_VALUES', 'NO_ASET', 'ASSETS', 'NO_ASET'),
+    fk_def('DETAILASSETS', 'KONDISI_FISIK', 'REFERENCES', 'ENTITY'),
+    fk_def('DETAILASSETS', 'STATUS_PEROLEHAN', 'REFERENCES', 'ENTITY'),
+    fk_def('DETAILASSETS', 'NO_ASET', 'ASSETS', 'NO_ASET'),
+    fk_def('PICTUREASSETS', 'NO_ASET', 'DETAILASSETS', 'NO_ASET'),
+    fk_def('USERS', 'ID_ROLE', 'ROLES', 'ID'),
+    fk_def('USES', 'NO_ASET', 'ASSETS', 'NO_ASET')
+  );
+
 BEGIN
-  -- Drop existing foreign key constraints
-  FOR r IN (
-    SELECT constraint_name, table_name 
-    FROM user_constraints 
-    WHERE constraint_type = 'R' 
-    AND constraint_name LIKE 'FK_%'
-  ) LOOP
-    v_sql := 'ALTER TABLE "' || r.table_name || '" DROP CONSTRAINT "' || r.constraint_name || '"';
+  FOR i IN 1..l_tables.COUNT LOOP
     BEGIN
+      -- Delete non-matching data
+      v_sql := 'DELETE FROM ' || l_tables(i).table_name || 
+               ' WHERE ' || l_tables(i).column_name || 
+               ' NOT IN (SELECT ' || l_tables(i).ref_column_name || 
+               ' FROM ' || l_tables(i).ref_table_name || ')';
       EXECUTE IMMEDIATE v_sql;
-    EXCEPTION WHEN OTHERS THEN
-      NULL; -- Ignore any errors during drop
+
+      -- Create foreign key
+      v_sql := 'ALTER TABLE "' || l_tables(i).table_name || 
+               '" ADD CONSTRAINT "FK_' || l_tables(i).table_name || '_' || l_tables(i).column_name || '__' || l_tables(i).ref_table_name || '_' || l_tables(i).ref_column_name ||
+               '" FOREIGN KEY ("' || l_tables(i).column_name || 
+               '") REFERENCES "' || l_tables(i).ref_table_name || 
+               '"("' || l_tables(i).ref_column_name || '")';
+      EXECUTE IMMEDIATE v_sql;
+      
+      DBMS_OUTPUT.PUT_LINE('Successfully created FK for FK_' || l_tables(i).table_name || '_' || l_tables(i).column_name || '__' || l_tables(i).ref_table_name || '_' || l_tables(i).ref_column_name || '✅');
+    EXCEPTION 
+      WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('Error creating FK for FK_' || l_tables(i).table_name || '_' || l_tables(i).column_name || '__' || l_tables(i).ref_table_name || '_' || l_tables(i).ref_column_name || 
+                             ' ❌: ' || SQLERRM);
     END;
   END LOOP;
-  
-  -- Create foreign key constraints
-  BEGIN
-    -- delete not match data
-    EXECUTE IMMEDIATE 'DELETE FROM ASSETS WHERE GROUPCLASSES_ID NOT IN (SELECT GROUPCLASSES_ID FROM ASSETCLASSES)';
-    v_sql := 'ALTER TABLE "ASSETS" ADD CONSTRAINT "FK_ASSETS.GROUPCLASSES_ID_x_ASSETCLASSES.GROUPCLASSES_ID" FOREIGN KEY ("GROUPCLASSES_ID") REFERENCES "ASSETCLASSES"("GROUPCLASSES_ID")';
-    EXECUTE IMMEDIATE v_sql;
-  EXCEPTION WHEN OTHERS THEN
-    DBMS_OUTPUT.PUT_LINE('Error creating FK_ASSETS.GROUPCLASSES_ID_x_ASSETCLASSES.GROUPCLASSES_ID ❌: ' || SQLERRM);
-  END;
-
-  BEGIN
-    -- delete not match data
-    EXECUTE IMMEDIATE 'DELETE FROM ASSETS WHERE KELAS_ASET NOT IN (SELECT ID FROM GROUPCLASSES)';
-    v_sql := 'ALTER TABLE "ASSETS" ADD CONSTRAINT "FK_ASSETS.KELAS_ASET_x_GROUPCLASSES.ID" FOREIGN KEY ("KELAS_ASET") REFERENCES "GROUPCLASSES"("ID")';
-    EXECUTE IMMEDIATE v_sql;
-  EXCEPTION WHEN OTHERS THEN
-    DBMS_OUTPUT.PUT_LINE('Error creating FK_ASSETS.KELAS_ASET_x_GROUPCLASSES.ID ❌: ' || SQLERRM);
-  END;
-
-  BEGIN
-    -- delete not match data
-    EXECUTE IMMEDIATE 'DELETE FROM ASSETS WHERE KODE_CABANG NOT IN (SELECT KODE_SAP FROM BRANCHES)';
-    v_sql := 'ALTER TABLE "ASSETS" ADD CONSTRAINT "FK_ASSETS.KODE_CABANG_x_BRANCHES.KODE_SAP" FOREIGN KEY ("KODE_CABANG") REFERENCES "BRANCHES"("KODE_SAP")';
-    EXECUTE IMMEDIATE v_sql;
-  EXCEPTION WHEN OTHERS THEN
-    DBMS_OUTPUT.PUT_LINE('Error creating FK_ASSETS.KODE_CABANG_x_BRANCHES.KODE_SAP ❌: ' || SQLERRM);
-  END;
-
-  BEGIN
-    -- delete not match data
-    EXECUTE IMMEDIATE 'DELETE FROM DEPRECIATION_VALUES WHERE NO_ASET NOT IN (SELECT NO_ASET FROM ASSETS)';
-    v_sql := 'ALTER TABLE "DEPRECIATION_VALUES" ADD CONSTRAINT "FK_DEPRECIATION_VALUES.NO_ASET_x_ASSETS.NO_ASET" FOREIGN KEY ("NO_ASET") REFERENCES "ASSETS"("NO_ASET")';
-    EXECUTE IMMEDIATE v_sql;
-  EXCEPTION WHEN OTHERS THEN
-    DBMS_OUTPUT.PUT_LINE('Error creating FK_DEPRECIATION_VALUES.NO_ASET_x_ASSETS.NO_ASET ❌: ' || SQLERRM);
-  END;
-
-  BEGIN
-    -- delete not match data
-    EXECUTE IMMEDIATE 'DELETE FROM DETAILASSETS WHERE KONDISI_FISIK NOT IN (SELECT ENTITY FROM "REFERENCES")';
-    v_sql := 'ALTER TABLE "DETAILASSETS" ADD CONSTRAINT "FK_DETAILASSETS.KONDISI_FISIK_x_REFERENCES.ENTITY" FOREIGN KEY ("KONDISI_FISIK") REFERENCES "REFERENCES"("ENTITY")';
-    EXECUTE IMMEDIATE v_sql;
-  EXCEPTION WHEN OTHERS THEN
-    DBMS_OUTPUT.PUT_LINE('Error creating FK_DETAILASSETS.KONDISI_FISIK_x_REFERENCES.ENTITY ❌: ' || SQLERRM);
-  END;
-
-  BEGIN
-    -- delete not match data
-    EXECUTE IMMEDIATE 'DELETE FROM DETAILASSETS WHERE STATUS_PEROLEHAN NOT IN (SELECT ENTITY FROM "REFERENCES")';
-    v_sql := 'ALTER TABLE "DETAILASSETS" ADD CONSTRAINT "FK_DETAILASSETS.STATUS_PEROLEHAN_x_REFERENCES.ENTITY" FOREIGN KEY ("STATUS_PEROLEHAN") REFERENCES "REFERENCES"("ENTITY")';
-    EXECUTE IMMEDIATE v_sql;
-  EXCEPTION WHEN OTHERS THEN
-    DBMS_OUTPUT.PUT_LINE('Error creating FK_DETAILASSETS.STATUS_PEROLEHAN_x_REFERENCES.ENTITY ❌: ' || SQLERRM);
-  END;
-
-  BEGIN
-    -- delete not match data
-    EXECUTE IMMEDIATE 'DELETE FROM DETAILASSETS WHERE NO_ASET NOT IN (SELECT NO_ASET FROM ASSETS)';
-    v_sql := 'ALTER TABLE "DETAILASSETS" ADD CONSTRAINT "FK_DETAILASSETS.NO_ASET_x_ASSETS.NO_ASET" FOREIGN KEY ("NO_ASET") REFERENCES "ASSETS"("NO_ASET")';
-    EXECUTE IMMEDIATE v_sql;
-  EXCEPTION WHEN OTHERS THEN
-    DBMS_OUTPUT.PUT_LINE('Error creating FK_DETAILASSETS.NO_ASET_x_ASSETS.NO_ASET ❌: ' || SQLERRM);
-  END;
-
-  BEGIN
-    -- delete not match data
-    EXECUTE IMMEDIATE 'DELETE FROM PICTUREASSETS WHERE NO_ASET NOT IN (SELECT NO_ASET FROM DETAILASSETS)';
-    v_sql := 'ALTER TABLE "PICTUREASSETS" ADD CONSTRAINT "FK_PICTUREASSETS.NO_ASET_x_DETAILASSETS.NO_ASET" FOREIGN KEY ("NO_ASET") REFERENCES "DETAILASSETS"("NO_ASET")';
-    EXECUTE IMMEDIATE v_sql;
-  EXCEPTION WHEN OTHERS THEN
-    DBMS_OUTPUT.PUT_LINE('Error creating FK_PICTUREASSETS.NO_ASET_x_DETAILASSETS.NO_ASET ❌: ' || SQLERRM);
-  END;
-
-  BEGIN
-    -- delete not match data
-    EXECUTE IMMEDIATE 'DELETE FROM USERS WHERE ID_ROLE NOT IN (SELECT ID FROM ROLES)';
-    v_sql := 'ALTER TABLE "USERS" ADD CONSTRAINT "FK_USERS.ID_ROLE_x_ROLES.ID" FOREIGN KEY ("ID_ROLE") REFERENCES "ROLES"("ID")';
-    EXECUTE IMMEDIATE v_sql;
-  EXCEPTION WHEN OTHERS THEN
-    DBMS_OUTPUT.PUT_LINE('Error creating FK_USERS.ID_ROLE_x_ROLES.ID ❌: ' || SQLERRM);
-  END;
-
-  BEGIN
-    -- delete not match data
-    EXECUTE IMMEDIATE 'DELETE FROM USES WHERE NO_ASET NOT IN (SELECT NO_ASET FROM ASSETS)';
-    v_sql := 'ALTER TABLE "USES" ADD CONSTRAINT "FK_USES.NO_ASET_x_ASSETS.NO_ASET" FOREIGN KEY ("NO_ASET") REFERENCES "ASSETS"("NO_ASET")';
-    EXECUTE IMMEDIATE v_sql;
-  EXCEPTION WHEN OTHERS THEN
-    DBMS_OUTPUT.PUT_LINE('Error creating FK_USES.NO_ASET_x_ASSETS.NO_ASET ❌: ' || SQLERRM);
-  END;
 END;

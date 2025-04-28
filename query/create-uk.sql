@@ -1,59 +1,44 @@
 DECLARE
   v_sql VARCHAR2(4000);
+
+  -- Define the table names and their primary key columns
+  TYPE uk_def IS RECORD (
+    table_name  VARCHAR2(100),
+    uk_column   VARCHAR2(100)
+  );
+  TYPE uk_def_list IS TABLE OF uk_def;
+
+  -- Define the tables and their unique key columns here
+  l_tables uk_def_list := uk_def_list(
+    uk_def('BRANCHES', 'KODE_SAP'),
+    uk_def('REFERENCES', 'ENTITY')
+  );
+
 BEGIN
-  -- Drop any existing UK constraints first
-  FOR r IN (
-    SELECT constraint_name, table_name 
-    FROM user_constraints 
-    WHERE constraint_type = 'U' 
-    AND constraint_name LIKE 'UK_%'
-  ) LOOP
-    v_sql := 'ALTER TABLE "' || r.table_name || '" DROP CONSTRAINT "' || r.constraint_name || '"';
+  FOR i IN 1..l_tables.COUNT LOOP
     BEGIN
+      -- Delete duplicates
+      v_sql := 'DELETE FROM ' || l_tables(i).table_name || 
+               ' WHERE ROWID NOT IN (SELECT MIN(ROWID) FROM ' || 
+               l_tables(i).table_name || ' GROUP BY ' || l_tables(i).uk_column || ')';
       EXECUTE IMMEDIATE v_sql;
-    EXCEPTION WHEN OTHERS THEN
-      NULL; -- Ignore any errors during drop
+      
+      -- Delete nulls
+      v_sql := 'DELETE FROM ' || l_tables(i).table_name || 
+               ' WHERE ' || l_tables(i).uk_column || ' IS NULL';
+      EXECUTE IMMEDIATE v_sql;
+      
+      -- Create primary key
+      v_sql := 'ALTER TABLE "' || l_tables(i).table_name || 
+               '" ADD CONSTRAINT "UK_' || l_tables(i).table_name || '" UNIQUE ("' || 
+               l_tables(i).uk_column || '")';
+      EXECUTE IMMEDIATE v_sql;
+      
+      DBMS_OUTPUT.PUT_LINE('Successfully created UK for ' || l_tables(i).table_name || '✅');
+    EXCEPTION 
+      WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('Error creating UK for ' || l_tables(i).table_name || 
+                             ' ❌: ' || SQLERRM);
     END;
   END LOOP;
-
-  -- Drop indexes if they exist
-  FOR r IN (
-    SELECT index_name 
-    FROM user_indexes 
-    WHERE index_name LIKE 'IDX_%'
-  ) LOOP
-    v_sql := 'DROP INDEX "' || r.index_name || '"';
-    BEGIN
-      EXECUTE IMMEDIATE v_sql;
-    EXCEPTION WHEN OTHERS THEN
-      NULL; -- Ignore any errors during drop
-    END;
-  END LOOP;
-
-  -- Create unique constraints 
-  BEGIN
-    -- delete duplicate
-    EXECUTE IMMEDIATE 'DELETE FROM BRANCHES WHERE ROWID NOT IN (SELECT MIN(ROWID) FROM BRANCHES GROUP BY KODE_SAP)';
-    -- delete null
-    EXECUTE IMMEDIATE 'DELETE FROM BRANCHES WHERE KODE_SAP IS NULL';
-    v_sql := 'ALTER TABLE "BRANCHES" ADD CONSTRAINT "UK_BRANCHES_SAP" UNIQUE ("KODE_SAP")';
-    EXECUTE IMMEDIATE v_sql;
-  EXCEPTION WHEN OTHERS THEN
-    IF SQLCODE != -2261 THEN -- Ignore if constraint already exists
-      DBMS_OUTPUT.PUT_LINE('Error creating UK_BRANCHES_SAP: ' || SQLERRM);
-    END IF;
-  END;
-
-  BEGIN
-    -- delete duplicate
-    EXECUTE IMMEDIATE 'DELETE FROM "REFERENCES" WHERE ROWID NOT IN (SELECT MIN(ROWID) FROM "REFERENCES" GROUP BY ENTITY)';
-    -- delete null
-    EXECUTE IMMEDIATE 'DELETE FROM "REFERENCES" WHERE ENTITY IS NULL';
-    v_sql := 'ALTER TABLE "REFERENCES" ADD CONSTRAINT "UK_REFERENCES_ENTITY" UNIQUE ("ENTITY")';
-    EXECUTE IMMEDIATE v_sql;
-  EXCEPTION WHEN OTHERS THEN
-    IF SQLCODE != -2261 THEN -- Ignore if constraint already exists
-      DBMS_OUTPUT.PUT_LINE('Error creating UK_REFERENCES_ENTITY: ' || SQLERRM);
-    END IF;
-  END;
 END;
