@@ -70,12 +70,6 @@ async function main() {
       case "pk":
       case "uk":
       case "fk":
-        if (!args.table) {
-          console.error(
-            `\nMissing table name. Use: --show=${args.show} --table=TABLE_NAME`
-          );
-          process.exit(1);
-        }
         if (args.show === "pk")
           await showTablePrimaryKey(connection, args.table);
         if (args.show === "uk")
