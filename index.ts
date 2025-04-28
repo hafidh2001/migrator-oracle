@@ -13,47 +13,42 @@ import { showTableUniqueKey } from "./src/helper/showUniqueKeys";
 
 async function main() {
   const args = parseArgs();
+  let connection;
+
   try {
-    const connection = await initializeConnection();
+    connection = await initializeConnection();
 
     if (args.help) {
       showHelp();
-      await closeConnection(connection);
       return;
     }
 
     if (args.query) {
       await runQuery(connection, args.query);
-      await closeConnection(connection);
       return;
     }
 
     if (args.compare === "csv") {
       if (!args.path) {
-        console.log(
+        console.error(
           "\nMissing directory path. Use: --compare=csv --path=BACKUP_DIRECTORY"
         );
-        await closeConnection(connection);
-        return;
+        process.exit(1);
       }
       await compareFilesWithTables(connection, args.path);
-      await closeConnection(connection);
       return;
     }
 
     if (args.export === "csv") {
       const exportPath = args.path || "export-csv";
-
       console.log(`Exporting tables to CSV in directory: ${exportPath}`);
       await exportTablesToCSV(connection, exportPath);
-      await closeConnection(connection);
       return;
     }
 
     if (!args.show) {
-      console.log("\nUse --help to see available commands");
-      await closeConnection(connection);
-      return;
+      console.error("\nUse --help to see available commands");
+      process.exit(1);
     }
 
     switch (args.show) {
@@ -64,34 +59,44 @@ async function main() {
         await showTables(connection);
         break;
       case "structure":
-        if (args.table) {
-          await showTableStructure(connection, args.table);
-        } else {
-          console.log(
+        if (!args.table) {
+          console.error(
             "\nMissing table name. Use: --show=structure --table=TABLE_NAME"
           );
+          process.exit(1);
         }
+        await showTableStructure(connection, args.table);
         break;
       case "pk":
-        await showTablePrimaryKey(connection, args.table);
-        break;
       case "uk":
-        await showTableUniqueKey(connection, args.table);
-        break;
       case "fk":
-        await showForeignKeys(connection, args.table);
+        if (!args.table) {
+          console.error(
+            `\nMissing table name. Use: --show=${args.show} --table=TABLE_NAME`
+          );
+          process.exit(1);
+        }
+        if (args.show === "pk")
+          await showTablePrimaryKey(connection, args.table);
+        if (args.show === "uk")
+          await showTableUniqueKey(connection, args.table);
+        if (args.show === "fk") await showForeignKeys(connection, args.table);
         break;
       case "schema":
         await showSchemaDiagram(connection, args.output);
         break;
       default:
-        console.log("\nInvalid command. Use --help to see available commands");
+        console.error(
+          "\nInvalid command. Use --help to see available commands"
+        );
+        process.exit(1);
     }
-
-    await closeConnection(connection);
   } catch (error) {
-    console.error("Error connecting to the database:", error);
+    console.error("Error:", error instanceof Error ? error.message : error);
+    process.exit(1);
+  } finally {
+    if (connection) await closeConnection(connection);
   }
 }
 
-main();
+main().catch(console.error);
