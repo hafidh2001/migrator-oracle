@@ -28,6 +28,7 @@
     "show-uk": "bun run index.ts --show=uk",
     "show-fk": "bun run index.ts --show=fk",
     "show-schema": "bun run index.ts --show=schema",
+    "compare-csv": "bun run index.ts --compare=csv",
     "export-csv": "bun run index.ts --export=csv"
   },
   "devDependencies": {
