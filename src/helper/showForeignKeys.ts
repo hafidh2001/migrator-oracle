@@ -32,22 +32,22 @@ export async function showForeignKeys(connection: Connection, tableName?: string
   const result = await connection.execute(query, params);
 
   console.log('\nForeign Key Relationships:');
-  console.log('-'.repeat(120));
-  console.log('SOURCE TABLE'.padEnd(20) + 'FOREIGN KEY'.padEnd(20) + 'TARGET TABLE'.padEnd(20) + 'TARGET FIELD'.padEnd(20) + 'CONSTRAINT NAME'.padEnd(40));
-  console.log('-'.repeat(120));
+  console.log('-'.repeat(140));
+  console.log('SOURCE TABLE'.padEnd(25) + 'FOREIGN KEY'.padEnd(25) + 'TARGET TABLE'.padEnd(25) + 'TARGET FIELD'.padEnd(25) + 'CONSTRAINT NAME'.padEnd(25));
+  console.log('-'.repeat(140));
 
   if (!result.rows || result.rows.length === 0) {
-    console.log('No foreign keys found'.padEnd(120));
+    console.log('No foreign keys found'.padEnd(140));
   } else {
     result.rows.forEach((row: any) => {
       console.log(
-        `${row[0]}`.padEnd(20) + 
-        `${row[1]}`.padEnd(20) + 
-        `${row[3]}`.padEnd(20) + 
-        `${row[4]}`.padEnd(20) +
+        `${row[0]}`.padEnd(25) + 
+        `${row[1]}`.padEnd(25) + 
+        `${row[3]}`.padEnd(25) + 
+        `${row[4]}`.padEnd(25) +
         `${row[2]}`.padEnd(40)
       );
     });
   }
-  console.log('-'.repeat(120));
+  console.log('-'.repeat(140));
 }

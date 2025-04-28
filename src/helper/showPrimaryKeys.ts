@@ -38,7 +38,7 @@ export async function showTablePrimaryKey(
   } else {
     // Show primary keys for all tables
     const result = await connection.execute(
-      `SELECT cons.table_name, cols.column_name
+      `SELECT cons.table_name, cols.column_name, cons.constraint_name
        FROM all_constraints cons
        JOIN all_cons_columns cols ON cons.constraint_name = cols.constraint_name
        AND cons.owner = cols.owner
@@ -53,33 +53,36 @@ export async function showTablePrimaryKey(
 
     console.log("\nPrimary Keys for all tables:");
     console.log("-".repeat(80));
-    console.log("TABLE NAME".padEnd(40) + "PRIMARY KEY COLUMNS".padEnd(40));
+    console.log("TABLE NAME".padEnd(25) + "PRIMARY KEY".padEnd(25) + "CONSTRAINT NAME".padEnd(25));
     console.log("-".repeat(80));
 
     const rows = result.rows || [];
     if (rows.length > 0) {
       let currentTable = "";
       let pkColumns: string[] = [];
+      let constraintColumns: string[] = [];
 
       rows.forEach((row: any, index: number) => {
-        const [tableName, columnName] = row;
+        const [tableName, columnName, constraint_name] = row;
 
         if (currentTable !== tableName) {
           if (currentTable !== "") {
             console.log(
-              currentTable.padEnd(40) + pkColumns.join(", ").padEnd(40)
+              currentTable.padEnd(25) + pkColumns.join(", ").padEnd(25) + constraintColumns.join(", ").padEnd(40)
             );
           }
           currentTable = tableName;
           pkColumns = [columnName];
+          constraintColumns = [constraint_name];
         } else {
           pkColumns.push(columnName);
+          constraintColumns.push(constraint_name);
         }
 
         // Print the last table
         if (index === rows.length - 1) {
           console.log(
-            currentTable.padEnd(40) + pkColumns.join(", ").padEnd(40)
+            currentTable.padEnd(25) + pkColumns.join(", ").padEnd(25) + constraintColumns.join(", ").padEnd(40)
           );
         }
       });
