@@ -341,8 +341,6 @@ ASET_KELAS,DIBUAT_OLEH,DIBUAT_TANGGAL,DIEDIT_OLEH,DIEDIT_TGL,DESKRIPSI,KET,CRAET
 120504,,,,,Alat Angkut Lainnya,AT -Alat Angkut Lainnya,,,1,1205,1205041124
 120657,,,,,Aset Konsesi - Peralatan,ATB -Aset Konsesi - Peralatan,,,1,1206,120657120657
 120502,,,,,Rambu Navigasi,AT -Rambu Navigasi,,,1,1205,1205071048
-120503,,,,,Kapal,AT -Alat Perlengkapan Kapal,,,1,1205,1205071048
-120504,,,,,Alat Faspel,AT -Alat Faspel,,,1,1205,1205071048
 120403,,,,,Rumah Dinas Permanen,PI -Rumah Dinas Permanen,,,1,1204,1204031158
 120403,,,,,Gedung Kantor,PI -Gedung Kantor,,,1,1204,1204031035
 120403,,,,,Terminal Penumpang Permanen,PI -Terminal Penumpang Permanen,,,1,1204,1204031154
@@ -396,7 +394,6 @@ ASET_KELAS,DIBUAT_OLEH,DIBUAT_TANGGAL,DIEDIT_OLEH,DIEDIT_TGL,DESKRIPSI,KET,CRAET
 121002,,,,,Pengerukan Kolam,KSO -Pengerukan Kolam,,,1,1210,1210021059
 120654,,,,,Docking Station,KSO -Docking Station,,,1,1210,1206541061
 120654,,,,,Jembatan Timbang,KSO -Jembatan Timbang,,,1,1210,1206541062
-121004,,,,,Conveyor,KSO -Conveyor,,,1,1210,1210041084
 120652,,,,,Proteksi Dolphin,KSO -Proteksi Dolphin,,,1,1210,1206521064
 121005,,,,,Battery Charger,KSO -Battery Charger,,,1,1210,1210051065
 121005,,,,,Genzet,KSO -Genzet,,,1,1210,1210051066
@@ -456,7 +453,6 @@ ASET_KELAS,DIBUAT_OLEH,DIBUAT_TANGGAL,DIEDIT_OLEH,DIEDIT_TGL,DESKRIPSI,KET,CRAET
 120507,,,,,Alat Perkantoran,AT -Alat Perkantoran,,,1,1205,1205071045
 120507,,,,,Komputer dan Peralatannya,AT -Komputer dan Peralatannya,,,1,1205,1205071046
 120507,,,,,Alat Pendidikan dan Latihan,AT -Alat Pendidikan dan Latihan,,,1,1205,1205071047
-120507,,,,,Alat Perlengkapan Kapal,AT -Alat Perlengkapan Kapal,,,1,1205,1205071048
 120507,,,,,Perlengkapan Rumah Dinas,AT -Perlengkapan Rumah Dinas,,,1,1205,1205071049
 120507,,,,,Perlengk. Pmk (Termasuk Mobil),AT -Perlengk. Pmk (Termasuk Mobil),,,1,1205,1205071050
 120508,,,,,Mobil,AT -Mobil,,,1,1205,1205081051
