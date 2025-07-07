@@ -11,31 +11,31 @@ DECLARE
   -- Define the tables and their primary key columns here
   l_tables pk_def_list := pk_def_list(
     pk_def('ASSETACCOUNTS', 'COA'),
-    pk_def('ASSETCLASSES', 'GROUPCLASSES_ID'),
-    pk_def('ASSETS', 'NO_ASET'),
+    pk_def('ASSETCLASSES', 'ID'),
+    pk_def('ASSETS', 'ID'),
     pk_def('ASSET_SAP_FAILED', 'ID'),
     pk_def('BRANCHES', 'ID_CABANG'),
-    pk_def('COSTCENTERS', 'KODE_PUSAT_BIAYA'),
+    pk_def('COSTCENTERS', 'ID'),
     pk_def('DEPRECIATIONS', 'KODE_PENYUSUTAN'),
-    pk_def('DEPRECIATION_VALUES', 'NO_ASET'),
-    pk_def('DETAILASSETS', 'NO_ASET'),
+    pk_def('DEPRECIATION_VALUES', 'ID'),
+    pk_def('DETAILASSETS', 'ID'),
     pk_def('DIMENSI_SATUAN', 'NAME'),
-    pk_def('ELIMINATION', 'NO_ASET'),
+    pk_def('ELIMINATION', 'ID'),
     pk_def('GROUPASSETS', 'ID'),
     pk_def('GROUPCLASSES', 'ID'),
-    pk_def('INSURANCES', 'NO_ASET'),
+    pk_def('INSURANCES', 'ID'),
     pk_def('MASTER_ASURANSI', 'ID'),
     pk_def('MONITORING_FAILED', 'ID'),
     pk_def('MONITORING_INTEGRATOR', 'ID'),
     pk_def('NOTIFIKASI', 'ID_NOTIFIKASI'),
-    pk_def('PBB', 'NO_ASET'),
+    pk_def('PBB', 'ID'),
     pk_def('PERIOD', 'ID'),
     pk_def('PERIOD_REQUEST', 'ID'),
-    pk_def('PICTUREASSETS', 'NO_ASET'),
+    pk_def('PICTUREASSETS', 'ID'),
     pk_def('REFERENCES', 'ID'),
     pk_def('ROLES', 'ID'),
     pk_def('USERS', 'ID'),
-    pk_def('USES', 'NO_ASET')
+    pk_def('USES', 'ID')
   );
 
 BEGIN

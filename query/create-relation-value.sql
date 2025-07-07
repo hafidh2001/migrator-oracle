@@ -1,0 +1,23 @@
+BEGIN
+  -- Update ASSETS_ID at DETAILASSETS table with subquery to handle duplicates
+  EXECUTE IMMEDIATE '
+    UPDATE DETAILASSETS DA
+    SET DA.ASSET_ID = (
+      SELECT MIN(A.ID)
+      FROM ASSETS A
+      WHERE DA.NO_ASET = A.NO_ASET 
+        AND DA.SUB_ASET = A.SUB_ASET
+        AND DA.PERIODE = A.PERIODE
+        AND DA.TAHUN = A.TAHUN
+    )
+    WHERE EXISTS (
+      SELECT 1
+      FROM ASSETS A
+      WHERE DA.NO_ASET = A.NO_ASET 
+        AND DA.SUB_ASET = A.SUB_ASET
+        AND DA.PERIODE = A.PERIODE
+        AND DA.TAHUN = A.TAHUN
+    )';
+  
+  DBMS_OUTPUT.PUT_LINE('✅ Updated ASSET_ID in DETAILASSETS');
+END;
