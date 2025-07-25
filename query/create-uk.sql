@@ -10,7 +10,6 @@ DECLARE
 
   -- Define the tables and their unique key columns here
   l_tables uk_def_list := uk_def_list(
-    uk_def('BRANCHES', 'KODE_SAP'),
     uk_def('REFERENCES', 'ENTITY')
   );
 
