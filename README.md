@@ -1,3 +1,22 @@
+# Generate PDF dari Mermaid Schema
+
+Untuk menghasilkan file PDF dari file Mermaid schema, gunakan perintah berikut:
+
+```sh
+mmdc -i ./schema-output/schema.mermaid -o ./schema-output/schema.pdf
+```
+
+Ganti nama file input/output sesuai kebutuhan, misal:
+
+```sh
+mmdc -i ./schema-output/NAMA_FILE.mermaid -o ./schema-output/NAMA_FILE.pdf
+```
+
+Pastikan sudah menginstall [Mermaid CLI](https://github.com/mermaid-js/mermaid-cli):
+
+```sh
+npm install -g @mermaid-js/mermaid-cli
+```
 # Database Connection Tool
 
 A command-line tool to connect to Oracle Database and explore tables.

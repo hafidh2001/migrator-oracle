@@ -38,20 +38,58 @@ export async function showSchemaDiagram(connection: Connection, output?: string)
   // Generate Mermaid diagram content starting with all tables
   let mermaidContent = 'erDiagram\n';
   
+  // Track field types for consistency
+  const fieldTypeMap: Record<string, string> = {};
   // Add all tables with their columns
   if (tablesResult.rows) {
     let currentTable = '';
     let tableContent = '';
     let tableCount = 0;
     let totalTables = new Set(tablesResult.rows.map((row: any) => row[0])).size;
-    
+
     console.log(`Found ${totalTables} tables in the schema\n`);
-    
+
     tablesResult.rows.forEach((row: any) => {
-      const tableName = row[0];
-      const columnName = row[1];
-      const dataType = row[2];
-      
+  // Rename REFERENCES table to REFERENCE_DATA
+  let tableName = row[0];
+  let columnName = row[1];
+  let dataType = row[2];
+
+  if (tableName.toUpperCase() === 'REFERENCES') tableName = 'REFERENCE_DATA';
+
+  // Perbaiki typo field: CRAETED_DATE -> CREATED_DATE
+  if (columnName.toUpperCase() === 'CRAETED_DATE') columnName = 'CREATED_DATE';
+
+      // Field type mapping
+      let shortDataType = dataType.toUpperCase();
+      if (shortDataType.includes('NUMBER')) shortDataType = 'int';
+      else if (shortDataType.includes('FLOAT')) shortDataType = 'float';
+      else if (shortDataType.includes('DATE')) shortDataType = 'date';
+      else if (shortDataType.includes('TIMESTAMP')) shortDataType = 'date';
+      else if (shortDataType.includes('CHAR')) shortDataType = 'string';
+      else if (shortDataType.includes('VARCHAR')) shortDataType = 'string';
+      else if (shortDataType.includes('CLOB') || shortDataType.includes('BLOB')) shortDataType = 'string';
+      else if (shortDataType.includes('NCHAR') || shortDataType.includes('NVARCHAR')) shortDataType = 'string';
+      else if (shortDataType.includes('BOOLEAN')) shortDataType = 'boolean';
+      else shortDataType = 'string';
+
+      // Field khusus: BUKTI_TGL selalu date, BUKTI_FISIK_DOKUMEN selalu string
+      if (columnName.toUpperCase() === 'BUKTI_TGL') shortDataType = 'date';
+      if (columnName.toUpperCase() === 'BUKTI_FISIK_DOKUMEN') shortDataType = 'string';
+
+      // Konsistensi tipe field antar tabel
+      if (fieldTypeMap[columnName]) {
+        shortDataType = fieldTypeMap[columnName];
+      } else {
+        fieldTypeMap[columnName] = shortDataType;
+      }
+
+      // Hanya tipe valid Mermaid
+      if (!['string', 'int', 'float', 'boolean', 'date'].includes(shortDataType)) {
+        shortDataType = 'string';
+        fieldTypeMap[columnName] = 'string';
+      }
+
       if (currentTable !== tableName) {
         // Close previous table if exists
         if (currentTable !== '') {
@@ -63,20 +101,10 @@ export async function showSchemaDiagram(connection: Connection, output?: string)
         tableCount++;
         process.stdout.write(`\rProcessing tables... ${tableCount}/${totalTables}`);
       }
-      
-      // Convert Oracle data types to more readable format and limit length
-      const shortDataType = dataType.replace('VARCHAR2', 'string')
-                                  .replace('NUMBER', 'int')
-                                  .replace('DATE', 'date')
-                                  .replace('TIMESTAMP(6)', 'timestamp')
-                                  .replace('CHAR', 'char')
-                                  .replace('CLOB', 'text')
-                                  .replace('BLOB', 'binary')
-                                  .toLowerCase();
-      
+
       tableContent += `        ${shortDataType} ${columnName}\n`;
     });
-    
+
     // Close the last table
     if (currentTable !== '') {
       mermaidContent += `    ${currentTable} {\n${tableContent}    }\n`;
@@ -84,22 +112,18 @@ export async function showSchemaDiagram(connection: Connection, output?: string)
   }
 
   // Add relationships between tables
-
   if (relationsResult.rows && relationsResult.rows.length > 0) {
-    // Track processed relationships to avoid duplicates
+    // Track processed relationships to avoid duplicates (parent-child only)
     const processedRelations = new Set<string>();
-
     relationsResult.rows.forEach((row: any) => {
-      const childTable = row[0];
-      const parentTable = row[1];
-      const childColumn = row[2];
-      const parentColumn = row[3];
-
-      // Create a unique key for this relationship
-      const relationKey = `${childTable}-${parentTable}-${childColumn}-${parentColumn}`;
-
+      let childTable = row[0];
+      let parentTable = row[1];
+      // Rename REFERENCES table to REFERENCE_DATA in relations
+      if (childTable.toUpperCase() === 'REFERENCES') childTable = 'REFERENCE_DATA';
+      if (parentTable.toUpperCase() === 'REFERENCES') parentTable = 'REFERENCE_DATA';
+      // Only one relasi per pasangan parent-child
+      const relationKey = `${parentTable}-${childTable}`;
       if (!processedRelations.has(relationKey)) {
-        // Add relationship to diagram using Mermaid syntax
         mermaidContent += `    ${parentTable} ||--o{ ${childTable} : "has"\n`;
         processedRelations.add(relationKey);
       }
