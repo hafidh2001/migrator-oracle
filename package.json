@@ -10,9 +10,8 @@
   "scripts": {
     "drop-metadata-tables": "bun run index.ts --query=query/drop-metadata-tables.sql",
     "drop-laravel-tables": "bun run index.ts --query=query/drop-laravel-tables.sql",
-    "drop-db": "bun run index.ts --query=query/drop-sequence.sql && bun drop-metadata-tables && bun drop-laravel-tables && bun run index.ts --query=query/drop-tables.sql",
+    "drop-db": "bun drop-metadata-tables && bun drop-laravel-tables && bun run index.ts --query=query/drop-tables.sql",
     "create-db": "bun run index.ts --query=query/create-tables.sql && bun drop-metadata-tables && bun drop-laravel-tables",
-    "create-sequence": "bun run index.ts --query=query/create-sequence.sql",
     "create-relation-value": "bun run index.ts --query=query/create-relation-value.sql",
     "remove-duplicate": "bun run index.ts --query=query/remove-duplicate.sql",
     "drop-pk": "bun run index.ts --query=query/drop-pk.sql",
@@ -24,7 +23,6 @@
     "drop-constraint": "bun drop-fk && bun drop-uk && bun drop-pk",
     "create-constraint": "bun drop-constraint && bun run index.ts --query=query/create-pk.sql && bun run index.ts --query=query/create-uk.sql && bun run index.ts --query=query/create-fk.sql",
     "migrate-all": "bun drop-db && bun create-db && bun create-constraint",
-    "show-sequences": "bun run index.ts --show=sequences",
     "show-tables": "bun run index.ts --show=tables",
     "show-structure": "bun run index.ts --show=structure",
     "show-pk": "bun run index.ts --show=pk",
@@ -32,11 +30,10 @@
     "show-fk": "bun run index.ts --show=fk",
     "show-schema": "bun run index.ts --show=schema",
     "compare-csv": "bun run index.ts --compare=csv",
-    "export-csv": "bun run index.ts --export=csv"
-    },
+    "export-csv": "bun run index.ts --export=csv",
     "mermaid:pdf": "mmdc -i ./schema-output/schema.mermaid -o ./schema-output/schema.pdf",
     "mermaid:custom": "mmdc -i ./schema-output/$npm_config_name.mermaid -o ./schema-output/$npm_config_name.pdf"
-  ,
+  },
   "devDependencies": {
     "@types/bun": "latest"
   },
