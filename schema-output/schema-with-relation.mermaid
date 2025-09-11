@@ -267,52 +267,6 @@ erDiagram
         date MODIFIED_ON
         int ID_NOTIFIKASI
         string KODE_CABANG
-        string DETAIL_MEREK
-        string DETAIL_NO_RANGKA
-        string DETAIL_NO_MESIN
-        string DETAIL_NO_PLAT
-        string SUB_ASET
-        string DETAIL_TIPE
-        string KETERANGAN
-        date PENURUNAN_TGL_PEMBUKUAN
-        string PENURUNAN_LEMBAGA
-        string PENURUNAN_NOMOR
-        date PENURUNAN_TGL_LAPORAN
-        date PEMULIHAN_TGL_PEMBUKUAN
-        string PEMULIHAN_LEMBAGA
-        string PEMULIHAN_NOMOR
-        date PEMULIHAN_TGL_LAPORAN
-        int NO_ITEM
-        string LOKASI
-        string KORDINAT
-        string KONDISI_FISIK
-        string STATUS_PEROLEHAN
-        string BUKTI_KEPEMILIKAN
-        string BUKTI_RINCIAN
-        string BUKTI_NO
-        date BUKTI_TGL
-        string BUKTI_KETERANGAN
-        string BUKTI_FISIK_DOKUMEN
-        string STATUS_ITEMINISASI
-        string STATUS_PENGELOLAAN
-        string HUKUM_RINCIAN
-        string HUKUM_NOMOR
-        string HUKUM_KETERANGAN
-        string ASURANSI
-        string KJPP_UMUR
-        int KJPP_NILAI
-        string KJPP_PELAKSANA
-        int KJPP_NO
-        date KJPP_TGL
-        string USULAN_PENGHAPUSAN
-        string STATUS_ASURANSI
-        string TINDAK_LANJUT
-        string TINDAK_LANJUT_DD
-        string KJPP_UMUR_ASURANSI
-        int KJPP_NILAI_ASURANSI
-        string KJPP_PELAKSANA_ASURANSI
-        int KJPP_NO_ASURANSI
-        date KJPP_TGL_ASURANSI
     }
     PBB {
         int ID
@@ -428,5 +382,6 @@ erDiagram
     REFERENCE_DATA ||--o{ DETAILASSETS : "has"
     DETAILASSETS ||--o{ NOTIFIKASI : "has"
     DETAILASSETS ||--o{ PICTUREASSETS : "has"
+    ROLES ||--o{ USERS : "has"
     DETAILASSETS ||--o{ USES : "has"
     REFERENCE_DATA ||--o{ USES : "has"
