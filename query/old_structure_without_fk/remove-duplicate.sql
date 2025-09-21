@@ -1,142 +1,176 @@
-DELETE FROM ASSETCLASSES
-WHERE
-    ROWID NOT IN (
-        SELECT MIN(ROWID)
-        FROM ASSETCLASSES
-        GROUP BY
-            GROUPCLASSES_ID
-    );
+-- ====================================================================
+-- REMOVE DUPLICATE DATA UNTUK SETIAP TABEL
+-- Menggunakan kriteria yang sama dengan check-duplicate.sql
+-- Menghapus duplicate berdasarkan semua field business (exclude ID & dates)
+-- ====================================================================
 
-DELETE FROM GROUPCLASSES
-WHERE
-    ROWID NOT IN (
-        SELECT MIN(ROWID)
-        FROM GROUPCLASSES
-        GROUP BY
-            ID
-    );
-
-DELETE FROM BRANCHES
-WHERE
-    ROWID NOT IN (
-        SELECT MIN(ROWID)
-        FROM BRANCHES
-        GROUP BY
-            KODE_SAP
-        HAVING
-            COUNT(*) > 1
-    );
-
+-- ASSETS - Remove duplicates based on business logic fields
 DELETE FROM ASSETS
-WHERE
-    ROWID NOT IN (
-        SELECT MIN(ROWID)
-        FROM ASSETS
-        GROUP BY
-            NO_ASET
-        HAVING
-            COUNT(*) > 1
-    );
+WHERE ROWID NOT IN (
+    SELECT MIN(ROWID)
+    FROM ASSETS
+    GROUP BY
+        BRANCHE_ID, NO_ASET, SUB_ASET, NAMA_ASET, KELAS_ASET,
+        KODE_CABANG, PUSAT_BIAYA, DIMENSI_NILAI, DIMENSI_SATUAN,
+        STATUS, PERIODE, TAHUN, GROUPCLASSES_ID, GROUPASSET_ID,
+        SISA_MANFAAT, PROFIT_CENTER
+);
 
-DELETE FROM "REFERENCES"
-WHERE
-    ROWID NOT IN (
-        SELECT MIN(ROWID)
-        FROM "REFERENCES"
-        GROUP BY
-            ENTITY
-        HAVING
-            COUNT(*) > 1
-    );
-
+-- DETAILASSETS - Remove duplicates based on business logic fields
 DELETE FROM DETAILASSETS
-WHERE
-    ROWID NOT IN (
-        SELECT MIN(ROWID)
-        FROM DETAILASSETS
-        GROUP BY
-            NO_ASET
-        HAVING
-            COUNT(*) > 1
-    );
+WHERE ROWID NOT IN (
+    SELECT MIN(ROWID)
+    FROM DETAILASSETS
+    WHERE NO_ASET IS NOT NULL
+    GROUP BY
+        NO_ASET, SUB_ASET, NO_ITEM, DETAIL_MEREK, DETAIL_NO_RANGKA,
+        DETAIL_NO_MESIN, DETAIL_NO_PLAT, DETAIL_TIPE, KETERANGAN,
+        LOKASI, KORDINAT, KONDISI_FISIK, STATUS_PEROLEHAN,
+        BUKTI_KEPEMILIKAN, BUKTI_RINCIAN, BUKTI_NO, BUKTI_KETERANGAN,
+        BUKTI_FISIK_DOKUMEN, STATUS_ITEMINISASI, PERIODE, TAHUN,
+        STATUS_PENGELOLAAN
+);
 
-DELETE FROM ROLES
-WHERE
-    ROWID NOT IN (
-        SELECT MIN(ROWID)
-        FROM ROLES
-        GROUP BY
-            ID
-        HAVING
-            COUNT(*) > 1
-    );
-
-DELETE FROM COSTCENTERS
-WHERE
-    ROWID NOT IN (
-        SELECT MIN(ROWID)
-        FROM COSTCENTERS
-        GROUP BY
-            KODE_PUSAT_BIAYA
-    );
-
+-- DEPRECIATION_VALUES - Remove duplicates based on business logic fields
 DELETE FROM DEPRECIATION_VALUES
-WHERE
-    ROWID NOT IN (
-        SELECT MIN(ROWID)
-        FROM DEPRECIATION_VALUES
-        GROUP BY
-            NO_ASET
-    );
+WHERE ROWID NOT IN (
+    SELECT MIN(ROWID)
+    FROM DEPRECIATION_VALUES
+    GROUP BY
+        NO_ASET, SUB_ASET, NILAI_SUSUT, AKUMULASI_PENYUSUTAN,
+        NILAI_PEROLEHAN, NILAI_BUKU, NILAI_RESIDU, PERIODE, TAHUN
+);
 
+-- ELIMINATION - Remove duplicates based on business logic fields
 DELETE FROM ELIMINATION
-WHERE
-    ROWID NOT IN (
-        SELECT MIN(ROWID)
-        FROM ELIMINATION
-        GROUP BY
-            NO_ASET
-    );
+WHERE ROWID NOT IN (
+    SELECT MIN(ROWID)
+    FROM ELIMINATION
+    GROUP BY
+        NO_ASET, SUB_ASET, NO_ITEM, PENGHAPUSAN_RINCIAN,
+        PENGHAPUSAN_NOMOR, PENGHAPUSAN_KETERANGAN, STATUS,
+        PERIODE, TAHUN
+);
 
+-- INSURANCES - Remove duplicates based on business logic fields
 DELETE FROM INSURANCES
-WHERE
-    ROWID NOT IN (
-        SELECT MIN(ROWID)
-        FROM INSURANCES
-        GROUP BY
-            NO_ASET
-    );
+WHERE ROWID NOT IN (
+    SELECT MIN(ROWID)
+    FROM INSURANCES
+    GROUP BY
+        NO_ASET, SUB_ASET, NO_ITEM, RINCIAN, NO_POLIS,
+        PREMI, KETERANGAN_ASURANSI, ALASAN_ASURANSI, STATUS,
+        PERIODE, TAHUN, NO_ASURANSI
+);
 
+-- PBB - Remove duplicates based on business logic fields
 DELETE FROM PBB
-WHERE
-    ROWID NOT IN (
-        SELECT MIN(ROWID)
-        FROM PBB
-        GROUP BY
-            NO_ASET
-    );
+WHERE ROWID NOT IN (
+    SELECT MIN(ROWID)
+    FROM PBB
+    GROUP BY
+        NO_ASET, SUB_ASET, NO_ITEM, NJOP, NO_PBB,
+        PERIODE, TAHUN, KETERANGAN_PBB
+);
 
+-- PICTUREASSETS - Remove duplicates based on business logic fields
 DELETE FROM PICTUREASSETS
-WHERE
-    ROWID NOT IN (
-        SELECT MIN(ROWID)
-        FROM PICTUREASSETS
-        GROUP BY
-            NO_ASET
-    );
+WHERE ROWID NOT IN (
+    SELECT MIN(ROWID)
+    FROM PICTUREASSETS
+    GROUP BY
+        NO_ASET, SUB_ASET, NO_ITEM, PATH_SURAT, FLAG, JENIS_FOTO
+);
 
+-- USES - Remove duplicates based on business logic fields
 DELETE FROM USES
-WHERE
-    ROWID NOT IN (
-        SELECT MIN(ROWID)
-        FROM USES
-        GROUP BY
-            NO_ASET
-    );
+WHERE ROWID NOT IN (
+    SELECT MIN(ROWID)
+    FROM USES
+    GROUP BY
+        NO_ASET, SUB_ASET, NO_ITEM, STATUS_PENGELOLAAN_RINCIAN,
+        NAMA_PENYEWA, NO_KONTRAK_SEWA, PIHAK_YANG_MENEMPATI,
+        TAHUN, PERIODE, USES_TYPE, NO_USES
+);
 
--- null
+-- BRANCHES - Remove duplicates based on business logic fields
+DELETE FROM BRANCHES
+WHERE ROWID NOT IN (
+    SELECT MIN(ROWID)
+    FROM BRANCHES
+    GROUP BY
+        NAMA_CABANG, KODE_REGIONAL, KODE_TERMINAL, KODE_SAP,
+        PROFIT_CENTER, FLAG_APPROVE
+);
+
+-- COSTCENTERS - Remove duplicates based on business logic fields
+DELETE FROM COSTCENTERS
+WHERE ROWID NOT IN (
+    SELECT MIN(ROWID)
+    FROM COSTCENTERS
+    GROUP BY
+        KODE_PUSAT_BIAYA, NAMA_PUSAT_BIAYA, FLAG
+);
+
+-- ASSETCLASSES - Remove duplicates based on business logic fields
+DELETE FROM ASSETCLASSES
+WHERE ROWID NOT IN (
+    SELECT MIN(ROWID)
+    FROM ASSETCLASSES
+    GROUP BY
+        ASET_KELAS, DESKRIPSI, KET, GROUPASSET_ID,
+        GROUPCLASSES_ID, FLAG
+);
+
+-- GROUPCLASSES - Remove duplicates based on business logic fields
+DELETE FROM GROUPCLASSES
+WHERE ROWID NOT IN (
+    SELECT MIN(ROWID)
+    FROM GROUPCLASSES
+    GROUP BY
+        NAMA_GROUP_KELAS, KODE
+);
+
+-- GROUPASSETS - Remove duplicates based on business logic fields
+DELETE FROM GROUPASSETS
+WHERE ROWID NOT IN (
+    SELECT MIN(ROWID)
+    FROM GROUPASSETS
+    GROUP BY
+        NAMA_GROUP
+);
+
+-- REFERENCES - Remove duplicates based on business logic fields
+DELETE FROM "REFERENCES"
+WHERE ROWID NOT IN (
+    SELECT MIN(ROWID)
+    FROM "REFERENCES"
+    GROUP BY
+        KATEGORI, ENTITY, NAMA_ENTITY, FLAG
+);
+
+-- ROLES - Remove duplicates based on business logic fields
+DELETE FROM ROLES
+WHERE ROWID NOT IN (
+    SELECT MIN(ROWID)
+    FROM ROLES
+    GROUP BY
+        NAME, ID_MENU, STATUS, ID_INTEGRATION
+);
+
+-- USERS - Remove duplicates based on business logic fields
+DELETE FROM USERS
+WHERE ROWID NOT IN (
+    SELECT MIN(ROWID)
+    FROM USERS
+    GROUP BY
+        NAME, EMAIL, ID_CABANG, ID_ROLE, STATUS, KODE_REGIONAL
+);
+
+-- Remove NULL values for primary key fields
 DELETE FROM ASSETACCOUNTS WHERE COA IS NULL;
-
+DELETE FROM BRANCHES WHERE ID_CABANG IS NULL;
+DELETE FROM DEPRECIATIONS WHERE KODE_PENYUSUTAN IS NULL;
+DELETE FROM DIMENSI_SATUAN WHERE NAME IS NULL;
+DELETE FROM GROUPASSETS WHERE ID IS NULL;
 DELETE FROM DETAILASSETS WHERE NO_ASET IS NULL;
-
-DELETE FROM BRANCHES WHERE KODE_SAP IS NULL;
