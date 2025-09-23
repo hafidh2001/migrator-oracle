@@ -10,11 +10,14 @@ DECLARE
   );
   TYPE fk_def_list IS TABLE OF fk_def;
 
-  -- Define the tables and their unique key columns here
+  -- Define the tables and their foreign key columns here
   l_tables fk_def_list := fk_def_list(
     fk_def('ASSETS', 'ASSETCLASSES_ID', 'ASSETCLASSES', 'ID'),
     fk_def('ASSETS', 'GROUPASSET_ID', 'GROUPASSETS', 'ID'),
+    fk_def('ASSETS', 'GROUPCLASSES_ID', 'GROUPCLASSES', 'ID'),
     fk_def('ASSETS', 'BRANCHE_ID', 'BRANCHES', 'ID_CABANG'),
+    fk_def('ASSETCLASSES', 'GROUPASSET_ID', 'GROUPASSETS', 'ID'),
+    fk_def('ASSETCLASSES', 'GROUPCLASSES_ID', 'GROUPCLASSES', 'ID'),
     fk_def('DETAILASSETS', 'KONDISI_FISIK', 'REFERENCES', 'ENTITY'),
     fk_def('DETAILASSETS', 'STATUS_PEROLEHAN', 'REFERENCES', 'ENTITY'),
     fk_def('DETAILASSETS', 'BUKTI_KEPEMILIKAN', 'REFERENCES', 'ENTITY'),
@@ -28,6 +31,8 @@ DECLARE
     fk_def('NOTIFIKASI', 'DETAILASSET_ID', 'DETAILASSETS', 'ID'),
     fk_def('PICTUREASSETS', 'DETAILASSET_ID', 'DETAILASSETS', 'ID'),
     fk_def('USERS', 'ID_ROLE', 'ROLES', 'ID'),
+    fk_def('USERS', 'ID_CABANG', 'BRANCHES', 'ID_CABANG'),
+    fk_def('PERIOD_REQUEST', 'ID_USER', 'USERS', 'ID'),
     fk_def('USES', 'DETAILASSET_ID', 'DETAILASSETS', 'ID'),
     fk_def('USES', 'USES_TYPE', 'REFERENCES', 'ENTITY')
   );
@@ -35,25 +40,28 @@ DECLARE
 BEGIN
   FOR i IN 1..l_tables.COUNT LOOP
     BEGIN
-      -- Delete non-matching data
-      v_sql := 'DELETE FROM ' || l_tables(i).table_name || 
-               ' WHERE ' || l_tables(i).column_name || 
-               ' NOT IN (SELECT ' || l_tables(i).ref_column_name || 
-               ' FROM ' || l_tables(i).ref_table_name || ')';
+      -- Set invalid foreign key values to NULL instead of deleting data
+      v_sql := 'UPDATE ' || l_tables(i).table_name ||
+               ' SET ' || l_tables(i).column_name || ' = NULL' ||
+               ' WHERE ' || l_tables(i).column_name || ' IS NOT NULL' ||
+               ' AND ' || l_tables(i).column_name ||
+               ' NOT IN (SELECT ' || l_tables(i).ref_column_name ||
+               ' FROM ' || l_tables(i).ref_table_name ||
+               ' WHERE ' || l_tables(i).ref_column_name || ' IS NOT NULL)';
       EXECUTE IMMEDIATE v_sql;
 
-      -- Create foreign key
-      v_sql := 'ALTER TABLE "' || l_tables(i).table_name || 
+      -- Create foreign key with nullable constraint
+      v_sql := 'ALTER TABLE "' || l_tables(i).table_name ||
                '" ADD CONSTRAINT "FK_' || l_tables(i).table_name || '_' || l_tables(i).column_name || '__' || l_tables(i).ref_table_name || '_' || l_tables(i).ref_column_name ||
-               '" FOREIGN KEY ("' || l_tables(i).column_name || 
-               '") REFERENCES "' || l_tables(i).ref_table_name || 
+               '" FOREIGN KEY ("' || l_tables(i).column_name ||
+               '") REFERENCES "' || l_tables(i).ref_table_name ||
                '"("' || l_tables(i).ref_column_name || '")';
       EXECUTE IMMEDIATE v_sql;
-      
+
       DBMS_OUTPUT.PUT_LINE('Successfully created FK for FK_' || l_tables(i).table_name || '_' || l_tables(i).column_name || '__' || l_tables(i).ref_table_name || '_' || l_tables(i).ref_column_name || '✅');
-    EXCEPTION 
+    EXCEPTION
       WHEN OTHERS THEN
-        DBMS_OUTPUT.PUT_LINE('Error creating FK for FK_' || l_tables(i).table_name || '_' || l_tables(i).column_name || '__' || l_tables(i).ref_table_name || '_' || l_tables(i).ref_column_name || 
+        DBMS_OUTPUT.PUT_LINE('Error creating FK for FK_' || l_tables(i).table_name || '_' || l_tables(i).column_name || '__' || l_tables(i).ref_table_name || '_' || l_tables(i).ref_column_name ||
                              ' ❌: ' || SQLERRM);
     END;
   END LOOP;
