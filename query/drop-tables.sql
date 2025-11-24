@@ -36,5 +36,11 @@ BEGIN
    drop_if_exists('ROLES');
    drop_if_exists('USERS');
    drop_if_exists('USES');
+   drop_if_exists('JOBS');
+   drop_if_exists('FAILED_JOBS');
+   drop_if_exists('MAPPING_ASSETS');
+   drop_if_exists('ASSET_SAP_LOG');
+   drop_if_exists('BLOCK_ASSET_IN');
+   drop_if_exists('LOG_DUPLIKASI_DETAILASSETS');
    DBMS_OUTPUT.PUT_LINE('Tables dropped successfully');
 END;
