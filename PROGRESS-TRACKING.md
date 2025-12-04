@@ -1,0 +1,271 @@
+# PROGRESS TRACKING - Migrator Oracle
+
+Dokumentasi ini mencatat semua perubahan dan progress yang dilakukan pada project migrator-oracle.
+
+---
+
+## Format Tracking
+Setiap entry akan mencatat:
+- Tanggal & Waktu
+- Request/Instruksi
+- Output/Hasil
+- File yang diubah
+
+---
+
+## [2025-12-04] - PROMPT #1: Perbandingan & Update Struktur Database
+
+### Request/Instruksi:
+Membandingkan struktur database antara file lama (siapdev-tables.sql) dengan file production (siap_prod.sql), kemudian update file lama dengan struktur production mengikuti aturan:
+1. Tabel yang ada di file lama tapi tidak di production → **KEEP** (jangan dihapus)
+2. Tabel yang ada di production tapi tidak di file lama → **ADD** (tambahkan)
+3. Tabel yang ada di kedua file → **UPDATE** dengan struktur dari production
+
+### File yang Dianalisis:
+1. **File Lama (Old Structure):**
+   - Path: `/Users/hafidhahmadfauzan/avolut/repository/siap-pelindo/migrator-oracle/query/old_structure_without_fk/siapdev-tables.sql`
+
+2. **File Production (Reference/Source of Truth):**
+   - Path: `/Users/hafidhahmadfauzan/avolut/repository/siap-pelindo/4 DECEMBER  2025/1.siap_prod.sql`
+
+3. **File Format Reference:**
+   - Path: `/Users/hafidhahmadfauzan/avolut/repository/siap-pelindo/migrator-oracle/query/create-tables.sql`
+
+---
+
+### -> Output: RINGKASAN PERBANDINGAN
+
+#### Statistik Umum:
+- **Total tabel di siapdev-tables.sql (OLD):** 34
+- **Total tabel di siap_prod.sql (PRODUCTION):** 34
+- **Tabel yang ada di kedua file:** 33
+- **Tabel HANYA di siap_prod.sql:** 1 (MAPPING_USER)
+- **Tabel HANYA di siapdev-tables.sql:** 1 (ASSET_SAP_LOG)
+- **Tabel dengan perbedaan struktur:** 28 dari 33 tabel
+
+---
+
+### -> Output: TABEL BARU YANG DITAMBAHKAN
+
+#### 1. MAPPING_USER ⭐ NEW
+**Status:** Tabel ini TIDAK ada di siapdev-tables.sql dan ditambahkan dari production.
+
+**Struktur:**
+```sql
+CREATE TABLE "MAPPING_USER" (
+  "ID" NUMBER(38,0) NOT NULL,
+  "NIPP" VARCHAR2(100),
+  "KODE_SAP" VARCHAR2(5),
+  "PROFIT_CENTER" VARCHAR2(5),
+  "CREATED_AT" DATE,
+  "UPDATED_AT" DATE,
+  "STATUS" CHAR(1)
+);
+```
+
+#### 2. MIGRATIONS ⭐ NEW
+**Status:** Tabel baru dari production.
+
+**Struktur:**
+```sql
+CREATE TABLE "MIGRATIONS" (
+  "ID" NUMBER(10,0) NOT NULL,
+  "MIGRATION" VARCHAR2(255) NOT NULL,
+  "BATCH" NUMBER(10,0) NOT NULL
+);
+```
+
+#### 3. PASSWORD_RESETS ⭐ NEW
+**Status:** Tabel baru dari production.
+
+**Struktur:**
+```sql
+CREATE TABLE "PASSWORD_RESETS" (
+  "EMAIL" VARCHAR2(255) NOT NULL,
+  "TOKEN" VARCHAR2(255) NOT NULL,
+  "CREATED_AT" TIMESTAMP(6)
+);
+```
+
+---
+
+### -> Output: TABEL YANG DIPERTAHANKAN (KEEP)
+
+#### 1. ASSET_SAP_LOG 📌 KEPT
+**Status:** Tabel ini ADA di siapdev-tables.sql tapi TIDAK ada di production (siap_prod.sql).
+
+**Action:** Tetap dipertahankan di file hasil update karena mungkin masih dibutuhkan.
+
+**Catatan:** Kemungkinan sudah dihapus atau diganti dengan tabel lain di production. **Perlu investigasi lebih lanjut** apakah tabel ini masih dibutuhkan atau sudah deprecated.
+
+---
+
+### -> Output: PERUBAHAN TIPE DATA (CRITICAL)
+
+#### 1. MASTER_ASURANSI.ID_REGIONAL ⚠️ CRITICAL
+**Perubahan Tipe Data:**
+- **Lama:** VARCHAR2(5)
+- **Baru:** NUMBER(4,0) NOT NULL
+
+**Impact:**
+- Perubahan dari string ke number
+- Memerlukan data migration script khusus
+- Validasi bahwa semua data existing adalah numeric
+- Backup data sebelum migrasi
+
+---
+
+#### 2. ASSETS.GROUPCLASSES_ID ⚠️ HIGH
+**Perubahan Tipe Data:**
+- **Lama:** NUMBER
+- **Baru:** VARCHAR2(50)
+
+**Impact:**
+- Perubahan dari number ke string
+- Data conversion dari NUMBER ke VARCHAR2
+- Kolom backup ditambahkan: GROUPCLASSES_ID_BACKUP (NUMBER)
+
+---
+
+#### 3. DEPRECIATION_VALUES (2 Kolom) ⚠️ MEDIUM
+**Perubahan Tipe Data:**
+- **AKUMULASI_PENYUSUTAN_NEW:** NUMBER(23,2) → NUMBER(23,0)
+- **PENYUSUTAN_SD_BLN_BERJALAN:** NUMBER(23,2) → NUMBER(23,0)
+
+**Impact:**
+- Akan truncate decimal values (kehilangan 2 digit desimal)
+- Perlu validasi dampak bisnis
+
+---
+
+### -> Output: PERUBAHAN UKURAN KOLOM
+
+#### Peningkatan Ukuran (Safe Changes) ✅
+| Tabel | Kolom | Lama | Baru |
+|-------|-------|------|------|
+| ASSETCLASSES | DESKRIPSI | VARCHAR2(50) | VARCHAR2(100) |
+| INSURANCES | ALASAN_ASURANSI | VARCHAR2(50) | VARCHAR2(150) |
+
+---
+
+### -> Output: KOLOM BARU YANG DITAMBAHKAN
+
+| Tabel | Kolom Baru | Tipe Data | Keterangan |
+|-------|------------|-----------|------------|
+| ASSETS | GROUPCLASSES_ID_BACKUP | NUMBER | Backup untuk nilai lama GROUPCLASSES_ID |
+| ASSET_SAP_FAILED | SUB_ASET | NVARCHAR2(4) | Kolom baru dari production |
+
+---
+
+### -> Output: CONSTRAINT NOT NULL YANG DITAMBAHKAN
+
+Total **28 tabel** memiliki kolom yang ditambahkan constraint NOT NULL.
+
+#### Tabel dengan Banyak Perubahan NOT NULL:
+
+1. **ASSET_SAP_FAILED** (9 kolom NOT NULL):
+   - ID, NO_ASET, PERIODE, TAHUN, EXCEPTION, REQUEST, CREATED_AT, CREATED_BY, NAMA_ASET
+
+2. **FAILED_JOBS** (6 kolom NOT NULL):
+   - ID, CONNECTION, QUEUE, PAYLOAD, EXCEPTION, FAILED_AT
+
+3. **MASTER_ASURANSI** (10 kolom NOT NULL):
+   - ID, NO_POLIS, NAMA_POLIS, TGL_POLIS, PREMI, JANGKA_WAKTU, ID_REGIONAL, ACTIVE, CREATED_BY, CREATED_ON
+
+4. **MONITORING_FAILED** (8 kolom NOT NULL):
+   - ID, DESCRIPTION, PERIODE, TAHUN, MODEL, CREATED_AT, EXCEPTION, REQUEST
+
+5. **PERIOD_REQUEST** (8 kolom NOT NULL):
+   - ID, START_DATE, END_DATE, STATUS, CREATED_BY, CREATED_ON, KODE_CABANG, ID_USER
+
+**Dan 23 tabel lainnya** dengan jumlah kolom NOT NULL yang bervariasi.
+
+---
+
+### -> Output: DETAIL PERBANDINGAN PER KATEGORI
+
+#### Tabel TANPA perbedaan struktur (5 tabel): ✅
+1. ASSETACCOUNTS
+2. DETAILASSETS
+3. ELIMINATION
+4. PICTUREASSETS
+5. REFERENCES
+
+---
+
+#### Tabel dengan perbedaan Minor (3 tabel): 🔸
+1. BLOCK_ASSET_IN - Hanya perbedaan format spacing
+2. LOG_DUPLIKASI_DETAILASSETS - Perbedaan format spacing
+3. MAPPING_ASSETS - Perbedaan format DEFAULT value
+
+---
+
+#### Tabel dengan perbedaan Constraint NOT NULL (20 tabel): 🔹
+1. ASSETCLASSES (2 kolom NOT NULL)
+2. BRANCHES (3 kolom NOT NULL)
+3. COSTCENTERS (4 kolom NOT NULL)
+4. DEPRECIATIONS (3 kolom NOT NULL)
+5. DEPRECIATION_VALUES (6 kolom NOT NULL)
+6. DIMENSI_SATUAN (1 kolom NOT NULL)
+7. GROUPASSETS (2 kolom NOT NULL)
+8. GROUPCLASSES (2 kolom NOT NULL)
+9. INSURANCES (6 kolom NOT NULL + 1 tipe data)
+10. JOBS (6 kolom NOT NULL)
+11. MIGRATIONS (3 kolom NOT NULL)
+12. MONITORING_INTEGRATOR (6 kolom NOT NULL)
+13. NOTIFIKASI (10 kolom NOT NULL)
+14. PASSWORD_RESETS (2 kolom NOT NULL)
+15. PBB (5 kolom NOT NULL)
+16. PERIOD (5 kolom NOT NULL)
+17. ROLES (1 kolom NOT NULL)
+18. USERS (4 kolom NOT NULL)
+19. USES (5 kolom NOT NULL)
+20. ASSETS (2 kolom NOT NULL + 1 kolom baru + 1 tipe data)
+
+---
+
+### -> Output: HASIL UPDATE FILE
+
+**File Target:**
+`/Users/hafidhahmadfauzan/avolut/repository/siap-pelindo/migrator-oracle/query/old_structure_without_fk/siapdev-tables.sql`
+
+**Statistik Update:**
+- **Total tabel setelah update:** 35
+- **Tabel yang di-KEEP:** 1 (ASSET_SAP_LOG)
+- **Tabel yang di-ADD:** 3 (MAPPING_USER, MIGRATIONS, PASSWORD_RESETS)
+- **Tabel yang di-UPDATE:** 31 (struktur diambil dari production)
+
+**Daftar 31 Tabel yang Diupdate:**
+1. ASSETACCOUNTS
+2. ASSETCLASSES
+3. ASSET_SAP_FAILED
+4. ASSETS
+5. BLOCK_ASSET_IN
+6. BRANCHES
+7. COSTCENTERS
+8. DEPRECIATIONS
+9. DEPRECIATION_VALUES
+10. DETAILASSETS
+11. DIMENSI_SATUAN
+12. ELIMINATION
+13. FAILED_JOBS
+14. GROUPASSETS
+15. GROUPCLASSES
+16. INSURANCES
+17. JOBS
+18. LOG_DUPLIKASI_DETAILASSETS
+19. MAPPING_ASSETS
+20. MASTER_ASURANSI
+21. MONITORING_FAILED
+22. MONITORING_INTEGRATOR
+23. NOTIFIKASI
+24. PBB
+25. PERIOD
+26. PERIOD_REQUEST
+27. PICTUREASSETS
+28. REFERENCES
+29. ROLES
+30. USERS
+31. USES
+
+---
