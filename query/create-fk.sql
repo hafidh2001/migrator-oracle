@@ -14,10 +14,10 @@ DECLARE
   l_tables fk_def_list := fk_def_list(
     fk_def('ASSETS', 'ASSETCLASSES_ID', 'ASSETCLASSES', 'ID'),
     fk_def('ASSETS', 'GROUPASSET_ID', 'GROUPASSETS', 'ID'),
-    -- fk_def('ASSETS', 'GROUPCLASSES_ID', 'GROUPCLASSES', 'ID'), --- IGNORE (VARCHAR2 to NUMBER mismatch) ---
+    -- fk_def('ASSETS', 'GROUPCLASSES_ID', 'GROUPCLASSES', 'ID'), --- IGNORE (VARCHAR2(50) to NUMBER mismatch) ---
     fk_def('ASSETS', 'BRANCHE_ID', 'BRANCHES', 'ID_CABANG'),
-    -- fk_def('ASSETCLASSES', 'GROUPASSET_ID', 'GROUPASSETS', 'ID'), --- REMOVED: Data type incompatibility (NUMBER vs VARCHAR2) ---
-    -- fk_def('ASSETCLASSES', 'GROUPCLASSES_ID', 'GROUPCLASSES', 'ID'), --- IGNORE (NUMBER to NUMBER with casting needed) ---
+    fk_def('ASSETCLASSES', 'GROUPASSET_ID', 'GROUPASSETS', 'ID'), --- NOW COMPATIBLE: VARCHAR2(12) to VARCHAR2(4) - Standardized to VARCHAR2(12) ---
+    -- fk_def('ASSETCLASSES', 'GROUPCLASSES_ID', 'GROUPCLASSES', 'ID'), --- IGNORE (VARCHAR2(50) to NUMBER mismatch) ---
     fk_def('DETAILASSETS', 'KONDISI_FISIK', 'REFERENCES', 'ENTITY'),
     fk_def('DETAILASSETS', 'STATUS_PEROLEHAN', 'REFERENCES', 'ENTITY'),
     fk_def('DETAILASSETS', 'BUKTI_KEPEMILIKAN', 'REFERENCES', 'ENTITY'),

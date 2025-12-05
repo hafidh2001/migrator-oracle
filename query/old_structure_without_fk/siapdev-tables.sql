@@ -23,8 +23,8 @@ BEGIN
     "KET" VARCHAR2 (50),
     "CRAETED_DATE" DATE,
     "UPDATE_DATE" DATE,
-    "GROUPASSET_ID" VARCHAR2 (6),
-    "GROUPCLASSES_ID" VARCHAR2 (12),
+    "GROUPASSET_ID" VARCHAR2 (12), -- Standardized to VARCHAR2(12) for consistency with ASSETS table
+    "GROUPCLASSES_ID" VARCHAR2 (50), -- Standardized to VARCHAR2(50) for consistency with ASSETS table
     "FLAG" CHAR(1)
   )';
 

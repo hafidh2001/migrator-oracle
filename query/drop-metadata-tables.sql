@@ -4,8 +4,6 @@ DECLARE
       SELECT table_name 
       FROM user_tables 
       WHERE table_name LIKE 'MD_%' 
-         OR table_name LIKE 'MIGR_%' 
-         OR table_name = 'MIGRLOG'
       ORDER BY table_name DESC;
    v_table_name VARCHAR2(200);
 BEGIN
