@@ -42,5 +42,8 @@ BEGIN
    drop_if_exists('ASSET_SAP_LOG');
    drop_if_exists('BLOCK_ASSET_IN');
    drop_if_exists('LOG_DUPLIKASI_DETAILASSETS');
+   drop_if_exists('MAPPING_USER');
+   drop_if_exists('MIGRATIONS');
+   drop_if_exists('PASSWORD_RESETS');
    DBMS_OUTPUT.PUT_LINE('Tables dropped successfully');
 END;

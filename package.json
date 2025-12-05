@@ -10,8 +10,8 @@
   "scripts": {
     "drop-metadata-tables": "bun run index.ts --query=query/drop-metadata-tables.sql",
     "drop-laravel-tables": "bun run index.ts --query=query/drop-laravel-tables.sql",
-    "drop-db": "bun drop-metadata-tables && bun drop-laravel-tables && bun run index.ts --query=query/drop-tables.sql",
-    "create-db": "bun run index.ts --query=query/create-tables.sql && bun drop-metadata-tables && bun drop-laravel-tables",
+    "drop-db": "bun drop-metadata-tables && bun run index.ts --query=query/drop-tables.sql",
+    "create-db": "bun run index.ts --query=query/create-tables.sql && bun drop-metadata-tables",
     "create-relation-value": "bun run index.ts --query=query/create-relation-value.sql",
     "remove-duplicate": "bun run index.ts --query=query/remove-duplicate.sql",
     "drop-pk": "bun run index.ts --query=query/drop-pk.sql",
